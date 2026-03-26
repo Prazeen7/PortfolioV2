@@ -52,7 +52,7 @@ const PROJECTS = [
       "Built a full-featured Learning Management System using Java with features including course management, student enrollment, assignment submission, grading system, and progress tracking.",
     tech: ["Java", "OOP", "Database", "Authentication"],
     github:
-      "https://www.figma.com/proto/2mv0Bc5gRZG7D27KxcHg4z/CMS?node-id=3639-1085",
+      "https://www.figma.com/proto/2mvOBc5gRZG7D27KxcHg4z/CMS?node-id=3639-1085&t=ZnlPrKhhcQTOSyC4-6&starting-point-node-id=3639%3A1085",
     live: null,
     category: "web",
   },
@@ -139,7 +139,14 @@ const CATEGORIES = ["all", "fullstack", "web", "ml", "ai"];
 export default function Work() {
   const [activeCategory, setActiveCategory] = useState("all");
   const [visibleCount, setVisibleCount] = useState(6);
-  const sectionRef = useRef(null);
+  
+  const expSectionRef = useRef(null);
+  const projectsSectionRef = useRef(null);
+  const expHeaderRef = useRef(null);
+  const projectsHeaderRef = useRef(null);
+  const filtersRef = useRef(null);
+  const experienceRefs = useRef([]);
+  const projectRefs = useRef([]);
 
   const filteredProjects =
     activeCategory === "all"
@@ -156,6 +163,110 @@ export default function Work() {
   useEffect(() => {
     setVisibleCount(6);
   }, [activeCategory]);
+
+  // Observer for Experience section header
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && expHeaderRef.current) {
+            expHeaderRef.current.style.animation = "fadeUpWork 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards";
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    if (expHeaderRef.current) {
+      observer.observe(expHeaderRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Observer for Projects section header and filters
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            if (projectsHeaderRef.current) {
+              projectsHeaderRef.current.style.animation = "fadeUpWork 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards";
+            }
+            if (filtersRef.current) {
+              filtersRef.current.style.animation = "fadeUpWork 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards";
+            }
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    if (projectsHeaderRef.current) {
+      observer.observe(projectsHeaderRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Observer for experience cards - simplified approach
+  useEffect(() => {
+    // Small delay to ensure refs are populated
+    const timeout = setTimeout(() => {
+      experienceRefs.current.forEach((card) => {
+        if (card) {
+          // Set opacity to 0 initially
+          card.style.opacity = "0";
+          
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.style.animation = "slideInLeft 0.5s ease forwards";
+                  observer.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.2, rootMargin: "0px 0px -50px 0px" }
+          );
+          observer.observe(card);
+        }
+      });
+    }, 100);
+
+    return () => clearTimeout(timeout);
+  }, [WORK_EXPERIENCE]); // Only run once for experience cards
+
+  // Observer for project cards - runs when displayedProjects changes
+  useEffect(() => {
+    // Clean up previous animations and set up new ones
+    const timeout = setTimeout(() => {
+      projectRefs.current.forEach((card) => {
+        if (card) {
+          // Reset any existing animations and set opacity to 0
+          card.style.animation = "";
+          card.style.opacity = "0";
+          
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.style.animation = "scaleIn 0.5s ease forwards";
+                  observer.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.2, rootMargin: "0px 0px -50px 0px" }
+          );
+          observer.observe(card);
+        }
+      });
+    }, 50);
+
+    return () => clearTimeout(timeout);
+  }, [displayedProjects]); // Re-run when displayed projects change
 
   return (
     <>
@@ -212,7 +323,6 @@ export default function Work() {
           text-align: center;
           margin-bottom: 64px;
           opacity: 0;
-          animation: fadeUpWork 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
 
         .work-badge {
@@ -260,9 +370,6 @@ export default function Work() {
           padding: 28px;
           border: 1px solid #2a2a2a;
           transition: all 0.3s ease;
-          opacity: 0;
-          animation: slideInLeft 0.5s ease forwards;
-          animation-delay: calc(0.1s * var(--exp-index, 0));
         }
 
         .experience-card:hover {
@@ -310,6 +417,7 @@ export default function Work() {
           margin-bottom: 8px;
           padding-left: 18px;
           position: relative;
+          text-align: justify;
         }
 
         .exp-description li::before {
@@ -346,7 +454,6 @@ export default function Work() {
           gap: 12px;
           margin-bottom: 56px;
           opacity: 0;
-          animation: fadeUpWork 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
         }
 
         .work-filter-btn {
@@ -390,13 +497,10 @@ export default function Work() {
           transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
           border: 1px solid #2a2a2a;
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
-          opacity: 0;
-          animation: scaleIn 0.5s ease forwards;
-          animation-delay: calc(0.05s * var(--card-index, 0));
           display: flex;
           flex-direction: column;
           height: auto;
-          min-height: 380px;
+          min-height: auto;
         }
 
         .work-card:hover {
@@ -405,55 +509,34 @@ export default function Work() {
           box-shadow: 0 12px 24px -8px rgba(231, 111, 81, 0.1);
         }
 
-        .work-card-icon {
-          width: 44px;
-          height: 44px;
-          background: #2a2a2a;
-          border-radius: 12px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-bottom: 20px;
-          color: #E76F51;
-          flex-shrink: 0;
-        }
-
-        .work-card-icon svg {
-          width: 22px;
-          height: 22px;
-        }
-
         .work-card-title {
           font-size: 20px;
           font-weight: 700;
           color: #e0e0e0;
-          margin: 0 0 10px 0;
+          margin: 0 0 12px 0;
           line-height: 1.3;
         }
 
         .work-card-desc {
           font-size: 14px;
-          line-height: 1.5;
+          line-height: 1.6;
           color: #b0b0b0;
-          margin: 0 0 16px 0;
+          margin: 0 0 20px 0;
+          text-align: justify;
           flex: 1;
-          display: -webkit-box;
-          -webkit-line-clamp: 3;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
         }
 
         .work-card-tech {
           display: flex;
           flex-wrap: wrap;
-          gap: 6px;
-          margin-bottom: 20px;
+          gap: 8px;
+          margin-bottom: 24px;
         }
 
         .work-tech-tag {
-          font-size: 10px;
+          font-size: 11px;
           font-weight: 500;
-          padding: 4px 10px;
+          padding: 5px 12px;
           background: #2a2a2a;
           color: #E76F51;
           border-radius: 20px;
@@ -543,7 +626,6 @@ export default function Work() {
           }
           .work-card {
             padding: 24px;
-            min-height: auto;
           }
           .work-filters {
             gap: 8px;
@@ -555,14 +637,17 @@ export default function Work() {
           .experience-card {
             padding: 24px;
           }
+          .work-card-desc {
+            text-align: left;
+          }
         }
       `}</style>
 
-      <section className="work-section" id="work" ref={sectionRef}>
+      <section className="work-section" id="work">
         <div className="work-container">
           {/* Work Experience Section */}
-          <div className="experience-section">
-            <div className="work-header" style={{ marginBottom: "40px" }}>
+          <div className="experience-section" ref={expSectionRef}>
+            <div className="work-header" ref={expHeaderRef}>
               <span className="work-badge">✦ EXPERIENCE</span>
               <h2 className="work-title">Work Experience</h2>
               <p className="work-sub">
@@ -576,7 +661,7 @@ export default function Work() {
                 <div
                   key={exp.id}
                   className="experience-card"
-                  style={{ "--exp-index": idx }}
+                  ref={(el) => (experienceRefs.current[idx] = el)}
                 >
                   <div className="exp-header">
                     <h3 className="exp-title">{exp.title}</h3>
@@ -603,8 +688,8 @@ export default function Work() {
           <div className="section-divider"></div>
 
           {/* Projects Section */}
-          <div>
-            <div className="work-header">
+          <div ref={projectsSectionRef}>
+            <div className="work-header" ref={projectsHeaderRef}>
               <span className="work-badge">✦ PORTFOLIO</span>
               <h2 className="work-title">Featured Projects</h2>
               <p className="work-sub">
@@ -614,7 +699,7 @@ export default function Work() {
               </p>
             </div>
 
-            <div className="work-filters">
+            <div className="work-filters" ref={filtersRef}>
               {CATEGORIES.map((cat) => (
                 <button
                   key={cat}
@@ -637,79 +722,10 @@ export default function Work() {
             <div className="work-grid">
               {displayedProjects.map((project, idx) => (
                 <div
-                  key={project.id}
+                  key={`${project.id}-${activeCategory}`}
                   className="work-card"
-                  style={{ "--card-index": idx % 9 }}
+                  ref={(el) => (projectRefs.current[idx] = el)}
                 >
-                  <div className="work-card-icon">
-                    {project.category === "ai" && (
-                      <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                      >
-                        <path
-                          d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"
-                          stroke="currentColor"
-                        />
-                        <circle cx="12" cy="12" r="4" stroke="currentColor" />
-                      </svg>
-                    )}
-                    {project.category === "ml" && (
-                      <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                      >
-                        <path
-                          d="M3 3v18h18M9 15l3-3 3 3 4-4"
-                          stroke="currentColor"
-                          fill="none"
-                        />
-                        <circle
-                          cx="7"
-                          cy="15"
-                          r="1.5"
-                          fill="currentColor"
-                          stroke="none"
-                        />
-                      </svg>
-                    )}
-                    {project.category === "fullstack" && (
-                      <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                      >
-                        <rect
-                          x="2"
-                          y="3"
-                          width="20"
-                          height="14"
-                          rx="2"
-                          stroke="currentColor"
-                        />
-                        <path d="M8 21h8M12 17v4" stroke="currentColor" />
-                      </svg>
-                    )}
-                    {project.category === "web" && (
-                      <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                      >
-                        <path
-                          d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"
-                          stroke="currentColor"
-                        />
-                        <path d="M8 2v4M16 2v4M3 10h18" stroke="currentColor" />
-                      </svg>
-                    )}
-                  </div>
                   <h3 className="work-card-title">{project.title}</h3>
                   <p className="work-card-desc">{project.description}</p>
                   <div className="work-card-tech">

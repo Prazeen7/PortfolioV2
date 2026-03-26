@@ -1,5 +1,5 @@
 // Contact.jsx
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -14,7 +14,15 @@ export default function Contact() {
     error: null,
   });
 
+  const [animatedElements, setAnimatedElements] = useState(new Set());
+  
   const formRef = useRef(null);
+  const sectionRef = useRef(null);
+  const headerRef = useRef(null);
+  const socialSectionRef = useRef(null);
+  const formSectionRef = useRef(null);
+  const socialCardsRef = useRef([]);
+  const contactInfoRefs = useRef([]);
 
   const handleChange = (e) => {
     setFormData({
@@ -43,10 +51,134 @@ export default function Contact() {
     }
   };
 
+  // Observer for header
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && headerRef.current && !animatedElements.has('header')) {
+            headerRef.current.style.animation = "fadeUpContact 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards";
+            setAnimatedElements(prev => new Set(prev).add('header'));
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    if (headerRef.current) {
+      observer.observe(headerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [animatedElements]);
+
+  // Observer for social section
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && socialSectionRef.current && !animatedElements.has('socialSection')) {
+            socialSectionRef.current.style.animation = "slideInLeft 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards";
+            setAnimatedElements(prev => new Set(prev).add('socialSection'));
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    if (socialSectionRef.current) {
+      observer.observe(socialSectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [animatedElements]);
+
+  // Observer for form section
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && formSectionRef.current && !animatedElements.has('formSection')) {
+            formSectionRef.current.style.animation = "slideInRight 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards";
+            setAnimatedElements(prev => new Set(prev).add('formSection'));
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    if (formSectionRef.current) {
+      observer.observe(formSectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [animatedElements]);
+
+  // Observer for social icons (each one individually)
+  useEffect(() => {
+    const observers = [];
+    
+    socialCardsRef.current.forEach((card, idx) => {
+      if (card && !animatedElements.has(`social-icon-${idx}`)) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                card.style.animation = `scaleInIcon 0.5s ease forwards`;
+                card.style.animationDelay = `${0.1 * idx}s`;
+                setAnimatedElements(prev => new Set(prev).add(`social-icon-${idx}`));
+                observer.disconnect();
+              }
+            });
+          },
+          { threshold: 0.5, rootMargin: "0px 0px -50px 0px" }
+        );
+        observer.observe(card);
+        observers.push(observer);
+      }
+    });
+
+    return () => {
+      observers.forEach(observer => observer.disconnect());
+    };
+  }, [animatedElements]);
+
+  // Observer for contact info cards
+  useEffect(() => {
+    const observers = [];
+    
+    contactInfoRefs.current.forEach((card, idx) => {
+      if (card && !animatedElements.has(`contact-info-${idx}`)) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                card.style.animation = `slideInLeftCard 0.5s ease forwards`;
+                card.style.animationDelay = `${0.15 * idx}s`;
+                setAnimatedElements(prev => new Set(prev).add(`contact-info-${idx}`));
+                observer.disconnect();
+              }
+            });
+          },
+          { threshold: 0.5, rootMargin: "0px 0px -50px 0px" }
+        );
+        observer.observe(card);
+        observers.push(observer);
+      }
+    });
+
+    return () => {
+      observers.forEach(observer => observer.disconnect());
+    };
+  }, [animatedElements]);
+
   const socialLinks = [
     {
       name: "Facebook",
-      url: "https://facebook.com/",
+      url: "https://www.facebook.com/prazeen.singh/",
       icon: (
         <svg viewBox="0 0 24 24" fill="currentColor">
           <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
@@ -55,7 +187,7 @@ export default function Contact() {
     },
     {
       name: "Instagram",
-      url: "https://instagram.com/",
+      url: "https://www.instagram.com/przns7/",
       icon: (
         <svg viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
@@ -126,6 +258,28 @@ export default function Contact() {
           }
         }
 
+        @keyframes scaleInIcon {
+          from {
+            opacity: 0;
+            transform: scale(0.8);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
+        @keyframes slideInLeftCard {
+          from {
+            opacity: 0;
+            transform: translateX(-20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
         .contact-section {
           width: 100%;
           background: #0a0a0a;
@@ -145,7 +299,6 @@ export default function Contact() {
           text-align: center;
           margin-bottom: 64px;
           opacity: 0;
-          animation: fadeUpContact 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
 
         .contact-badge {
@@ -185,7 +338,6 @@ export default function Contact() {
         /* Social Section */
         .social-section {
           opacity: 0;
-          animation: slideInLeft 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
           display: flex;
           flex-direction: column;
           height: 100%;
@@ -224,6 +376,7 @@ export default function Contact() {
           transition: all 0.3s ease;
           color: #b0b0b0;
           text-decoration: none;
+          opacity: 0;
         }
 
         .social-icon-link:hover {
@@ -238,7 +391,7 @@ export default function Contact() {
           height: 22px;
         }
 
-        /* Contact Info Cards - Thinner and each on single line */
+        /* Contact Info Cards */
         .contact-info {
           margin-top: 0;
           display: flex;
@@ -256,6 +409,7 @@ export default function Contact() {
           align-items: center;
           gap: 12px;
           width: 100%;
+          opacity: 0;
         }
 
         .contact-info-card:hover {
@@ -334,7 +488,6 @@ export default function Contact() {
           border: 1px solid #2a2a2a;
           box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
           opacity: 0;
-          animation: slideInRight 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
           width: 100%;
           box-sizing: border-box;
           display: flex;
@@ -567,9 +720,9 @@ export default function Contact() {
         }
       `}</style>
 
-      <section className="contact-section" id="contact">
+      <section className="contact-section" id="contact" ref={sectionRef}>
         <div className="contact-container">
-          <div className="contact-header">
+          <div className="contact-header" ref={headerRef}>
             <span className="contact-badge">✦ GET IN TOUCH</span>
             <h2 className="contact-title">Let's Connect</h2>
             <p className="contact-sub">
@@ -579,14 +732,14 @@ export default function Contact() {
 
           <div className="contact-content">
             {/* Social & Contact Info Section */}
-            <div className="social-section">
+            <div className="social-section" ref={socialSectionRef}>
               <h3 className="social-title">Connect with me</h3>
               <p className="social-description">
                 Feel free to reach out through any of these platforms. I'm always open to discussing new projects, creative ideas, or opportunities to collaborate.
               </p>
 
               <div className="social-icons">
-                {socialLinks.map((social) => (
+                {socialLinks.map((social, idx) => (
                   <a
                     key={social.name}
                     href={social.url}
@@ -594,6 +747,7 @@ export default function Contact() {
                     rel="noopener noreferrer"
                     className="social-icon-link"
                     aria-label={social.name}
+                    ref={(el) => (socialCardsRef.current[idx] = el)}
                   >
                     {social.icon}
                   </a>
@@ -601,51 +755,64 @@ export default function Contact() {
               </div>
 
               <div className="contact-info">
-                <div className="contact-info-card">
-                  <div className="contact-info-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <path d="M22 6L12 13L2 6M22 6v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6l10 7l10-7z" stroke="currentColor" fill="none" />
-                    </svg>
+                {[
+                  {
+                    icon: (
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                        <path d="M22 6L12 13L2 6M22 6v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6l10 7l10-7z" stroke="currentColor" fill="none" />
+                      </svg>
+                    ),
+                    label: "EMAIL",
+                    value: "prajin.singh9@gmail.com",
+                    href: "mailto:prajin.singh9@gmail.com"
+                  },
+                  {
+                    icon: (
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" fill="none" />
+                      </svg>
+                    ),
+                    label: "PHONE",
+                    value: "+977-9803222093",
+                    href: "tel:+9779803222093"
+                  },
+                  {
+                    icon: (
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" fill="none" />
+                        <circle cx="12" cy="10" r="3" stroke="currentColor" fill="none" />
+                      </svg>
+                    ),
+                    label: "LOCATION",
+                    value: "Kathmandu, Nepal",
+                    href: null
+                  }
+                ].map((info, idx) => (
+                  <div
+                    key={idx}
+                    className="contact-info-card"
+                    ref={(el) => (contactInfoRefs.current[idx] = el)}
+                  >
+                    <div className="contact-info-icon">
+                      {info.icon}
+                    </div>
+                    <div className="contact-info-text">
+                      <h4>{info.label}:</h4>
+                      <p>
+                        {info.href ? (
+                          <a href={info.href}>{info.value}</a>
+                        ) : (
+                          info.value
+                        )}
+                      </p>
+                    </div>
                   </div>
-                  <div className="contact-info-text">
-                    <h4>EMAIL:</h4>
-                    <p>
-                      <a href="mailto:prajin.singh9@gmail.com">prajin.singh9@gmail.com</a>
-                    </p>
-                  </div>
-                </div>
-
-                <div className="contact-info-card">
-                  <div className="contact-info-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" fill="none" />
-                    </svg>
-                  </div>
-                  <div className="contact-info-text">
-                    <h4>PHONE:</h4>
-                    <p>
-                      <a href="tel:+9779803222093">+977-9803222093</a>
-                    </p>
-                  </div>
-                </div>
-
-                <div className="contact-info-card">
-                  <div className="contact-info-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" fill="none" />
-                      <circle cx="12" cy="10" r="3" stroke="currentColor" fill="none" />
-                    </svg>
-                  </div>
-                  <div className="contact-info-text">
-                    <h4>LOCATION:</h4>
-                    <p>Kathmandu, Nepal</p>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
 
             {/* Contact Form */}
-            <div className="form-section">
+            <div className="form-section" ref={formSectionRef}>
               <form ref={formRef} onSubmit={handleSubmit}>
                 {formStatus.submitted && (
                   <div className="success-message">
