@@ -72,7 +72,7 @@ export default function Home() {
           position: relative;
           overflow: hidden;
           font-family: 'Jost', sans-serif;
-          background: transparent;
+          background: #0a0a0a;
         }
 
         .hm-left {
@@ -99,7 +99,7 @@ export default function Home() {
           font-size: 14px;
           font-weight: 300;
           letter-spacing: 0.08em;
-          color: #8a8278;
+          color: #a0a0a0;
           line-height: 1.4;
           margin: 0;
         }
@@ -108,14 +108,14 @@ export default function Home() {
           display: block;
           font-size: 17px;
           font-weight: 500;
-          color: #2c2820;
+          color: #e0e0e0;
           margin-top: 2px;
         }
 
         .hm-title {
           font-size: clamp(42px, 5vw, 64px);
           font-weight: 700;
-          color: #2c2820;
+          color: #E76F51;
           margin: 0;
           line-height: 1.1;
           letter-spacing: -0.02em;
@@ -128,7 +128,7 @@ export default function Home() {
           display: inline-block;
           width: 3px;
           height: 0.85em;
-          background: #2c2820;
+          background: #E76F51;
           margin-left: 4px;
           border-radius: 1px;
           animation: blink 0.75s step-end infinite;
@@ -146,21 +146,21 @@ export default function Home() {
           width: 38px;
           height: 38px;
           border-radius: 50%;
-          border: 1px solid #c8c2b8;
+          border: 1px solid #404040;
           background: transparent;
           display: flex;
           align-items: center;
           justify-content: center;
           cursor: pointer;
           transition: border-color 0.2s, background 0.2s, color 0.2s;
-          color: #8a8278;
+          color: #a0a0a0;
           font-size: 14px;
           text-decoration: none;
         }
 
         .hm-social-btn:hover {
-          border-color: #2c2820;
-          color: #2c2820;
+          border-color: #E76F51;
+          color: #E76F51;
         }
 
         .hm-social-btn svg {
@@ -174,7 +174,7 @@ export default function Home() {
           flex-wrap: wrap;
           gap: 8px;
           padding: 14px 18px;
-          border: 1px solid #c8c2b8;
+          border: 1px solid #404040;
           border-radius: 6px;
           margin-top: 4px;
           position: relative;
@@ -185,12 +185,12 @@ export default function Home() {
           position: absolute;
           top: -9px;
           left: 14px;
-          background: #f9f8f6;
+          background: #0a0a0a;
           padding: 0 6px;
           font-size: 9px;
           font-weight: 600;
           letter-spacing: 0.18em;
-          color: #a89e94;
+          color: #E76F51;
           font-family: 'Jost', sans-serif;
         }
 
@@ -198,9 +198,9 @@ export default function Home() {
           font-size: 11px;
           font-weight: 500;
           letter-spacing: 0.08em;
-          color: #5a534a;
+          color: #c0c0c0;
           padding: 5px 11px;
-          border: 1px solid #ddd8d0;
+          border: 1px solid #404040;
           border-radius: 3px;
           background: transparent;
           transition: border-color 0.2s, color 0.2s, background 0.2s;
@@ -208,9 +208,9 @@ export default function Home() {
         }
 
         .hm-skill-tag:hover {
-          border-color: #2c2820;
-          color: #2c2820;
-          background: #f0ece6;
+          border-color: #E76F51;
+          color: #E76F51;
+          background: #1a1a1a;
         }
 
         .hm-stats {
@@ -221,7 +221,7 @@ export default function Home() {
 
         .hm-stat {
           padding: 16px 32px 16px 0;
-          border-right: 1px solid #c8c2b8;
+          border-right: 1px solid #404040;
           margin-right: 32px;
         }
 
@@ -233,7 +233,7 @@ export default function Home() {
         .hm-stat-num {
           font-size: 22px;
           font-weight: 700;
-          color: #2c2820;
+          color: #e0e0e0;
           letter-spacing: -0.02em;
           line-height: 1;
         }
@@ -241,7 +241,7 @@ export default function Home() {
         .hm-stat-label {
           font-size: 12px;
           font-weight: 400;
-          color: #8a8278;
+          color: #a0a0a0;
           margin-top: 5px;
           letter-spacing: 0.06em;
         }
@@ -259,7 +259,7 @@ export default function Home() {
           width: 360px;
           height: 360px;
           border-radius: 50%;
-          background: #f0ece6;
+          background: #1a1a1a;
           overflow: hidden;
           display: flex;
           align-items: center;
@@ -271,7 +271,7 @@ export default function Home() {
           position: absolute;
           inset: -12px;
           border-radius: 50%;
-          border: 1px solid #c8c2b8;
+          border: 1px solid #404040;
           pointer-events: none;
           opacity: 0;
           animation: fadeIn 1s ease 0.7s forwards;
@@ -281,7 +281,7 @@ export default function Home() {
           position: absolute;
           inset: -28px;
           border-radius: 50%;
-          border: 1px solid #e0dbd4;
+          border: 1px solid #2a2a2a;
           pointer-events: none;
           opacity: 0;
           animation: fadeIn 1s ease 0.9s forwards;
@@ -308,6 +308,12 @@ export default function Home() {
           .hm-skills-wrap {
             justify-content: center;
           }
+
+          .section-divider {
+          height: 1px;
+          background: linear-gradient(to right, transparent, #E76F51, transparent);
+          margin: 60px 0;
+        }
         }
       `}</style>
 
@@ -347,8 +353,19 @@ export default function Home() {
           </div>
 
           <div className="hm-skills-wrap">
-            {["React", "Node.js", "Python", "ML / DL", "SQL", "C++", "JavaScript", "Figma"].map((skill) => (
-              <span key={skill} className="hm-skill-tag">{skill}</span>
+            {[
+              "React",
+              "Node.js",
+              "Python",
+              "ML / DL",
+              "SQL",
+              "C++",
+              "JavaScript",
+              "Figma",
+            ].map((skill) => (
+              <span key={skill} className="hm-skill-tag">
+                {skill}
+              </span>
             ))}
           </div>
 
@@ -385,6 +402,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <div className="section-divider"></div>
     </>
   );
 }

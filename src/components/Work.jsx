@@ -19,7 +19,8 @@ const PROJECTS = [
     description:
       "Implemented image classification using Convolutional Neural Networks (CNN) and transfer learning techniques. Utilized pre-trained models like VGG for feature extraction and fine-tuned them for specific classification tasks.",
     tech: ["Python", "TensorFlow", "CNN", "VGG", "Transfer Learning"],
-    github: "https://www.kaggle.com/code/prajinsingh/logo-classification-using-cnn-from-scratch",
+    github:
+      "https://www.kaggle.com/code/prajinsingh/logo-classification-using-cnn-from-scratch",
     live: null,
     category: "ml",
   },
@@ -29,7 +30,8 @@ const PROJECTS = [
     description:
       "Built text classification models using Recurrent Neural Networks (RNN), Long Short-Term Memory (LSTM) networks, and Word2Vec pre-trained models for hotel review sentiment analysis.",
     tech: ["Python", "RNN", "LSTM", "Word2Vec", "NLP"],
-    github: "https://www.kaggle.com/code/prajinsingh/hotel-review-text-classification-using-rnn",
+    github:
+      "https://www.kaggle.com/code/prajinsingh/hotel-review-text-classification-using-rnn",
     live: null,
     category: "ml",
   },
@@ -49,7 +51,8 @@ const PROJECTS = [
     description:
       "Built a full-featured Learning Management System using Java with features including course management, student enrollment, assignment submission, grading system, and progress tracking.",
     tech: ["Java", "OOP", "Database", "Authentication"],
-    github: "https://www.figma.com/proto/2mv0Bc5gRZG7D27KxcHg4z/CMS?node-id=3639-1085",
+    github:
+      "https://www.figma.com/proto/2mv0Bc5gRZG7D27KxcHg4z/CMS?node-id=3639-1085",
     live: null,
     category: "web",
   },
@@ -104,7 +107,7 @@ const WORK_EXPERIENCE = [
     period: "June 2025 - Feb 2026",
     description: [
       "Research on different AI tools",
-      "Implement AI tools as required"
+      "Implement AI tools as required",
     ],
     technologies: ["Python", "AI/ML", "LLM", "RAG"],
   },
@@ -115,7 +118,7 @@ const WORK_EXPERIENCE = [
     period: "May 2023 - Feb 2025",
     description: [
       "Installing and configuring computer hardware, operating system and applications",
-      "Monitoring and maintaining computer system"
+      "Monitoring and maintaining computer system",
     ],
     technologies: ["Hardware", "OS", "System Administration"],
   },
@@ -125,7 +128,7 @@ const WORK_EXPERIENCE = [
     company: "Micro World International",
     period: "Jan 2021 - Feb 2022",
     description: [
-      "Installing and configuring computer hardware, operating system and applications"
+      "Installing and configuring computer hardware, operating system and applications",
     ],
     technologies: ["Technical Support", "Hardware", "Software Installation"],
   },
@@ -193,8 +196,8 @@ export default function Work() {
         }
 
         .work-section {
-          padding: 80px 64px 100px;
-          background: #fefcf9;
+          padding: 0px 64px 0px;
+          background: #0a0a0a;
           font-family: 'Jost', sans-serif;
           position: relative;
         }
@@ -216,7 +219,7 @@ export default function Work() {
           font-size: 12px;
           letter-spacing: 0.2em;
           text-transform: uppercase;
-          color: #b8aa9a;
+          color: #E76F51;
           font-weight: 500;
           margin-bottom: 12px;
           display: inline-block;
@@ -225,14 +228,14 @@ export default function Work() {
         .work-title {
           font-size: clamp(32px, 4vw, 48px);
           font-weight: 700;
-          color: #2c2820;
+          color: #e0e0e0;
           margin: 0 0 16px 0;
           letter-spacing: -0.02em;
         }
 
         .work-sub {
           font-size: 18px;
-          color: #6b6258;
+          color: #a0a0a0;
           max-width: 580px;
           margin: 0 auto;
           line-height: 1.5;
@@ -252,10 +255,10 @@ export default function Work() {
         }
 
         .experience-card {
-          background: white;
+          background: #1a1a1a;
           border-radius: 20px;
           padding: 28px;
-          border: 1px solid #eee8e2;
+          border: 1px solid #2a2a2a;
           transition: all 0.3s ease;
           opacity: 0;
           animation: slideInLeft 0.5s ease forwards;
@@ -264,8 +267,8 @@ export default function Work() {
 
         .experience-card:hover {
           transform: translateY(-4px);
-          border-color: #ddd4ca;
-          box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.08);
+          border-color: #E76F51;
+          box-shadow: 0 12px 24px -8px rgba(231, 111, 81, 0.1);
         }
 
         .exp-header {
@@ -275,20 +278,20 @@ export default function Work() {
         .exp-title {
           font-size: 20px;
           font-weight: 700;
-          color: #2c2820;
+          color: #e0e0e0;
           margin: 0 0 6px 0;
         }
 
         .exp-company {
           font-size: 15px;
           font-weight: 500;
-          color: #8a7a6a;
+          color: #E76F51;
           margin: 0 0 4px 0;
         }
 
         .exp-period {
           font-size: 12px;
-          color: #b8aa9a;
+          color: #8a8a8a;
           letter-spacing: 0.3px;
           display: inline-block;
           padding: 2px 0;
@@ -302,7 +305,7 @@ export default function Work() {
 
         .exp-description li {
           font-size: 14px;
-          color: #6a6258;
+          color: #b0b0b0;
           line-height: 1.5;
           margin-bottom: 8px;
           padding-left: 18px;
@@ -313,7 +316,7 @@ export default function Work() {
           content: "▹";
           position: absolute;
           left: 0;
-          color: #b8aa9a;
+          color: #E76F51;
           font-size: 12px;
         }
 
@@ -328,10 +331,11 @@ export default function Work() {
           font-size: 10px;
           font-weight: 500;
           padding: 4px 10px;
-          background: #f4f0ea;
-          color: #5a5248;
+          background: #2a2a2a;
+          color: #E76F51;
           border-radius: 20px;
           letter-spacing: 0.02em;
+          border: 1px solid #3a3a3a;
         }
 
         /* category filter */
@@ -347,12 +351,12 @@ export default function Work() {
 
         .work-filter-btn {
           background: transparent;
-          border: 1px solid #e0dad2;
+          border: 1px solid #3a3a3a;
           padding: 8px 24px;
           font-size: 14px;
           font-weight: 500;
           font-family: 'Jost', sans-serif;
-          color: #5e554b;
+          color: #b0b0b0;
           border-radius: 40px;
           cursor: pointer;
           transition: all 0.25s ease;
@@ -360,15 +364,15 @@ export default function Work() {
         }
 
         .work-filter-btn:hover {
-          border-color: #b8aa9a;
-          color: #2c2820;
-          background: #f6f2ec;
+          border-color: #E76F51;
+          color: #E76F51;
+          background: rgba(231, 111, 81, 0.05);
         }
 
         .work-filter-btn.active {
-          background: #2c2820;
-          border-color: #2c2820;
-          color: white;
+          background: #E76F51;
+          border-color: #E76F51;
+          color: #0a0a0a;
         }
 
         /* grid - 3 columns with proper spacing */
@@ -380,11 +384,11 @@ export default function Work() {
         }
 
         .work-card {
-          background: white;
+          background: #1a1a1a;
           border-radius: 20px;
           padding: 24px;
           transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-          border: 1px solid #eee8e2;
+          border: 1px solid #2a2a2a;
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
           opacity: 0;
           animation: scaleIn 0.5s ease forwards;
@@ -397,20 +401,20 @@ export default function Work() {
 
         .work-card:hover {
           transform: translateY(-4px);
-          border-color: #ddd4ca;
-          box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.08);
+          border-color: #E76F51;
+          box-shadow: 0 12px 24px -8px rgba(231, 111, 81, 0.1);
         }
 
         .work-card-icon {
           width: 44px;
           height: 44px;
-          background: #f3efe9;
+          background: #2a2a2a;
           border-radius: 12px;
           display: flex;
           align-items: center;
           justify-content: center;
           margin-bottom: 20px;
-          color: #4f4a42;
+          color: #E76F51;
           flex-shrink: 0;
         }
 
@@ -422,7 +426,7 @@ export default function Work() {
         .work-card-title {
           font-size: 20px;
           font-weight: 700;
-          color: #2c2820;
+          color: #e0e0e0;
           margin: 0 0 10px 0;
           line-height: 1.3;
         }
@@ -430,7 +434,7 @@ export default function Work() {
         .work-card-desc {
           font-size: 14px;
           line-height: 1.5;
-          color: #6a6258;
+          color: #b0b0b0;
           margin: 0 0 16px 0;
           flex: 1;
           display: -webkit-box;
@@ -450,10 +454,11 @@ export default function Work() {
           font-size: 10px;
           font-weight: 500;
           padding: 4px 10px;
-          background: #f4f0ea;
-          color: #5a5248;
+          background: #2a2a2a;
+          color: #E76F51;
           border-radius: 20px;
           letter-spacing: 0.02em;
+          border: 1px solid #3a3a3a;
         }
 
         .work-card-link {
@@ -462,17 +467,18 @@ export default function Work() {
           gap: 8px;
           font-size: 13px;
           font-weight: 500;
-          color: #2c2820;
+          color: #E76F51;
           text-decoration: none;
-          border-bottom: 1.5px solid #e0d9d0;
+          border-bottom: 1.5px solid #3a3a3a;
           padding-bottom: 4px;
           transition: border-color 0.2s, gap 0.2s;
           width: fit-content;
         }
 
         .work-card-link:hover {
-          border-bottom-color: #2c2820;
+          border-bottom-color: #E76F51;
           gap: 12px;
+          color: #E76F51;
         }
 
         .work-card-link svg {
@@ -494,12 +500,12 @@ export default function Work() {
 
         .work-loadmore-btn {
           background: transparent;
-          border: 1px solid #dbd2c8;
+          border: 1px solid #E76F51;
           padding: 12px 36px;
           font-size: 15px;
           font-weight: 500;
           font-family: 'Jost', sans-serif;
-          color: #3a332a;
+          color: #E76F51;
           border-radius: 40px;
           cursor: pointer;
           transition: all 0.25s;
@@ -507,14 +513,14 @@ export default function Work() {
         }
 
         .work-loadmore-btn:hover {
-          background: #2c2820;
-          border-color: #2c2820;
-          color: white;
+          background: #E76F51;
+          border-color: #E76F51;
+          color: #0a0a0a;
         }
 
         .section-divider {
           height: 1px;
-          background: linear-gradient(to right, transparent, #e0dad2, transparent);
+          background: linear-gradient(to right, transparent, #E76F51, transparent);
           margin: 60px 0;
         }
 
@@ -560,7 +566,8 @@ export default function Work() {
               <span className="work-badge">✦ EXPERIENCE</span>
               <h2 className="work-title">Work Experience</h2>
               <p className="work-sub">
-                Professional journey across AI development, IT support, and technical roles
+                Professional journey across AI development, IT support, and
+                technical roles
               </p>
             </div>
 
@@ -569,7 +576,7 @@ export default function Work() {
                 <div
                   key={exp.id}
                   className="experience-card"
-                  style={{ "--card-index": idx % 9 }}
+                  style={{ "--exp-index": idx }}
                 >
                   <div className="exp-header">
                     <h3 className="exp-title">{exp.title}</h3>
@@ -583,7 +590,9 @@ export default function Work() {
                   </ul>
                   <div className="exp-tech">
                     {exp.technologies.map((tech) => (
-                      <span key={tech} className="exp-tech-tag">{tech}</span>
+                      <span key={tech} className="exp-tech-tag">
+                        {tech}
+                      </span>
                     ))}
                   </div>
                 </div>
@@ -599,7 +608,9 @@ export default function Work() {
               <span className="work-badge">✦ PORTFOLIO</span>
               <h2 className="work-title">Featured Projects</h2>
               <p className="work-sub">
-                AI-driven applications, full‑stack platforms, and machine learning experiments — turning ideas into production-ready solutions.
+                AI-driven applications, full‑stack platforms, and machine
+                learning experiments — turning ideas into production-ready
+                solutions.
               </p>
             </div>
 
@@ -610,7 +621,15 @@ export default function Work() {
                   className={`work-filter-btn ${activeCategory === cat ? "active" : ""}`}
                   onClick={() => setActiveCategory(cat)}
                 >
-                  {cat === "all" ? "All Work" : cat === "fullstack" ? "Full Stack" : cat === "web" ? "Web Apps" : cat === "ml" ? "ML / DL" : "AI / LLM"}
+                  {cat === "all"
+                    ? "All Work"
+                    : cat === "fullstack"
+                      ? "Full Stack"
+                      : cat === "web"
+                        ? "Web Apps"
+                        : cat === "ml"
+                          ? "ML / DL"
+                          : "AI / LLM"}
                 </button>
               ))}
             </div>
@@ -624,26 +643,69 @@ export default function Work() {
                 >
                   <div className="work-card-icon">
                     {project.category === "ai" && (
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="currentColor" />
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                      >
+                        <path
+                          d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"
+                          stroke="currentColor"
+                        />
                         <circle cx="12" cy="12" r="4" stroke="currentColor" />
                       </svg>
                     )}
                     {project.category === "ml" && (
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                        <path d="M3 3v18h18M9 15l3-3 3 3 4-4" stroke="currentColor" fill="none" />
-                        <circle cx="7" cy="15" r="1.5" fill="currentColor" stroke="none" />
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                      >
+                        <path
+                          d="M3 3v18h18M9 15l3-3 3 3 4-4"
+                          stroke="currentColor"
+                          fill="none"
+                        />
+                        <circle
+                          cx="7"
+                          cy="15"
+                          r="1.5"
+                          fill="currentColor"
+                          stroke="none"
+                        />
                       </svg>
                     )}
                     {project.category === "fullstack" && (
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                        <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" />
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                      >
+                        <rect
+                          x="2"
+                          y="3"
+                          width="20"
+                          height="14"
+                          rx="2"
+                          stroke="currentColor"
+                        />
                         <path d="M8 21h8M12 17v4" stroke="currentColor" />
                       </svg>
                     )}
                     {project.category === "web" && (
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                        <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" stroke="currentColor" />
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                      >
+                        <path
+                          d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"
+                          stroke="currentColor"
+                        />
                         <path d="M8 2v4M16 2v4M3 10h18" stroke="currentColor" />
                       </svg>
                     )}
@@ -652,10 +714,14 @@ export default function Work() {
                   <p className="work-card-desc">{project.description}</p>
                   <div className="work-card-tech">
                     {project.tech.slice(0, 4).map((t) => (
-                      <span key={t} className="work-tech-tag">{t}</span>
+                      <span key={t} className="work-tech-tag">
+                        {t}
+                      </span>
                     ))}
                     {project.tech.length > 4 && (
-                      <span className="work-tech-tag">+{project.tech.length - 4}</span>
+                      <span className="work-tech-tag">
+                        +{project.tech.length - 4}
+                      </span>
                     )}
                   </div>
                   <a
@@ -665,8 +731,17 @@ export default function Work() {
                     className="work-card-link"
                   >
                     View Project
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeLinecap="round" />
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <path
+                        d="M7 17L17 7M17 7H7M17 7V17"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                      />
                     </svg>
                   </a>
                 </div>
@@ -680,6 +755,7 @@ export default function Work() {
                 </button>
               </div>
             )}
+            <div className="section-divider"></div>
           </div>
         </div>
       </section>

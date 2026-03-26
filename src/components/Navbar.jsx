@@ -30,7 +30,7 @@ export default function Navbar() {
         .nb-line {
           flex: 1;
           height: 1px;
-          background: #c8c2b8;
+          background: #E76F51;
         }
 
         .nb-links {
@@ -65,7 +65,7 @@ export default function Navbar() {
 
         .nb-link:hover,
         .nb-link.nb-active {
-          color: #2c2820;
+          color: #E76F51;
         }
 
         .nb-link.nb-active {
@@ -79,7 +79,7 @@ export default function Navbar() {
           left: 0;
           width: 100%;
           height: 1px;
-          background: #2c2820;
+          background: #E76F51;
           transform: scaleX(0);
           transform-origin: left;
           transition: transform 0.3s ease;

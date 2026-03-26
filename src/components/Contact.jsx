@@ -128,7 +128,7 @@ export default function Contact() {
 
         .contact-section {
           width: 100%;
-          background: #fffcf8;
+          background: #0a0a0a;
           font-family: 'Jost', sans-serif;
           position: relative;
           overflow-x: hidden;
@@ -138,7 +138,7 @@ export default function Contact() {
           max-width: 1300px;
           width: 100%;
           margin: 0 auto;
-          padding: 80px 64px 100px;
+          padding: 40px 64px 100px;
         }
 
         .contact-header {
@@ -152,7 +152,7 @@ export default function Contact() {
           font-size: 12px;
           letter-spacing: 0.2em;
           text-transform: uppercase;
-          color: #b8aa9a;
+          color: #E76F51;
           font-weight: 500;
           margin-bottom: 12px;
           display: inline-block;
@@ -161,14 +161,14 @@ export default function Contact() {
         .contact-title {
           font-size: clamp(32px, 4vw, 48px);
           font-weight: 700;
-          color: #2c2820;
+          color: #e0e0e0;
           margin: 0 0 16px 0;
           letter-spacing: -0.02em;
         }
 
         .contact-sub {
           font-size: 18px;
-          color: #6b6258;
+          color: #a0a0a0;
           max-width: 580px;
           margin: 0 auto;
           line-height: 1.5;
@@ -179,25 +179,28 @@ export default function Contact() {
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 60px;
-          align-items: start;
+          align-items: stretch;
         }
 
         /* Social Section */
         .social-section {
           opacity: 0;
           animation: slideInLeft 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+          display: flex;
+          flex-direction: column;
+          height: 100%;
         }
 
         .social-title {
           font-size: 28px;
           font-weight: 600;
-          color: #2c2820;
+          color: #e0e0e0;
           margin: 0 0 16px 0;
         }
 
         .social-description {
           font-size: 16px;
-          color: #6b6258;
+          color: #a0a0a0;
           line-height: 1.6;
           margin-bottom: 40px;
         }
@@ -213,21 +216,21 @@ export default function Contact() {
           width: 54px;
           height: 54px;
           border-radius: 50%;
-          background: white;
-          border: 1px solid #e0dad2;
+          background: #1a1a1a;
+          border: 1px solid #2a2a2a;
           display: flex;
           align-items: center;
           justify-content: center;
           transition: all 0.3s ease;
-          color: #5e554b;
+          color: #b0b0b0;
           text-decoration: none;
         }
 
         .social-icon-link:hover {
           transform: translateY(-4px);
-          border-color: #2c2820;
-          color: #2c2820;
-          background: #f6f2ec;
+          border-color: #E76F51;
+          color: #E76F51;
+          background: rgba(231, 111, 81, 0.1);
         }
 
         .social-icon-link svg {
@@ -235,97 +238,134 @@ export default function Contact() {
           height: 22px;
         }
 
+        /* Contact Info Cards - Thinner and each on single line */
         .contact-info {
           margin-top: 0;
           display: flex;
           flex-direction: column;
-          gap: 24px;
+          gap: 12px;
         }
 
-        .contact-info-item {
+        .contact-info-card {
+          background: #1a1a1a;
+          border: 1px solid #2a2a2a;
+          border-radius: 10px;
+          padding: 10px 16px;
+          transition: all 0.3s ease;
           display: flex;
           align-items: center;
-          gap: 16px;
+          gap: 12px;
+          width: 100%;
+        }
+
+        .contact-info-card:hover {
+          border-color: #E76F51;
+          transform: translateX(4px);
+          box-shadow: 0 4px 12px rgba(231, 111, 81, 0.1);
         }
 
         .contact-info-icon {
-          width: 48px;
-          height: 48px;
-          background: #f3efe9;
-          border-radius: 12px;
+          width: 32px;
+          height: 32px;
+          background: rgba(231, 111, 81, 0.1);
+          border-radius: 8px;
           display: flex;
           align-items: center;
           justify-content: center;
-          color: #5e554b;
+          color: #E76F51;
           flex-shrink: 0;
           transition: all 0.3s ease;
         }
 
-        .contact-info-item:hover .contact-info-icon {
-          background: #2c2820;
-          color: white;
+        .contact-info-card:hover .contact-info-icon {
+          background: #E76F51;
+          color: #0a0a0a;
           transform: scale(1.05);
         }
 
         .contact-info-icon svg {
-          width: 20px;
-          height: 20px;
+          width: 16px;
+          height: 16px;
         }
 
         .contact-info-text {
           flex: 1;
+          display: flex;
+          align-items: baseline;
+          gap: 8px;
+          flex-wrap: wrap;
         }
 
         .contact-info-text h4 {
           font-size: 12px;
           font-weight: 600;
-          color: #b8aa9a;
-          margin: 0 0 4px 0;
+          color: #E76F51;
+          margin: 0;
           letter-spacing: 0.08em;
           text-transform: uppercase;
+          white-space: nowrap;
         }
 
         .contact-info-text p {
-          font-size: 16px;
+          font-size: 13px;
           font-weight: 500;
-          color: #2c2820;
+          color: #e0e0e0;
           margin: 0;
           word-break: break-word;
+          line-height: 1.3;
         }
 
         .contact-info-text a {
-          color: #2c2820;
+          color: #e0e0e0;
           text-decoration: none;
           transition: color 0.2s;
+          font-size: 13px;
         }
 
         .contact-info-text a:hover {
-          color: #b8aa9a;
+          color: #E76F51;
         }
 
         /* Form Section */
         .form-section {
-          background: white;
-          padding: 40px;
-          border-radius: 24px;
-          border: 1px solid #eee8e2;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+          background: #1a1a1a;
+          padding: 32px;
+          border-radius: 20px;
+          border: 1px solid #2a2a2a;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
           opacity: 0;
           animation: slideInRight 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
           width: 100%;
           box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+        }
+
+        form {
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+          justify-content: space-between;
+        }
+
+        .form-fields {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
         }
 
         .form-group {
-          margin-bottom: 24px;
+          width: 100%;
         }
 
         .form-label {
           display: block;
-          font-size: 14px;
+          font-size: 13px;
           font-weight: 500;
-          color: #5e554b;
-          margin-bottom: 8px;
+          color: #b0b0b0;
+          margin-bottom: 6px;
           letter-spacing: 0.02em;
         }
 
@@ -333,49 +373,54 @@ export default function Contact() {
         .form-textarea {
           width: 100%;
           padding: 12px 16px;
-          font-size: 15px;
+          font-size: 14px;
           font-family: 'Jost', sans-serif;
-          border: 1.5px solid #e8e2da;
-          border-radius: 12px;
-          background: #fefcf9;
+          border: 1.5px solid #2a2a2a;
+          border-radius: 10px;
+          background: #0a0a0a;
           transition: all 0.2s ease;
-          color: #2c2820;
+          color: #e0e0e0;
           outline: none;
           box-sizing: border-box;
         }
 
         .form-input:focus,
         .form-textarea:focus {
-          border-color: #b8aa9a;
-          background: white;
-          box-shadow: 0 0 0 3px rgba(184, 170, 154, 0.08);
+          border-color: #E76F51;
+          background: #0f0f0f;
+          box-shadow: 0 0 0 3px rgba(231, 111, 81, 0.1);
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+          color: #5a5a5a;
         }
 
         .form-textarea {
           resize: vertical;
-          min-height: 120px;
+          min-height: 100px;
         }
 
         .submit-btn {
           width: 100%;
-          padding: 14px 28px;
-          background: #2c2820;
-          color: white;
+          padding: 12px 24px;
+          background: #E76F51;
+          color: #0a0a0a;
           border: none;
-          border-radius: 12px;
-          font-size: 16px;
+          border-radius: 10px;
+          font-size: 15px;
           font-weight: 600;
           font-family: 'Jost', sans-serif;
           cursor: pointer;
           transition: all 0.25s ease;
-          margin-top: 8px;
+          margin-top: 20px;
           box-sizing: border-box;
         }
 
         .submit-btn:hover:not(:disabled) {
-          background: #1e1b16;
+          background: #e05f3e;
           transform: translateY(-2px);
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 12px rgba(231, 111, 81, 0.3);
         }
 
         .submit-btn:active:not(:disabled) {
@@ -388,33 +433,35 @@ export default function Contact() {
         }
 
         .success-message {
-          background: #e8f5e9;
-          color: #2e7d32;
-          padding: 12px 16px;
-          border-radius: 10px;
+          background: rgba(46, 125, 50, 0.1);
+          color: #81c784;
+          padding: 10px 14px;
+          border-radius: 8px;
           margin-bottom: 20px;
-          font-size: 14px;
+          font-size: 13px;
           text-align: center;
           font-weight: 500;
+          border: 1px solid #2e7d32;
         }
 
         .error-message {
-          background: #ffebee;
-          color: #c62828;
-          padding: 12px 16px;
-          border-radius: 10px;
+          background: rgba(198, 40, 40, 0.1);
+          color: #ef5350;
+          padding: 10px 14px;
+          border-radius: 8px;
           margin-bottom: 20px;
-          font-size: 14px;
+          font-size: 13px;
           text-align: center;
           font-weight: 500;
+          border: 1px solid #c62828;
         }
 
         .loading-spinner {
           display: inline-block;
-          width: 16px;
-          height: 16px;
-          border: 2px solid rgba(255, 255, 255, 0.3);
-          border-top-color: white;
+          width: 14px;
+          height: 14px;
+          border: 2px solid rgba(10, 10, 10, 0.3);
+          border-top-color: #0a0a0a;
           border-radius: 50%;
           animation: spin 0.6s linear infinite;
           margin-right: 8px;
@@ -434,7 +481,10 @@ export default function Contact() {
             gap: 48px;
           }
           .form-section {
-            padding: 32px;
+            padding: 28px;
+          }
+          .form-fields {
+            gap: 18px;
           }
         }
 
@@ -445,6 +495,7 @@ export default function Contact() {
           .contact-content {
             grid-template-columns: 1fr;
             gap: 48px;
+            align-items: start;
           }
           .social-section {
             text-align: center;
@@ -452,15 +503,19 @@ export default function Contact() {
           .social-icons {
             justify-content: center;
           }
-          .contact-info {
-            align-items: center;
-          }
-          .contact-info-item {
-            width: 100%;
-            max-width: 380px;
-          }
           .form-section {
-            padding: 28px;
+            padding: 24px;
+          }
+          .form-fields {
+            gap: 16px;
+          }
+          .form-input,
+          .form-textarea {
+            padding: 10px 14px;
+            font-size: 13px;
+          }
+          .contact-info-text {
+            flex-wrap: wrap;
           }
         }
 
@@ -472,7 +527,10 @@ export default function Contact() {
             margin-bottom: 40px;
           }
           .form-section {
-            padding: 24px;
+            padding: 20px;
+          }
+          .form-fields {
+            gap: 14px;
           }
           .social-icon-link {
             width: 48px;
@@ -482,12 +540,23 @@ export default function Contact() {
             width: 20px;
             height: 20px;
           }
-          .contact-info-icon {
-            width: 44px;
-            height: 44px;
+          .contact-info-card {
+            padding: 8px 12px;
           }
-          .contact-info-text p {
-            font-size: 14px;
+          .contact-info-icon {
+            width: 28px;
+            height: 28px;
+          }
+          .contact-info-icon svg {
+            width: 14px;
+            height: 14px;
+          }
+          .contact-info-text h4 {
+            font-size: 10px;
+          }
+          .contact-info-text p,
+          .contact-info-text a {
+            font-size: 11px;
           }
           .contact-title {
             font-size: 28px;
@@ -532,35 +601,35 @@ export default function Contact() {
               </div>
 
               <div className="contact-info">
-                <div className="contact-info-item">
+                <div className="contact-info-card">
                   <div className="contact-info-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                       <path d="M22 6L12 13L2 6M22 6v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6l10 7l10-7z" stroke="currentColor" fill="none" />
                     </svg>
                   </div>
                   <div className="contact-info-text">
-                    <h4>EMAIL</h4>
+                    <h4>EMAIL:</h4>
                     <p>
                       <a href="mailto:prajin.singh9@gmail.com">prajin.singh9@gmail.com</a>
                     </p>
                   </div>
                 </div>
 
-                <div className="contact-info-item">
+                <div className="contact-info-card">
                   <div className="contact-info-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                       <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" fill="none" />
                     </svg>
                   </div>
                   <div className="contact-info-text">
-                    <h4>PHONE</h4>
+                    <h4>PHONE:</h4>
                     <p>
                       <a href="tel:+9779803222093">+977-9803222093</a>
                     </p>
                   </div>
                 </div>
 
-                <div className="contact-info-item">
+                <div className="contact-info-card">
                   <div className="contact-info-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                       <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" fill="none" />
@@ -568,7 +637,7 @@ export default function Contact() {
                     </svg>
                   </div>
                   <div className="contact-info-text">
-                    <h4>LOCATION</h4>
+                    <h4>LOCATION:</h4>
                     <p>Kathmandu, Nepal</p>
                   </div>
                 </div>
@@ -590,54 +659,56 @@ export default function Contact() {
                   </div>
                 )}
 
-                <div className="form-group">
-                  <label htmlFor="name" className="form-label">
-                    Full Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="form-input"
-                    placeholder="John Doe"
-                    disabled={formStatus.loading}
-                  />
-                </div>
+                <div className="form-fields">
+                  <div className="form-group">
+                    <label htmlFor="name" className="form-label">
+                      Full Name
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      className="form-input"
+                      placeholder="John Doe"
+                      disabled={formStatus.loading}
+                    />
+                  </div>
 
-                <div className="form-group">
-                  <label htmlFor="email" className="form-label">
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="form-input"
-                    placeholder="john@example.com"
-                    disabled={formStatus.loading}
-                  />
-                </div>
+                  <div className="form-group">
+                    <label htmlFor="email" className="form-label">
+                      Email Address
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="form-input"
+                      placeholder="john@example.com"
+                      disabled={formStatus.loading}
+                    />
+                  </div>
 
-                <div className="form-group">
-                  <label htmlFor="message" className="form-label">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    className="form-textarea"
-                    placeholder="Your message here..."
-                    disabled={formStatus.loading}
-                  />
+                  <div className="form-group">
+                    <label htmlFor="message" className="form-label">
+                      Message
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                      className="form-textarea"
+                      placeholder="Your message here..."
+                      disabled={formStatus.loading}
+                    />
+                  </div>
                 </div>
 
                 <button
