@@ -290,7 +290,7 @@ export default function Home() {
         @media (max-width: 768px) {
           .hm-section {
             flex-direction: column-reverse;
-            padding: 40px 24px;
+            padding: 80px 24px;
             gap: 40px;
             min-height: auto;
           }
