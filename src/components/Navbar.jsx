@@ -352,19 +352,30 @@ export default function Navbar() {
           }
           
           .left-line {
-            margin-right: 20px;
+            flex: 1;
+            margin-right: 16px;
+          }
+          
+          .center-section {
+            flex: 1;
+          }
+          
+          .right-section {
+            flex: 1;
           }
           
           .right-line {
-            margin-left: 20px;
+            flex: 1;
+            margin-left: 16px;
+            margin-right: 12px;
           }
           
           .theme-toggle {
-            margin-left: 20px;
+            margin-left: 0;
           }
           
           .nb-links {
-            gap: 24px;
+            gap: 20px;
           }
           
           .nb-link {
@@ -385,31 +396,51 @@ export default function Navbar() {
           input:checked + .toggle-slider:before {
             transform: translateX(23px);
           }
+
+          .toggle-icons svg {
+            width: 10px;
+            height: 10px;
+          }
+
+          .toggle-icons {
+            padding: 0 5px;
+          }
         }
 
         @media (max-width: 480px) {
           .nb-nav {
-            padding: 16px 16px;
+            padding: 16px 12px;
           }
           
           .nb-scrolled {
-            padding: 12px 16px;
+            padding: 12px 12px;
           }
           
           .left-line {
-            margin-right: 15px;
+            flex: 1;
+            margin-right: 12px;
+          }
+          
+          .center-section {
+            flex: 1;
+          }
+          
+          .right-section {
+            flex: 1;
           }
           
           .right-line {
-            margin-left: 15px;
+            flex: 1;
+            margin-left: 12px;
+            margin-right: 10px;
           }
           
           .theme-toggle {
-            margin-left: 15px;
+            margin-left: 0;
           }
           
           .nb-links {
-            gap: 20px;
+            gap: 14px;
           }
           
           .nb-link {
@@ -429,6 +460,15 @@ export default function Navbar() {
 
           input:checked + .toggle-slider:before {
             transform: translateX(20px);
+          }
+
+          .toggle-icons svg {
+            width: 9px;
+            height: 9px;
+          }
+
+          .toggle-icons {
+            padding: 0 4px;
           }
         }
 
