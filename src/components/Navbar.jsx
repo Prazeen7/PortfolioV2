@@ -143,9 +143,9 @@ export default function Navbar() {
         }
 
         .nb-nav {
-          display: flex;
+          display: grid;
+          grid-template-columns: 1fr auto 1fr;
           align-items: center;
-          justify-content: space-between;
           padding: 28px 40px;
           width: 100vw;
           position: fixed;
@@ -164,6 +164,13 @@ export default function Navbar() {
           padding: 20px 40px;
         }
 
+        /* Left side wrapper */
+        .left-side {
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+        }
+
         /* Left line with gap before nav links */
         .left-line {
           flex: 1;
@@ -178,6 +185,7 @@ export default function Navbar() {
           display: flex;
           align-items: center;
           justify-content: center;
+          flex-shrink: 0;
         }
 
         .nb-links {
@@ -242,14 +250,15 @@ export default function Navbar() {
           transform: scaleX(1);
         }
 
-        /* Right section with line and toggle */
-        .right-section {
+        /* Right side wrapper */
+        .right-side {
           flex: 1;
           display: flex;
           align-items: center;
           justify-content: flex-end;
         }
 
+        /* Right side - line and toggle */
         .right-line {
           flex: 1;
           height: 1px;
@@ -352,26 +361,15 @@ export default function Navbar() {
           }
           
           .left-line {
-            flex: 1;
             margin-right: 16px;
           }
           
-          .center-section {
-            flex: 1;
-          }
-          
-          .right-section {
-            flex: 1;
-          }
-          
           .right-line {
-            flex: 1;
             margin-left: 16px;
-            margin-right: 12px;
           }
           
           .theme-toggle {
-            margin-left: 0;
+            margin-left: 12px;
           }
           
           .nb-links {
@@ -417,26 +415,15 @@ export default function Navbar() {
           }
           
           .left-line {
-            flex: 1;
             margin-right: 12px;
           }
           
-          .center-section {
-            flex: 1;
-          }
-          
-          .right-section {
-            flex: 1;
-          }
-          
           .right-line {
-            flex: 1;
             margin-left: 12px;
-            margin-right: 10px;
           }
           
           .theme-toggle {
-            margin-left: 0;
+            margin-left: 10px;
           }
           
           .nb-links {
@@ -499,7 +486,9 @@ export default function Navbar() {
       `}</style>
 
       <nav className={`nb-nav${isScrolled ? " nb-scrolled" : ""}`}>
-        <div className="left-line" />
+        <div className="left-side">
+          <div className="left-line" />
+        </div>
         <div className="center-section">
           <ul className="nb-links">
             {navLinks.map(({ label, href }) => (
@@ -517,7 +506,7 @@ export default function Navbar() {
             ))}
           </ul>
         </div>
-        <div className="right-section">
+        <div className="right-side">
           <div className="right-line" />
           <div className="theme-toggle">
             <label className="toggle-switch">
