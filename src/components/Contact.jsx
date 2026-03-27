@@ -15,7 +15,7 @@ export default function Contact() {
   });
 
   const [animatedElements, setAnimatedElements] = useState(new Set());
-  
+
   const formRef = useRef(null);
   const sectionRef = useRef(null);
   const headerRef = useRef(null);
@@ -35,19 +35,50 @@ export default function Contact() {
     e.preventDefault();
     setFormStatus({ submitted: false, loading: true, error: null });
 
-    // Simulate form submission (replace with actual API call)
+    // Client-side validation
+    if (formData.message.length < 10) {
+      setFormStatus({
+        submitted: false,
+        loading: false,
+        error: "Please provide a more detailed message (at least 10 characters)",
+      });
+      return;
+    }
+
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      console.log("Form submitted:", formData);
-      setFormStatus({ submitted: true, loading: false, error: null });
-      setFormData({ name: "", email: "", message: "" });
-      
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setFormStatus((prev) => ({ ...prev, submitted: false }));
-      }, 5000);
+      const response = await fetch("https://formspree.io/f/mykbzbyv", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _subject: `Portfolio Contact: ${formData.name}`,
+          _replyto: formData.email,
+        }),
+      });
+
+      if (response.ok) {
+        setFormStatus({ submitted: true, loading: false, error: null });
+        setFormData({ name: "", email: "", message: "" });
+
+        // Auto-hide success message after 5 seconds
+        setTimeout(() => {
+          setFormStatus((prev) => ({ ...prev, submitted: false }));
+        }, 5000);
+      } else {
+        const data = await response.json();
+        throw new Error(data.error || "Something went wrong");
+      }
     } catch (error) {
-      setFormStatus({ submitted: false, loading: false, error: "Something went wrong. Please try again." });
+      setFormStatus({
+        submitted: false,
+        loading: false,
+        error: error.message || "Something went wrong. Please try again.",
+      });
     }
   };
 
@@ -56,14 +87,19 @@ export default function Contact() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && headerRef.current && !animatedElements.has('header')) {
-            headerRef.current.style.animation = "fadeUpContact 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards";
-            setAnimatedElements(prev => new Set(prev).add('header'));
+          if (
+            entry.isIntersecting &&
+            headerRef.current &&
+            !animatedElements.has("header")
+          ) {
+            headerRef.current.style.animation =
+              "fadeUpContact 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards";
+            setAnimatedElements((prev) => new Set(prev).add("header"));
             observer.disconnect();
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
 
     if (headerRef.current) {
@@ -78,14 +114,19 @@ export default function Contact() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && socialSectionRef.current && !animatedElements.has('socialSection')) {
-            socialSectionRef.current.style.animation = "slideInLeft 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards";
-            setAnimatedElements(prev => new Set(prev).add('socialSection'));
+          if (
+            entry.isIntersecting &&
+            socialSectionRef.current &&
+            !animatedElements.has("socialSection")
+          ) {
+            socialSectionRef.current.style.animation =
+              "slideInLeft 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards";
+            setAnimatedElements((prev) => new Set(prev).add("socialSection"));
             observer.disconnect();
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
 
     if (socialSectionRef.current) {
@@ -100,14 +141,19 @@ export default function Contact() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && formSectionRef.current && !animatedElements.has('formSection')) {
-            formSectionRef.current.style.animation = "slideInRight 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards";
-            setAnimatedElements(prev => new Set(prev).add('formSection'));
+          if (
+            entry.isIntersecting &&
+            formSectionRef.current &&
+            !animatedElements.has("formSection")
+          ) {
+            formSectionRef.current.style.animation =
+              "slideInRight 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards";
+            setAnimatedElements((prev) => new Set(prev).add("formSection"));
             observer.disconnect();
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
 
     if (formSectionRef.current) {
@@ -120,7 +166,7 @@ export default function Contact() {
   // Observer for social icons (each one individually)
   useEffect(() => {
     const observers = [];
-    
+
     socialCardsRef.current.forEach((card, idx) => {
       if (card && !animatedElements.has(`social-icon-${idx}`)) {
         const observer = new IntersectionObserver(
@@ -129,12 +175,14 @@ export default function Contact() {
               if (entry.isIntersecting) {
                 card.style.animation = `scaleInIcon 0.5s ease forwards`;
                 card.style.animationDelay = `${0.1 * idx}s`;
-                setAnimatedElements(prev => new Set(prev).add(`social-icon-${idx}`));
+                setAnimatedElements((prev) =>
+                  new Set(prev).add(`social-icon-${idx}`),
+                );
                 observer.disconnect();
               }
             });
           },
-          { threshold: 0.5, rootMargin: "0px 0px -50px 0px" }
+          { threshold: 0.5, rootMargin: "0px 0px -50px 0px" },
         );
         observer.observe(card);
         observers.push(observer);
@@ -142,14 +190,14 @@ export default function Contact() {
     });
 
     return () => {
-      observers.forEach(observer => observer.disconnect());
+      observers.forEach((observer) => observer.disconnect());
     };
   }, [animatedElements]);
 
   // Observer for contact info cards
   useEffect(() => {
     const observers = [];
-    
+
     contactInfoRefs.current.forEach((card, idx) => {
       if (card && !animatedElements.has(`contact-info-${idx}`)) {
         const observer = new IntersectionObserver(
@@ -158,12 +206,14 @@ export default function Contact() {
               if (entry.isIntersecting) {
                 card.style.animation = `slideInLeftCard 0.5s ease forwards`;
                 card.style.animationDelay = `${0.15 * idx}s`;
-                setAnimatedElements(prev => new Set(prev).add(`contact-info-${idx}`));
+                setAnimatedElements((prev) =>
+                  new Set(prev).add(`contact-info-${idx}`),
+                );
                 observer.disconnect();
               }
             });
           },
-          { threshold: 0.5, rootMargin: "0px 0px -50px 0px" }
+          { threshold: 0.5, rootMargin: "0px 0px -50px 0px" },
         );
         observer.observe(card);
         observers.push(observer);
@@ -171,7 +221,7 @@ export default function Contact() {
     });
 
     return () => {
-      observers.forEach(observer => observer.disconnect());
+      observers.forEach((observer) => observer.disconnect());
     };
   }, [animatedElements]);
 
@@ -280,19 +330,238 @@ export default function Contact() {
           }
         }
 
+        @keyframes slideInSuccess {
+          from {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes fadeOutSuccess {
+          from {
+            opacity: 1;
+            transform: translateY(0);
+          }
+          to {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+        }
+
+        @keyframes shimmer {
+          0% {
+            left: -100%;
+          }
+          100% {
+            left: 100%;
+          }
+        }
+
+        @keyframes bounce {
+          0%, 100% {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.2);
+          }
+        }
+
+        @keyframes spin {
+          to { transform: rotate(360deg); }
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode .contact-section {
+          background: #0a0a0a;
+        }
+
+        body.dark-mode .contact-title {
+          color: #e0e0e0;
+        }
+
+        body.dark-mode .contact-sub {
+          color: #a0a0a0;
+        }
+
+        body.dark-mode .social-title {
+          color: #e0e0e0;
+        }
+
+        body.dark-mode .social-description {
+          color: #a0a0a0;
+        }
+
+        body.dark-mode .social-icon-link {
+          background: #1a1a1a;
+          border-color: #2a2a2a;
+          color: #b0b0b0;
+        }
+
+        body.dark-mode .social-icon-link:hover {
+          border-color: #E76F51;
+          color: #E76F51;
+          background: rgba(231, 111, 81, 0.1);
+        }
+
+        body.dark-mode .contact-info-card {
+          background: #1a1a1a;
+          border-color: #2a2a2a;
+        }
+
+        body.dark-mode .contact-info-card:hover {
+          border-color: #E76F51;
+        }
+
+        body.dark-mode .contact-info-text p,
+        body.dark-mode .contact-info-text a {
+          color: #e0e0e0;
+        }
+
+        body.dark-mode .form-section {
+          background: #1a1a1a;
+          border-color: #2a2a2a;
+        }
+
+        body.dark-mode .form-label {
+          color: #b0b0b0;
+        }
+
+        body.dark-mode .form-input,
+        body.dark-mode .form-textarea {
+          background: #0a0a0a;
+          border-color: #2a2a2a;
+          color: #e0e0e0;
+        }
+
+        body.dark-mode .form-input:focus,
+        body.dark-mode .form-textarea:focus {
+          border-color: #E76F51;
+          background: #0f0f0f;
+        }
+
+        body.dark-mode .form-input::placeholder,
+        body.dark-mode .form-textarea::placeholder {
+          color: #5a5a5a;
+        }
+
+        body.dark-mode .success-message {
+          background: linear-gradient(135deg, rgba(46, 125, 50, 0.15), rgba(46, 125, 50, 0.05));
+          color: #81c784;
+          border-color: rgba(129, 199, 132, 0.3);
+        }
+
+        body.dark-mode .error-message {
+          background: linear-gradient(135deg, rgba(198, 40, 40, 0.15), rgba(198, 40, 40, 0.05));
+          color: #ef5350;
+          border-color: rgba(239, 83, 80, 0.3);
+        }
+
+        /* Light Mode Styles */
+        body.light-mode .contact-section {
+          background: #ffffff;
+        }
+
+        body.light-mode .contact-title {
+          color: #1a1a1a;
+        }
+
+        body.light-mode .contact-sub {
+          color: #6c6c6c;
+        }
+
+        body.light-mode .social-title {
+          color: #1a1a1a;
+        }
+
+        body.light-mode .social-description {
+          color: #6c6c6c;
+        }
+
+        body.light-mode .social-icon-link {
+          background: #f8f9fa;
+          border-color: #e0e0e0;
+          color: #6c6c6c;
+        }
+
+        body.light-mode .social-icon-link:hover {
+          border-color: #E76F51;
+          color: #E76F51;
+          background: rgba(231, 111, 81, 0.05);
+        }
+
+        body.light-mode .contact-info-card {
+          background: #ffffff;
+          border-color: #e0e0e0;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        body.light-mode .contact-info-card:hover {
+          border-color: #E76F51;
+          box-shadow: 0 4px 12px rgba(231, 111, 81, 0.1);
+        }
+
+        body.light-mode .contact-info-text p,
+        body.light-mode .contact-info-text a {
+          color: #1a1a1a;
+        }
+
+        body.light-mode .form-section {
+          background: #ffffff;
+          border-color: #e0e0e0;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        body.light-mode .form-label {
+          color: #6c6c6c;
+        }
+
+        body.light-mode .form-input,
+        body.light-mode .form-textarea {
+          background: #f8f9fa;
+          border-color: #e0e0e0;
+          color: #1a1a1a;
+        }
+
+        body.light-mode .form-input:focus,
+        body.light-mode .form-textarea:focus {
+          border-color: #E76F51;
+          background: #ffffff;
+        }
+
+        body.light-mode .form-input::placeholder,
+        body.light-mode .form-textarea::placeholder {
+          color: #a0a0a0;
+        }
+
+        body.light-mode .success-message {
+          background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(76, 175, 80, 0.05));
+          color: #2e7d32;
+          border-color: rgba(46, 125, 50, 0.2);
+        }
+
+        body.light-mode .error-message {
+          background: linear-gradient(135deg, rgba(244, 67, 54, 0.1), rgba(244, 67, 54, 0.05));
+          color: #c62828;
+          border-color: rgba(198, 40, 40, 0.2);
+        }
+
         .contact-section {
           width: 100%;
-          background: #0a0a0a;
           font-family: 'Jost', sans-serif;
           position: relative;
           overflow-x: hidden;
+          transition: background-color 0.3s ease;
         }
 
         .contact-container {
           max-width: 1300px;
           width: 100%;
           margin: 0 auto;
-          padding: 40px 64px 100px;
+          padding: 0px 64px 100px;
         }
 
         .contact-header {
@@ -314,18 +583,18 @@ export default function Contact() {
         .contact-title {
           font-size: clamp(32px, 4vw, 48px);
           font-weight: 700;
-          color: #e0e0e0;
           margin: 0 0 16px 0;
           letter-spacing: -0.02em;
+          transition: color 0.3s ease;
         }
 
         .contact-sub {
           font-size: 18px;
-          color: #a0a0a0;
           max-width: 580px;
           margin: 0 auto;
           line-height: 1.5;
           font-weight: 400;
+          transition: color 0.3s ease;
         }
 
         .contact-content {
@@ -346,15 +615,15 @@ export default function Contact() {
         .social-title {
           font-size: 28px;
           font-weight: 600;
-          color: #e0e0e0;
           margin: 0 0 16px 0;
+          transition: color 0.3s ease;
         }
 
         .social-description {
           font-size: 16px;
-          color: #a0a0a0;
           line-height: 1.6;
           margin-bottom: 40px;
+          transition: color 0.3s ease;
         }
 
         .social-icons {
@@ -368,22 +637,16 @@ export default function Contact() {
           width: 54px;
           height: 54px;
           border-radius: 50%;
-          background: #1a1a1a;
-          border: 1px solid #2a2a2a;
           display: flex;
           align-items: center;
           justify-content: center;
           transition: all 0.3s ease;
-          color: #b0b0b0;
           text-decoration: none;
           opacity: 0;
         }
 
         .social-icon-link:hover {
           transform: translateY(-4px);
-          border-color: #E76F51;
-          color: #E76F51;
-          background: rgba(231, 111, 81, 0.1);
         }
 
         .social-icon-link svg {
@@ -400,8 +663,7 @@ export default function Contact() {
         }
 
         .contact-info-card {
-          background: #1a1a1a;
-          border: 1px solid #2a2a2a;
+          border: 1px solid;
           border-radius: 10px;
           padding: 10px 16px;
           transition: all 0.3s ease;
@@ -413,9 +675,7 @@ export default function Contact() {
         }
 
         .contact-info-card:hover {
-          border-color: #E76F51;
           transform: translateX(4px);
-          box-shadow: 0 4px 12px rgba(231, 111, 81, 0.1);
         }
 
         .contact-info-icon {
@@ -463,36 +723,34 @@ export default function Contact() {
         .contact-info-text p {
           font-size: 13px;
           font-weight: 500;
-          color: #e0e0e0;
           margin: 0;
           word-break: break-word;
           line-height: 1.3;
+          transition: color 0.3s ease;
         }
 
         .contact-info-text a {
-          color: #e0e0e0;
           text-decoration: none;
           transition: color 0.2s;
           font-size: 13px;
         }
 
         .contact-info-text a:hover {
-          color: #E76F51;
+          color: #E76F51 !important;
         }
 
         /* Form Section */
         .form-section {
-          background: #1a1a1a;
           padding: 32px;
           border-radius: 20px;
-          border: 1px solid #2a2a2a;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+          border: 1px solid;
           opacity: 0;
           width: 100%;
           box-sizing: border-box;
           display: flex;
           flex-direction: column;
           height: 100%;
+          transition: all 0.3s ease;
         }
 
         form {
@@ -517,9 +775,9 @@ export default function Contact() {
           display: block;
           font-size: 13px;
           font-weight: 500;
-          color: #b0b0b0;
           margin-bottom: 6px;
           letter-spacing: 0.02em;
+          transition: color 0.3s ease;
         }
 
         .form-input,
@@ -528,25 +786,16 @@ export default function Contact() {
           padding: 12px 16px;
           font-size: 14px;
           font-family: 'Jost', sans-serif;
-          border: 1.5px solid #2a2a2a;
+          border: 1.5px solid;
           border-radius: 10px;
-          background: #0a0a0a;
           transition: all 0.2s ease;
-          color: #e0e0e0;
           outline: none;
           box-sizing: border-box;
         }
 
         .form-input:focus,
         .form-textarea:focus {
-          border-color: #E76F51;
-          background: #0f0f0f;
           box-shadow: 0 0 0 3px rgba(231, 111, 81, 0.1);
-        }
-
-        .form-input::placeholder,
-        .form-textarea::placeholder {
-          color: #5a5a5a;
         }
 
         .form-textarea {
@@ -585,28 +834,60 @@ export default function Contact() {
           cursor: not-allowed;
         }
 
+        /* Success Message */
         .success-message {
-          background: rgba(46, 125, 50, 0.1);
-          color: #81c784;
-          padding: 10px 14px;
-          border-radius: 8px;
-          margin-bottom: 20px;
-          font-size: 13px;
+          padding: 14px 18px;
+          border-radius: 12px;
+          margin-bottom: 24px;
+          font-size: 14px;
           text-align: center;
           font-weight: 500;
-          border: 1px solid #2e7d32;
+          backdrop-filter: blur(8px);
+          animation: slideInSuccess 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+          position: relative;
+          overflow: hidden;
         }
 
+        .success-message::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(129, 199, 132, 0.2), transparent);
+          animation: shimmer 2s infinite;
+        }
+
+        .success-message.fade-out {
+          animation: fadeOutSuccess 0.3s ease forwards;
+        }
+
+        .success-icon {
+          display: inline-block;
+          margin-right: 10px;
+          font-size: 18px;
+          vertical-align: middle;
+          animation: bounce 0.5s ease;
+        }
+
+        /* Error Message */
         .error-message {
-          background: rgba(198, 40, 40, 0.1);
-          color: #ef5350;
-          padding: 10px 14px;
-          border-radius: 8px;
-          margin-bottom: 20px;
-          font-size: 13px;
+          padding: 14px 18px;
+          border-radius: 12px;
+          margin-bottom: 24px;
+          font-size: 14px;
           text-align: center;
           font-weight: 500;
-          border: 1px solid #c62828;
+          backdrop-filter: blur(8px);
+          animation: slideInSuccess 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        .error-icon {
+          display: inline-block;
+          margin-right: 10px;
+          font-size: 18px;
+          vertical-align: middle;
         }
 
         .loading-spinner {
@@ -619,10 +900,6 @@ export default function Contact() {
           animation: spin 0.6s linear infinite;
           margin-right: 8px;
           vertical-align: middle;
-        }
-
-        @keyframes spin {
-          to { transform: rotate(360deg); }
         }
 
         /* Responsive Design */
@@ -669,6 +946,11 @@ export default function Contact() {
           }
           .contact-info-text {
             flex-wrap: wrap;
+          }
+          .success-message,
+          .error-message {
+            padding: 12px 16px;
+            font-size: 13px;
           }
         }
 
@@ -717,6 +999,11 @@ export default function Contact() {
           .contact-sub {
             font-size: 16px;
           }
+          .success-message,
+          .error-message {
+            padding: 10px 14px;
+            font-size: 12px;
+          }
         }
       `}</style>
 
@@ -726,7 +1013,8 @@ export default function Contact() {
             <span className="contact-badge">✦ GET IN TOUCH</span>
             <h2 className="contact-title">Let's Connect</h2>
             <p className="contact-sub">
-              Have a project in mind or just want to say hello? I'd love to hear from you.
+              Have a project in mind or just want to say hello? I'd love to hear
+              from you.
             </p>
           </div>
 
@@ -735,7 +1023,9 @@ export default function Contact() {
             <div className="social-section" ref={socialSectionRef}>
               <h3 className="social-title">Connect with me</h3>
               <p className="social-description">
-                Feel free to reach out through any of these platforms. I'm always open to discussing new projects, creative ideas, or opportunities to collaborate.
+                Feel free to reach out through any of these platforms. I'm
+                always open to discussing new projects, creative ideas, or
+                opportunities to collaborate.
               </p>
 
               <div className="social-icons">
@@ -758,44 +1048,75 @@ export default function Contact() {
                 {[
                   {
                     icon: (
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                        <path d="M22 6L12 13L2 6M22 6v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6l10 7l10-7z" stroke="currentColor" fill="none" />
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                      >
+                        <path
+                          d="M22 6L12 13L2 6M22 6v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6l10 7l10-7z"
+                          stroke="currentColor"
+                          fill="none"
+                        />
                       </svg>
                     ),
                     label: "EMAIL",
                     value: "prajin.singh9@gmail.com",
-                    href: "mailto:prajin.singh9@gmail.com"
+                    href: "mailto:prajin.singh9@gmail.com",
                   },
                   {
                     icon: (
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" fill="none" />
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                      >
+                        <path
+                          d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+                          stroke="currentColor"
+                          fill="none"
+                        />
                       </svg>
                     ),
                     label: "PHONE",
                     value: "+977-9803222093",
-                    href: "tel:+9779803222093"
+                    href: "tel:+9779803222093",
                   },
                   {
                     icon: (
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" fill="none" />
-                        <circle cx="12" cy="10" r="3" stroke="currentColor" fill="none" />
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                      >
+                        <path
+                          d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                          stroke="currentColor"
+                          fill="none"
+                        />
+                        <circle
+                          cx="12"
+                          cy="10"
+                          r="3"
+                          stroke="currentColor"
+                          fill="none"
+                        />
                       </svg>
                     ),
                     label: "LOCATION",
                     value: "Kathmandu, Nepal",
-                    href: null
-                  }
+                    href: null,
+                  },
                 ].map((info, idx) => (
                   <div
                     key={idx}
                     className="contact-info-card"
                     ref={(el) => (contactInfoRefs.current[idx] = el)}
                   >
-                    <div className="contact-info-icon">
-                      {info.icon}
-                    </div>
+                    <div className="contact-info-icon">{info.icon}</div>
                     <div className="contact-info-text">
                       <h4>{info.label}:</h4>
                       <p>
@@ -814,15 +1135,26 @@ export default function Contact() {
             {/* Contact Form */}
             <div className="form-section" ref={formSectionRef}>
               <form ref={formRef} onSubmit={handleSubmit}>
+                {/* Honeypot field for spam prevention */}
+                <input
+                  type="text"
+                  name="_gotcha"
+                  style={{ display: 'none' }}
+                  tabIndex="-1"
+                  autoComplete="off"
+                />
+                
                 {formStatus.submitted && (
                   <div className="success-message">
-                    ✨ Message sent successfully! I'll get back to you soon.
+                    <span className="success-icon">✓</span>
+                    Message sent successfully! I'll get back to you soon.
                   </div>
                 )}
-                
+
                 {formStatus.error && (
                   <div className="error-message">
-                    ⚠️ {formStatus.error}
+                    <span className="error-icon">⚠️</span>
+                    {formStatus.error}
                   </div>
                 )}
 

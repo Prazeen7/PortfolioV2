@@ -306,11 +306,194 @@ export default function Work() {
           }
         }
 
+        /* Dark Mode Styles */
+        body.dark-mode .work-section {
+          background: #0a0a0a;
+        }
+
+        body.dark-mode .work-title {
+          color: #e0e0e0;
+        }
+
+        body.dark-mode .work-sub {
+          color: #a0a0a0;
+        }
+
+        body.dark-mode .experience-card {
+          background: #1a1a1a;
+          border-color: #2a2a2a;
+        }
+
+        body.dark-mode .experience-card:hover {
+          border-color: #E76F51;
+        }
+
+        body.dark-mode .exp-title {
+          color: #e0e0e0;
+        }
+
+        body.dark-mode .exp-company {
+          color: #E76F51;
+        }
+
+        body.dark-mode .exp-period {
+          color: #8a8a8a;
+        }
+
+        body.dark-mode .exp-description li {
+          color: #b0b0b0;
+        }
+
+        body.dark-mode .exp-tech-tag {
+          background: #2a2a2a;
+          color: #E76F51;
+          border-color: #3a3a3a;
+        }
+
+        body.dark-mode .work-card {
+          background: #1a1a1a;
+          border-color: #2a2a2a;
+        }
+
+        body.dark-mode .work-card:hover {
+          border-color: #E76F51;
+        }
+
+        body.dark-mode .work-card-title {
+          color: #e0e0e0;
+        }
+
+        body.dark-mode .work-card-desc {
+          color: #b0b0b0;
+        }
+
+        body.dark-mode .work-tech-tag {
+          background: #2a2a2a;
+          color: #E76F51;
+          border-color: #3a3a3a;
+        }
+
+        body.dark-mode .work-filter-btn {
+          border-color: #3a3a3a;
+          color: #a0a0a0;
+        }
+
+        body.dark-mode .work-filter-btn:hover {
+          border-color: #E76F51;
+          color: #E76F51;
+          background: rgba(231, 111, 81, 0.08);
+        }
+
+        body.dark-mode .work-filter-btn.active {
+          border-color: #E76F51;
+          background: rgba(231, 111, 81, 0.15);
+          color: #E76F51;
+          font-weight: 500;
+        }
+
+        /* Light Mode Styles */
+        body.light-mode .work-section {
+          background: #ffffff;
+        }
+
+        body.light-mode .work-title {
+          color: #1a1a1a;
+        }
+
+        body.light-mode .work-sub {
+          color: #6c6c6c;
+        }
+
+        body.light-mode .experience-card {
+          background: #f8f9fa;
+          border-color: #e0e0e0;
+        }
+
+        body.light-mode .experience-card:hover {
+          border-color: #E76F51;
+          box-shadow: 0 12px 24px -8px rgba(231, 111, 81, 0.15);
+        }
+
+        body.light-mode .exp-title {
+          color: #1a1a1a;
+        }
+
+        body.light-mode .exp-company {
+          color: #E76F51;
+        }
+
+        body.light-mode .exp-period {
+          color: #8a8a8a;
+        }
+
+        body.light-mode .exp-description li {
+          color: #5a5a5a;
+        }
+
+        body.light-mode .exp-tech-tag {
+          background: #e8e8e8;
+          color: #E76F51;
+          border-color: #d0d0d0;
+        }
+
+        body.light-mode .work-card {
+          background: #ffffff;
+          border-color: #e0e0e0;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        body.light-mode .work-card:hover {
+          border-color: #E76F51;
+          box-shadow: 0 12px 24px -8px rgba(231, 111, 81, 0.15);
+        }
+
+        body.light-mode .work-card-title {
+          color: #1a1a1a;
+        }
+
+        body.light-mode .work-card-desc {
+          color: #5a5a5a;
+        }
+
+        body.light-mode .work-tech-tag {
+          background: #f0f0f0;
+          color: #E76F51;
+          border-color: #e0e0e0;
+        }
+
+        body.light-mode .work-filter-btn {
+          border-color: #d0d0d0;
+          color: #6c6c6c;
+        }
+
+        body.light-mode .work-filter-btn:hover {
+          border-color: #E76F51;
+          color: #E76F51;
+          background: rgba(231, 111, 81, 0.08);
+        }
+
+        body.light-mode .work-filter-btn.active {
+          border-color: #E76F51;
+          background: rgba(231, 111, 81, 0.15);
+          color: #E76F51;
+          font-weight: 500;
+        }
+
+        body.light-mode .work-loadmore-btn {
+          border-color: #E76F51;
+          color: #E76F51;
+        }
+
+        body.light-mode .work-loadmore-btn:hover {
+          background: #E76F51;
+          color: #ffffff;
+        }
+
         .work-section {
           padding: 0px 64px 0px;
-          background: #0a0a0a;
           font-family: 'Jost', sans-serif;
           position: relative;
+          transition: background-color 0.3s ease;
         }
 
         .work-container {
@@ -338,18 +521,18 @@ export default function Work() {
         .work-title {
           font-size: clamp(32px, 4vw, 48px);
           font-weight: 700;
-          color: #e0e0e0;
           margin: 0 0 16px 0;
           letter-spacing: -0.02em;
+          transition: color 0.3s ease;
         }
 
         .work-sub {
           font-size: 18px;
-          color: #a0a0a0;
           max-width: 580px;
           margin: 0 auto;
           line-height: 1.5;
           font-weight: 400;
+          transition: color 0.3s ease;
         }
 
         /* Experience Section */
@@ -365,17 +548,13 @@ export default function Work() {
         }
 
         .experience-card {
-          background: #1a1a1a;
           border-radius: 20px;
           padding: 28px;
-          border: 1px solid #2a2a2a;
           transition: all 0.3s ease;
         }
 
         .experience-card:hover {
           transform: translateY(-4px);
-          border-color: #E76F51;
-          box-shadow: 0 12px 24px -8px rgba(231, 111, 81, 0.1);
         }
 
         .exp-header {
@@ -385,23 +564,23 @@ export default function Work() {
         .exp-title {
           font-size: 20px;
           font-weight: 700;
-          color: #e0e0e0;
           margin: 0 0 6px 0;
+          transition: color 0.3s ease;
         }
 
         .exp-company {
           font-size: 15px;
           font-weight: 500;
-          color: #E76F51;
           margin: 0 0 4px 0;
+          transition: color 0.3s ease;
         }
 
         .exp-period {
           font-size: 12px;
-          color: #8a8a8a;
           letter-spacing: 0.3px;
           display: inline-block;
           padding: 2px 0;
+          transition: color 0.3s ease;
         }
 
         .exp-description {
@@ -412,12 +591,12 @@ export default function Work() {
 
         .exp-description li {
           font-size: 14px;
-          color: #b0b0b0;
           line-height: 1.5;
           margin-bottom: 8px;
           padding-left: 18px;
           position: relative;
           text-align: justify;
+          transition: color 0.3s ease;
         }
 
         .exp-description li::before {
@@ -439,11 +618,9 @@ export default function Work() {
           font-size: 10px;
           font-weight: 500;
           padding: 4px 10px;
-          background: #2a2a2a;
-          color: #E76F51;
           border-radius: 20px;
           letter-spacing: 0.02em;
-          border: 1px solid #3a3a3a;
+          transition: all 0.2s ease;
         }
 
         /* category filter */
@@ -458,28 +635,15 @@ export default function Work() {
 
         .work-filter-btn {
           background: transparent;
-          border: 1px solid #3a3a3a;
           padding: 8px 24px;
           font-size: 14px;
-          font-weight: 500;
+          font-weight: 400;
           font-family: 'Jost', sans-serif;
-          color: #b0b0b0;
+          border: 1px solid;
           border-radius: 40px;
           cursor: pointer;
-          transition: all 0.25s ease;
-          letter-spacing: 0.02em;
-        }
-
-        .work-filter-btn:hover {
-          border-color: #E76F51;
-          color: #E76F51;
-          background: rgba(231, 111, 81, 0.05);
-        }
-
-        .work-filter-btn.active {
-          background: #E76F51;
-          border-color: #E76F51;
-          color: #0a0a0a;
+          transition: all 0.2s ease;
+          letter-spacing: 0.01em;
         }
 
         /* grid - 3 columns with proper spacing */
@@ -491,12 +655,9 @@ export default function Work() {
         }
 
         .work-card {
-          background: #1a1a1a;
           border-radius: 20px;
           padding: 24px;
           transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-          border: 1px solid #2a2a2a;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
           display: flex;
           flex-direction: column;
           height: auto;
@@ -505,25 +666,23 @@ export default function Work() {
 
         .work-card:hover {
           transform: translateY(-4px);
-          border-color: #E76F51;
-          box-shadow: 0 12px 24px -8px rgba(231, 111, 81, 0.1);
         }
 
         .work-card-title {
           font-size: 20px;
           font-weight: 700;
-          color: #e0e0e0;
           margin: 0 0 12px 0;
           line-height: 1.3;
+          transition: color 0.3s ease;
         }
 
         .work-card-desc {
           font-size: 14px;
           line-height: 1.6;
-          color: #b0b0b0;
           margin: 0 0 20px 0;
           text-align: justify;
           flex: 1;
+          transition: color 0.3s ease;
         }
 
         .work-card-tech {
@@ -537,11 +696,9 @@ export default function Work() {
           font-size: 11px;
           font-weight: 500;
           padding: 5px 12px;
-          background: #2a2a2a;
-          color: #E76F51;
           border-radius: 20px;
           letter-spacing: 0.02em;
-          border: 1px solid #3a3a3a;
+          transition: all 0.2s ease;
         }
 
         .work-card-link {
@@ -588,7 +745,6 @@ export default function Work() {
           font-size: 15px;
           font-weight: 500;
           font-family: 'Jost', sans-serif;
-          color: #E76F51;
           border-radius: 40px;
           cursor: pointer;
           transition: all 0.25s;
