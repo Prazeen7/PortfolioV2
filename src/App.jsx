@@ -9,25 +9,75 @@ import Loader from './components/Loader';
 function App() {
   const [loading, setLoading] = useState(true);
   const [showContent, setShowContent] = useState(false);
+  const [theme, setTheme] = useState('dark');
+  const [isThemeLoaded, setIsThemeLoaded] = useState(false);
 
+  // Initialize and sync theme
   useEffect(() => {
-    // Minimum display time for loader (2.5 seconds)
+    // Get initial theme
+    const savedTheme = localStorage.getItem('theme');
+    let initialTheme = savedTheme;
+    
+    if (!initialTheme) {
+      initialTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    
+    setTheme(initialTheme);
+    setIsThemeLoaded(true);
+    
+    // Apply theme to body immediately
+    if (initialTheme === 'dark') {
+      document.body.classList.remove('light-mode');
+    } else {
+      document.body.classList.add('light-mode');
+    }
+  }, []);
+
+  // Theme toggle function
+  const toggleTheme = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+    
+    // Apply theme to body
+    if (newTheme === 'dark') {
+      document.body.classList.remove('light-mode');
+    } else {
+      document.body.classList.add('light-mode');
+    }
+  };
+
+  // Listen for theme changes from other tabs/windows
+  useEffect(() => {
+    const handleStorageChange = (e) => {
+      if (e.key === 'theme') {
+        const newTheme = e.newValue || 'dark';
+        setTheme(newTheme);
+        if (newTheme === 'dark') {
+          document.body.classList.remove('light-mode');
+        } else {
+          document.body.classList.add('light-mode');
+        }
+      }
+    };
+    
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
+  }, []);
+
+  // Loading logic
+  useEffect(() => {
+    if (!isThemeLoaded) return;
+
     const minimumLoadTime = 2500;
     const startTime = Date.now();
 
     const loadApp = async () => {
-      // If you have any async operations, do them here
-      // For example: await fetchInitialData();
-      
       const elapsedTime = Date.now() - startTime;
       const remainingTime = Math.max(0, minimumLoadTime - elapsedTime);
       
-      // Wait for remaining time
       setTimeout(() => {
         setLoading(false);
-        
-        // Small delay to ensure loader is completely removed
-        // before showing content with animations
         setTimeout(() => {
           setShowContent(true);
         }, 50);
@@ -35,9 +85,9 @@ function App() {
     };
 
     loadApp();
-  }, []);
+  }, [isThemeLoaded]);
 
-  // Prevent scrolling while loader is active
+  // Prevent scrolling while loading
   useEffect(() => {
     if (loading) {
       document.body.style.overflow = 'hidden';
@@ -52,16 +102,22 @@ function App() {
 
   return (
     <>
-      {/* Loader - completely removed after loading */}
-      {loading && <Loader onLoadingComplete={() => setLoading(false)} />}
+      {/* Loader with theme prop */}
+      {loading && (
+        <Loader 
+          onLoadingComplete={() => setLoading(false)} 
+          theme={theme}
+          isThemeLoaded={isThemeLoaded}
+        />
+      )}
       
-      {/* Main content - only rendered after loader is gone */}
+      {/* Main content with theme prop passed to all components */}
       {showContent && (
         <div className="App">
-          <Navbar />
-          <Home />
-          <Work />
-          <Contact />
+          <Navbar theme={theme} toggleTheme={toggleTheme} />
+          <Home theme={theme} />
+          <Work theme={theme} />
+          <Contact theme={theme} />
         </div>
       )}
     </>

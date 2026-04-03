@@ -1,21 +1,15 @@
-// Loader.jsx (with progress percentage)
+// Loader.jsx
 import { useEffect, useState } from "react";
 import logo from "../assets/Logo.png";
 
-export default function Loader({ onLoadingComplete }) {
+export default function Loader({ onLoadingComplete, theme, isThemeLoaded }) {
   const [fadeOut, setFadeOut] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [theme, setTheme] = useState("dark");
 
   useEffect(() => {
-    // Get theme from localStorage
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-      setTheme(savedTheme);
-    }
-  }, []);
+    // Only start loading animation after theme is loaded
+    if (!isThemeLoaded) return;
 
-  useEffect(() => {
     // Simulate loading progress
     const interval = setInterval(() => {
       setProgress(prev => {
@@ -38,7 +32,12 @@ export default function Loader({ onLoadingComplete }) {
       clearTimeout(timer);
       clearInterval(interval);
     };
-  }, [onLoadingComplete]);
+  }, [onLoadingComplete, isThemeLoaded]);
+
+  // Don't render until theme is loaded to prevent flash
+  if (!isThemeLoaded) {
+    return null;
+  }
 
   return (
     <>
