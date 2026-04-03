@@ -859,13 +859,14 @@ Error generating stack: `+e.message+`
             justify-content: center;
           }
         }
-      `}),(0,y.jsxs)(`section`,{className:`hm-section`,id:`home`,children:[(0,y.jsxs)(`div`,{className:`hm-left`,children:[(0,y.jsxs)(`p`,{className:`hm-greeting`,children:[`Hi I am`,(0,y.jsx)(`span`,{children:`Prajin Singh`})]}),(0,y.jsxs)(`h1`,{className:`hm-title`,children:[e,(0,y.jsx)(`span`,{className:`hm-cursor`})]}),(0,y.jsxs)(`div`,{className:`hm-socials`,children:[(0,y.jsx)(`a`,{href:`https://www.instagram.com/przns7/`,className:`hm-social-btn`,"aria-label":`Instagram`,target:`_blank`,rel:`noopener noreferrer`,children:(0,y.jsx)(`svg`,{viewBox:`0 0 24 24`,xmlns:`http://www.w3.org/2000/svg`,children:(0,y.jsx)(`path`,{d:`M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z`})})}),(0,y.jsx)(`a`,{href:`https://np.linkedin.com/in/prajinsingh`,className:`hm-social-btn`,"aria-label":`LinkedIn`,target:`_blank`,rel:`noopener noreferrer`,children:(0,y.jsx)(`svg`,{viewBox:`0 0 24 24`,xmlns:`http://www.w3.org/2000/svg`,children:(0,y.jsx)(`path`,{d:`M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z`})})}),(0,y.jsx)(`a`,{href:`https://github.com/Prazeen7`,className:`hm-social-btn`,"aria-label":`GitHub`,target:`_blank`,rel:`noopener noreferrer`,children:(0,y.jsx)(`svg`,{viewBox:`0 0 24 24`,xmlns:`http://www.w3.org/2000/svg`,children:(0,y.jsx)(`path`,{d:`M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z`})})}),(0,y.jsx)(`a`,{href:`mailto:prajin.singh9@gmail.com`,className:`hm-social-btn`,"aria-label":`Email`,target:`_blank`,rel:`noopener noreferrer`,children:(0,y.jsx)(`svg`,{viewBox:`0 0 24 24`,xmlns:`http://www.w3.org/2000/svg`,children:(0,y.jsx)(`path`,{d:`M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z`})})})]}),(0,y.jsx)(`div`,{className:`hm-skills-wrap`,children:[`React`,`Node.js`,`Python`,`ML / DL`,`SQL`,`JavaScript`,`Figma`,`Unity`,`MERN`,`Java`,`C/C++/C#`].map(e=>(0,y.jsx)(`span`,{className:`hm-skill-tag`,children:e},e))}),(0,y.jsxs)(`div`,{className:`hm-stats`,children:[(0,y.jsxs)(`div`,{className:`hm-stat`,children:[(0,y.jsx)(`div`,{className:`hm-stat-num`,children:(0,y.jsx)(te,{target:1,suffix:`+`,duration:3e3})}),(0,y.jsx)(`div`,{className:`hm-stat-label`,children:`Experiences`})]}),(0,y.jsxs)(`div`,{className:`hm-stat`,children:[(0,y.jsx)(`div`,{className:`hm-stat-num`,children:(0,y.jsx)(te,{target:20,suffix:`+`,duration:3e3})}),(0,y.jsx)(`div`,{className:`hm-stat-label`,children:`Project done`})]}),(0,y.jsxs)(`div`,{className:`hm-stat`,children:[(0,y.jsx)(`div`,{className:`hm-stat-num`,children:(0,y.jsx)(te,{target:15,suffix:`+`,duration:3e3})}),(0,y.jsx)(`div`,{className:`hm-stat-label`,children:`Technologies`})]})]})]}),(0,y.jsxs)(`div`,{className:`hm-right`,children:[(0,y.jsx)(`div`,{className:`hm-avatar-ring-2`}),(0,y.jsx)(`div`,{className:`hm-avatar-ring`}),(0,y.jsx)(`div`,{className:`hm-avatar-wrap`,children:(0,y.jsx)(`img`,{src:ee,alt:`Prajin Singh`,style:{width:`100%`,height:`100%`,objectFit:`cover`,objectPosition:`center`}})})]})]}),(0,y.jsx)(`div`,{className:`section-divider`})]})}var re=[{id:1,title:`Global Edu Assist`,description:`A comprehensive MERN stack application designed to solve student-related problems during the process of abroad studies. Features include university recommendations, cost estimation, a progress-tracking system, a chat system, and document guidance.`,tech:[`MongoDB`,`Express.js`,`React`,`Node.js`],github:`https://github.com/Prazeen7/Global-Edu-Assist`,live:null,category:`fullstack`},{id:2,title:`Image Classification with CNN and Transfer Learning`,description:`Implemented image classification using Convolutional Neural Networks (CNN) and transfer learning techniques. Utilized pre-trained models like VGG for feature extraction and fine-tuned them for specific classification tasks.`,tech:[`Python`,`TensorFlow`,`CNN`,`VGG`,`Transfer Learning`],github:`https://www.kaggle.com/code/prajinsingh/logo-classification-using-cnn-from-scratch`,live:null,category:`ml`},{id:3,title:`Text Classification using RNN, LSTM and LSTM with Word2Vec`,description:`Built text classification models using Recurrent Neural Networks (RNN), Long Short-Term Memory (LSTM) networks, and Word2Vec pre-trained models for hotel review sentiment analysis.`,tech:[`Python`,`RNN`,`LSTM`,`Word2Vec`,`NLP`],github:`https://www.kaggle.com/code/prajinsingh/hotel-review-text-classification-using-rnn`,live:null,category:`ml`},{id:4,title:`Farm Mart`,description:`Developed a farmers market website following Agile methodology and Scrum practices. The platform connects farmers directly with consumers, featuring product listings, order management, payment integration, and delivery tracking.`,tech:[`HTML`,`CSS`,`JavaScript`,`MySQL`],github:`https://github.com/Prazeen7/Farm-Mart`,live:null,category:`web`},{id:5,title:`Learning Management System`,description:`Built a full-featured Learning Management System using Java with features including course management, student enrollment, assignment submission, grading system, and progress tracking.`,tech:[`Java`,`OOP`,`Database`,`Authentication`],github:`https://www.figma.com/proto/2mvOBc5gRZG7D27KxcHg4z/CMS?node-id=3639-1085&t=ZnlPrKhhcQTOSyC4-6&starting-point-node-id=3639%3A1085`,live:null,category:`web`},{id:6,title:`AI Chatbot with RAG and LLaMA 3 Integration`,description:`Developed an AI chatbot using Retrieval-Augmented Generation (RAG) with a vector database to fetch relevant context, which was then fed into the LLaMA 3 model to generate accurate, context-aware responses.`,tech:[`Python`,`RAG`,`LLaMA 3`,`Vector DB`,`LangChain`],github:`https://github.com/Prazeen7/Chatbot`,live:null,category:`ai`},{id:7,title:`Text-to-Speech Translation Web Application`,description:`A Flask-based web application that translates text from English to a target language and generates text-to-speech (TTS) audio using a provided speaker voice. Uses Coqui TTS model (xtts_v2) for voice synthesis.`,tech:[`Flask`,`Python`,`Coqui TTS`,`xtts_v2`],github:`https://github.com/Prazeen7/Multilingual-Text-to-Speech`,live:null,category:`ai`},{id:8,title:`Company Finder`,description:`A Python web app that extracts key details from company websites, including emails, phone numbers, social links, business nature, and location. Uses Selenium, BeautifulSoup, Google Custom Search, and a Qwen model for analysis.`,tech:[`Python`,`Selenium`,`BeautifulSoup`,`Flask`,`Qwen`],github:`https://github.com/Prazeen7/Company-Finder`,live:null,category:`ai`},{id:9,title:`Videos to Blog`,description:`Converts uploaded videos into blog posts by first transcribing the audio using OpenAI's Whisper model, then generating a natural, human-like blog article using the Qwen/Qwen2.5-7B-Instruct language model.`,tech:[`Python`,`Whisper`,`Qwen`,`Flask`,`AI`],github:`https://github.com/Prazeen7/Video-to-Blogs`,live:null,category:`ai`},{id:10,title:`Website Log Analysis & Insights Dashboard`,description:`Analysis website logs to extract meaningful insights and display them on an interactive dashboard. Processes log files to identify patterns, detect anomalies, and visualize key metrics for better decision-making.`,tech:[`Python`,`Log Analysis`,`Data Visualization`,`React`],github:`https://github.com/Prazeen7/Log-Feature`,live:null,category:`ds`},{id:11,title:`Google Analytics Data Pipeline with Gzip Optimization`,description:`Engineered a high-performance data pipeline that collects website data via Google BigQuery, exports to Google Cloud Storage using scheduled CRON jobs, and optimizes delivery with gzip compression. Implemented worker-based parallel fetching for fast dashboard rendering in React.`,tech:[`Node.js`,`BigQuery`,`GCS`,`CRON`,`React`,`Gzip`],github:null,live:null,category:`ds`},{id:12,title:`Textile Design Classification Using Deep Learning`,description:`Collected and generated textile design datasets, performed extensive data cleaning and preprocessing, and trained a deep learning model to classify textile designs into multiple categories including Abstract, Border, Animals, Mirror, Tribal, Traditional, Geometry, and more. Achieved high accuracy in distinguishing intricate design patterns.`,tech:[`Python`,`TensorFlow`,`CNN`,`Data Augmentation`,`Image Classification`],github:null,live:null,category:`ml`}],w=[{id:1,title:`Junior AI Developer`,company:`Alternative Technology`,period:`June 2025 - Feb 2026`,description:[`Research on different AI tools`,`Implement AI tools as required`],technologies:[`Python`,`AI/ML`,`LLM`,`RAG`]},{id:2,title:`IT Assistant`,company:`Oli & Associates`,period:`May 2023 - Feb 2025`,description:[`Installing and configuring computer hardware, operating system and applications`,`Monitoring and maintaining computer system`],technologies:[`Hardware`,`OS`,`System Administration`]},{id:3,title:`Technical Support`,company:`Micro World International`,period:`Jan 2021 - Feb 2022`,description:[`Installing and configuring computer hardware, operating system and applications`],technologies:[`Technical Support`,`Hardware`,`Software Installation`]}],ie=[`all`,`fullstack`,`web`,`ml`,`ai`,`ds`];function ae(){let[e,t]=(0,_.useState)(`all`),[n,r]=(0,_.useState)(6),[i,a]=(0,_.useState)({}),[o,s]=(0,_.useState)(!1),[c,l]=(0,_.useState)(!1),u=(0,_.useRef)(null),d=(0,_.useRef)(null),f=(0,_.useRef)(null),p=(0,_.useMemo)(()=>e===`all`?re:re.filter(t=>t.category===e),[e]),m=(0,_.useMemo)(()=>p.slice(0,n),[p,n]),h=n<p.length,g=()=>{r(e=>e+3)};(0,_.useEffect)(()=>{r(6)},[e]),(0,_.useEffect)(()=>{let e=new IntersectionObserver(([t])=>{t.isIntersecting&&(s(!0),e.disconnect())},{threshold:.1});return d.current&&e.observe(d.current),()=>e.disconnect()},[]),(0,_.useEffect)(()=>{let e=new IntersectionObserver(([t])=>{t.isIntersecting&&(l(!0),e.disconnect())},{threshold:.05});return f.current&&e.observe(f.current),()=>e.disconnect()},[]);let v=e=>{a(t=>({...t,[e]:!0}))};return(0,y.jsxs)(y.Fragment,{children:[(0,y.jsx)(`style`,{children:`
+      `}),(0,y.jsxs)(`section`,{className:`hm-section`,id:`home`,children:[(0,y.jsxs)(`div`,{className:`hm-left`,children:[(0,y.jsxs)(`p`,{className:`hm-greeting`,children:[`Hi I am`,(0,y.jsx)(`span`,{children:`Prajin Singh`})]}),(0,y.jsxs)(`h1`,{className:`hm-title`,children:[e,(0,y.jsx)(`span`,{className:`hm-cursor`})]}),(0,y.jsxs)(`div`,{className:`hm-socials`,children:[(0,y.jsx)(`a`,{href:`https://www.instagram.com/przns7/`,className:`hm-social-btn`,"aria-label":`Instagram`,target:`_blank`,rel:`noopener noreferrer`,children:(0,y.jsx)(`svg`,{viewBox:`0 0 24 24`,xmlns:`http://www.w3.org/2000/svg`,children:(0,y.jsx)(`path`,{d:`M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z`})})}),(0,y.jsx)(`a`,{href:`https://np.linkedin.com/in/prajinsingh`,className:`hm-social-btn`,"aria-label":`LinkedIn`,target:`_blank`,rel:`noopener noreferrer`,children:(0,y.jsx)(`svg`,{viewBox:`0 0 24 24`,xmlns:`http://www.w3.org/2000/svg`,children:(0,y.jsx)(`path`,{d:`M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z`})})}),(0,y.jsx)(`a`,{href:`https://github.com/Prazeen7`,className:`hm-social-btn`,"aria-label":`GitHub`,target:`_blank`,rel:`noopener noreferrer`,children:(0,y.jsx)(`svg`,{viewBox:`0 0 24 24`,xmlns:`http://www.w3.org/2000/svg`,children:(0,y.jsx)(`path`,{d:`M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z`})})}),(0,y.jsx)(`a`,{href:`mailto:prajin.singh9@gmail.com`,className:`hm-social-btn`,"aria-label":`Email`,target:`_blank`,rel:`noopener noreferrer`,children:(0,y.jsx)(`svg`,{viewBox:`0 0 24 24`,xmlns:`http://www.w3.org/2000/svg`,children:(0,y.jsx)(`path`,{d:`M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z`})})})]}),(0,y.jsx)(`div`,{className:`hm-skills-wrap`,children:[`React`,`Node.js`,`Python`,`ML / DL`,`SQL`,`JavaScript`,`Figma`,`Unity`,`MERN`,`Java`,`C/C++/C#`].map(e=>(0,y.jsx)(`span`,{className:`hm-skill-tag`,children:e},e))}),(0,y.jsxs)(`div`,{className:`hm-stats`,children:[(0,y.jsxs)(`div`,{className:`hm-stat`,children:[(0,y.jsx)(`div`,{className:`hm-stat-num`,children:(0,y.jsx)(te,{target:1,suffix:`+`,duration:3e3})}),(0,y.jsx)(`div`,{className:`hm-stat-label`,children:`Experiences`})]}),(0,y.jsxs)(`div`,{className:`hm-stat`,children:[(0,y.jsx)(`div`,{className:`hm-stat-num`,children:(0,y.jsx)(te,{target:20,suffix:`+`,duration:3e3})}),(0,y.jsx)(`div`,{className:`hm-stat-label`,children:`Project done`})]}),(0,y.jsxs)(`div`,{className:`hm-stat`,children:[(0,y.jsx)(`div`,{className:`hm-stat-num`,children:(0,y.jsx)(te,{target:15,suffix:`+`,duration:3e3})}),(0,y.jsx)(`div`,{className:`hm-stat-label`,children:`Technologies`})]})]})]}),(0,y.jsxs)(`div`,{className:`hm-right`,children:[(0,y.jsx)(`div`,{className:`hm-avatar-ring-2`}),(0,y.jsx)(`div`,{className:`hm-avatar-ring`}),(0,y.jsx)(`div`,{className:`hm-avatar-wrap`,children:(0,y.jsx)(`img`,{src:ee,alt:`Prajin Singh`,style:{width:`100%`,height:`100%`,objectFit:`cover`,objectPosition:`center`}})})]})]}),(0,y.jsx)(`div`,{className:`section-divider`})]})}var re=[{id:1,title:`Global Edu Assist`,description:`A comprehensive MERN stack application designed to solve student-related problems during the process of abroad studies. Features include university recommendations, cost estimation, a progress-tracking system, a chat system, and document guidance.`,tech:[`MongoDB`,`Express.js`,`React`,`Node.js`],github:`https://github.com/Prazeen7/Global-Edu-Assist`,live:null,category:`fullstack`},{id:2,title:`Image Classification with CNN and Transfer Learning`,description:`Implemented image classification using Convolutional Neural Networks (CNN) and transfer learning techniques. Utilized pre-trained models like VGG for feature extraction and fine-tuned them for specific classification tasks.`,tech:[`Python`,`TensorFlow`,`CNN`,`VGG`,`Transfer Learning`],github:`https://www.kaggle.com/code/prajinsingh/logo-classification-using-cnn-from-scratch`,live:null,category:`ml`},{id:3,title:`Text Classification using RNN, LSTM and LSTM with Word2Vec`,description:`Built text classification models using Recurrent Neural Networks (RNN), Long Short-Term Memory (LSTM) networks, and Word2Vec pre-trained models for hotel review sentiment analysis.`,tech:[`Python`,`RNN`,`LSTM`,`Word2Vec`,`NLP`],github:`https://www.kaggle.com/code/prajinsingh/hotel-review-text-classification-using-rnn`,live:null,category:`ml`},{id:4,title:`Farm Mart`,description:`Developed a farmers market website following Agile methodology and Scrum practices. The platform connects farmers directly with consumers, featuring product listings, order management, payment integration, and delivery tracking.`,tech:[`HTML`,`CSS`,`JavaScript`,`MySQL`],github:`https://github.com/Prazeen7/Farm-Mart`,live:null,category:`web`},{id:5,title:`Learning Management System`,description:`Built a full-featured Learning Management System using Java with features including course management, student enrollment, assignment submission, grading system, and progress tracking.`,tech:[`Java`,`OOP`,`Database`,`Authentication`],github:`https://www.figma.com/proto/2mvOBc5gRZG7D27KxcHg4z/CMS?node-id=3639-1085&t=ZnlPrKhhcQTOSyC4-6&starting-point-node-id=3639%3A1085`,live:null,category:`web`},{id:6,title:`AI Chatbot with RAG and LLaMA 3 Integration`,description:`Developed an AI chatbot using Retrieval-Augmented Generation (RAG) with a vector database to fetch relevant context, which was then fed into the LLaMA 3 model to generate accurate, context-aware responses.`,tech:[`Python`,`RAG`,`LLaMA 3`,`Vector DB`,`LangChain`],github:`https://github.com/Prazeen7/Chatbot`,live:null,category:`ai`},{id:7,title:`Text-to-Speech Translation Web Application`,description:`A Flask-based web application that translates text from English to a target language and generates text-to-speech (TTS) audio using a provided speaker voice. Uses Coqui TTS model (xtts_v2) for voice synthesis.`,tech:[`Flask`,`Python`,`Coqui TTS`,`xtts_v2`],github:`https://github.com/Prazeen7/Multilingual-Text-to-Speech`,live:null,category:`ai`},{id:8,title:`Company Finder`,description:`A Python web app that extracts key details from company websites, including emails, phone numbers, social links, business nature, and location. Uses Selenium, BeautifulSoup, Google Custom Search, and a Qwen model for analysis.`,tech:[`Python`,`Selenium`,`BeautifulSoup`,`Flask`,`Qwen`],github:`https://github.com/Prazeen7/Company-Finder`,live:null,category:`ai`},{id:9,title:`Videos to Blog`,description:`Converts uploaded videos into blog posts by first transcribing the audio using OpenAI's Whisper model, then generating a natural, human-like blog article using the Qwen/Qwen2.5-7B-Instruct language model.`,tech:[`Python`,`Whisper`,`Qwen`,`Flask`,`AI`],github:`https://github.com/Prazeen7/Video-to-Blogs`,live:null,category:`ai`},{id:10,title:`Website Log Analysis & Insights Dashboard`,description:`Analysis website logs to extract meaningful insights and display them on an interactive dashboard. Processes log files to identify patterns, detect anomalies, and visualize key metrics for better decision-making.`,tech:[`Python`,`Log Analysis`,`Data Visualization`,`React`],github:`https://github.com/Prazeen7/Log-Feature`,live:null,category:`ds`},{id:11,title:`Google Analytics Data Pipeline with Gzip Optimization`,description:`Engineered a high-performance data pipeline that collects website data via Google BigQuery, exports to Google Cloud Storage using scheduled CRON jobs, and optimizes delivery with gzip compression. Implemented worker-based parallel fetching for fast dashboard rendering in React.`,tech:[`Node.js`,`BigQuery`,`GCS`,`CRON`,`React`,`Gzip`],github:null,live:null,category:`ds`},{id:12,title:`Textile Design Classification Using Deep Learning`,description:`Collected and generated textile design datasets, performed extensive data cleaning and preprocessing, and trained a deep learning model to classify textile designs into multiple categories including Abstract, Border, Animals, Mirror, Tribal, Traditional, Geometry, and more. Achieved high accuracy in distinguishing intricate design patterns.`,tech:[`Python`,`TensorFlow`,`CNN`,`Data Augmentation`,`Image Classification`],github:null,live:null,category:`ml`}],w=[{id:1,title:`Junior AI Developer`,company:`Alternative Technology`,period:`June 2025 - Feb 2026`,description:[`Research on different AI tools`,`Implement AI tools as required`],technologies:[`Python`,`AI/ML`,`LLM`,`RAG`]},{id:2,title:`IT Assistant`,company:`Oli & Associates`,period:`May 2023 - Feb 2025`,description:[`Installing and configuring computer hardware, operating system and applications`,`Monitoring and maintaining computer system`],technologies:[`Hardware`,`OS`,`System Administration`]},{id:3,title:`Technical Support`,company:`Micro World International`,period:`Jan 2021 - Feb 2022`,description:[`Installing and configuring computer hardware, operating system and applications`],technologies:[`Technical Support`,`Hardware`,`Software Installation`]}],ie=[`all`,`fullstack`,`web`,`ml`,`ai`,`ds`];function ae(){let[e,t]=(0,_.useState)(`all`),[n,r]=(0,_.useState)(6),[i,a]=(0,_.useState)({}),[o,s]=(0,_.useState)(!1),[c,l]=(0,_.useState)(!1),[u,d]=(0,_.useState)(!1),[f,p]=(0,_.useState)(!1),[m,h]=(0,_.useState)(!1),g=(0,_.useRef)(null),v=(0,_.useRef)(null),b=(0,_.useRef)(null),x=(0,_.useRef)(null),ee=(0,_.useRef)(null),S=(0,_.useMemo)(()=>e===`all`?re:re.filter(t=>t.category===e),[e]),C=(0,_.useMemo)(()=>S.slice(0,n),[S,n]),te=n<S.length,ne=()=>{r(e=>e+3)};(0,_.useEffect)(()=>{r(6)},[e]),(0,_.useEffect)(()=>{let e=new IntersectionObserver(([t])=>{t.isIntersecting&&(s(!0),e.disconnect())},{threshold:.3,rootMargin:`0px 0px -100px 0px`});return g.current&&e.observe(g.current),()=>e.disconnect()},[]),(0,_.useEffect)(()=>{let e=new IntersectionObserver(([t])=>{t.isIntersecting&&(l(!0),e.disconnect())},{threshold:.1,rootMargin:`0px 0px -50px 0px`});return v.current&&e.observe(v.current),()=>e.disconnect()},[]),(0,_.useEffect)(()=>{let e=new IntersectionObserver(([t])=>{t.isIntersecting&&(d(!0),e.disconnect())},{threshold:.3,rootMargin:`0px 0px -100px 0px`});return b.current&&e.observe(b.current),()=>e.disconnect()},[]),(0,_.useEffect)(()=>{let e=new IntersectionObserver(([t])=>{t.isIntersecting&&(p(!0),e.disconnect())},{threshold:.2,rootMargin:`0px 0px -50px 0px`});return x.current&&e.observe(x.current),()=>e.disconnect()},[]),(0,_.useEffect)(()=>{let e=new IntersectionObserver(([t])=>{t.isIntersecting&&(h(!0),e.disconnect())},{threshold:.05,rootMargin:`0px 0px -50px 0px`});return ee.current&&e.observe(ee.current),()=>e.disconnect()},[]);let ae=e=>{a(t=>({...t,[e]:!0}))};return(0,y.jsxs)(y.Fragment,{children:[(0,y.jsx)(`style`,{children:`
         @import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800&display=swap');
 
-        @keyframes fadeUpWork {
+        /* Animation Keyframes - Slower and more noticeable */
+        @keyframes fadeUpSlow {
           from {
             opacity: 0;
-            transform: translateY(36px);
+            transform: translateY(50px);
           }
           to {
             opacity: 1;
@@ -873,10 +874,10 @@ Error generating stack: `+e.message+`
           }
         }
 
-        @keyframes scaleIn {
+        @keyframes fadeScaleSlow {
           from {
             opacity: 0;
-            transform: scale(0.96);
+            transform: scale(0.92);
           }
           to {
             opacity: 1;
@@ -884,14 +885,25 @@ Error generating stack: `+e.message+`
           }
         }
 
-        @keyframes slideInLeft {
+        @keyframes slideFromLeftSlow {
           from {
             opacity: 0;
-            transform: translateX(-30px);
+            transform: translateX(-80px);
           }
           to {
             opacity: 1;
             transform: translateX(0);
+          }
+        }
+
+        @keyframes slideFromBottomSlow {
+          from {
+            opacity: 0;
+            transform: translateY(80px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
           }
         }
 
@@ -906,52 +918,378 @@ Error generating stack: `+e.message+`
           }
         }
 
-        /* ── Dark Mode ── */
-        body.dark-mode .work-section { background: #0a0a0a; }
-        body.dark-mode .work-title { color: #e0e0e0; }
-        body.dark-mode .work-sub { color: #a0a0a0; }
-        body.dark-mode .experience-card { background: #1a1a1a; border-color: #2a2a2a; }
-        body.dark-mode .experience-card:hover { border-color: #E76F51; }
-        body.dark-mode .exp-title { color: #e0e0e0; }
-        body.dark-mode .exp-company { color: #E76F51; }
-        body.dark-mode .exp-period { color: #8a8a8a; }
-        body.dark-mode .exp-description li { color: #b0b0b0; }
-        body.dark-mode .exp-tech-tag { background: #2a2a2a; color: #E76F51; border-color: #3a3a3a; }
-        body.dark-mode .work-card { background: #1a1a1a; border-color: #2a2a2a; }
-        body.dark-mode .work-card:hover { border-color: #E76F51; }
-        body.dark-mode .work-card-title { color: #e0e0e0; }
-        body.dark-mode .work-card-desc { color: #b0b0b0; }
-        body.dark-mode .work-tech-tag { background: #2a2a2a; color: #E76F51; border-color: #3a3a3a; cursor: pointer; transition: all 0.2s ease; }
-        body.dark-mode .work-tech-tag:hover { background: #E76F51; color: #1a1a1a; transform: translateY(-1px); }
-        body.dark-mode .work-filter-btn { border-color: #3a3a3a; color: #a0a0a0; }
-        body.dark-mode .work-filter-btn:hover { border-color: #E76F51; color: #E76F51; background: rgba(231, 111, 81, 0.08); }
-        body.dark-mode .work-filter-btn.active { border-color: #E76F51; background: rgba(231, 111, 81, 0.15); color: #E76F51; font-weight: 500; }
+        /* Animation Classes - Longer durations */
+        .fade-up-slow {
+          opacity: 0;
+          animation: fadeUpSlow 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
 
-        /* ── Light Mode ── */
-        body.light-mode .work-section { background: #ffffff; }
-        body.light-mode .work-title { color: #1a1a1a; }
-        body.light-mode .work-sub { color: #6c6c6c; }
-        body.light-mode .experience-card { background: #f8f9fa; border-color: #e0e0e0; }
-        body.light-mode .experience-card:hover { border-color: #E76F51; box-shadow: 0 12px 24px -8px rgba(231, 111, 81, 0.15); }
-        body.light-mode .exp-title { color: #1a1a1a; }
-        body.light-mode .exp-company { color: #E76F51; }
-        body.light-mode .exp-period { color: #8a8a8a; }
-        body.light-mode .exp-description li { color: #5a5a5a; }
-        body.light-mode .exp-tech-tag { background: #e8e8e8; color: #E76F51; border-color: #d0d0d0; }
-        body.light-mode .work-tech-tag { background: #f0f0f0; color: #E76F51; border-color: #e0e0e0; cursor: pointer; transition: all 0.2s ease; }
-        body.light-mode .work-tech-tag:hover { background: #E76F51; color: white; transform: translateY(-1px); }
-        body.light-mode .work-filter-btn { border-color: #d0d0d0; color: #6c6c6c; }
-        body.light-mode .work-filter-btn:hover { border-color: #E76F51; color: #E76F51; background: rgba(231, 111, 81, 0.08); }
-        body.light-mode .work-filter-btn.active { border-color: #E76F51; background: rgba(231, 111, 81, 0.15); color: #E76F51; font-weight: 500; }
-        body.light-mode .work-loadmore-btn { border-color: #E76F51; color: #E76F51; }
-        body.light-mode .work-loadmore-btn:hover { background: #E76F51; color: #ffffff; }
+        .fade-scale-slow {
+          opacity: 0;
+          animation: fadeScaleSlow 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
 
-        /* ── Section ── */
+        .slide-left-slow {
+          opacity: 0;
+          animation: slideFromLeftSlow 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        .slide-bottom-slow {
+          opacity: 0;
+          animation: slideFromBottomSlow 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        /* Stagger delays for cards - More spaced out */
+        .card-stagger-1 { animation-delay: 0.08s; }
+        .card-stagger-2 { animation-delay: 0.18s; }
+        .card-stagger-3 { animation-delay: 0.28s; }
+        .card-stagger-4 { animation-delay: 0.38s; }
+        .card-stagger-5 { animation-delay: 0.48s; }
+        .card-stagger-6 { animation-delay: 0.58s; }
+
+        /* ── Dark Mode (default) ── */
+        .work-section { 
+          background: #0a0a0a; 
+          transition: background-color 0.3s ease;
+        }
+        .work-title { color: #e0e0e0; }
+        .work-sub { color: #a0a0a0; }
+        
+        /* Experience Card Styles - Slide from Left */
+        .experience-card { 
+          background: #1a1a1a; 
+          border: 1px solid #2a2a2a;
+          border-radius: 20px;
+          padding: 24px;
+          transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+          display: flex;
+          flex-direction: column;
+          height: auto;
+          opacity: 0;
+        }
+        .experience-card.animate-in {
+          animation: slideFromLeftSlow 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        .experience-card:hover { 
+          border-color: #E76F51;
+          transform: translateY(-4px);
+        }
+        
+        .exp-header { margin-bottom: 20px; }
+        .exp-title { 
+          color: #e0e0e0;
+          font-size: 20px;
+          font-weight: 700;
+          margin: 0 0 6px 0;
+          line-height: 1.3;
+        }
+        .exp-company { 
+          color: #E76F51;
+          font-size: 15px;
+          font-weight: 500;
+          margin: 0 0 4px 0;
+        }
+        .exp-period { 
+          color: #8a8a8a;
+          font-size: 12px;
+          letter-spacing: 0.3px;
+          display: inline-block;
+          padding: 2px 0;
+        }
+        .exp-description {
+          list-style: none;
+          padding: 0;
+          margin: 0 0 20px 0;
+          flex: 1;
+        }
+        .exp-description li {
+          color: #b0b0b0;
+          font-size: 14px;
+          line-height: 1.6;
+          margin-bottom: 8px;
+          padding-left: 18px;
+          position: relative;
+          text-align: start;
+        }
+        .exp-description li::before {
+          content: "▹";
+          position: absolute;
+          left: 0;
+          color: #E76F51;
+          font-size: 12px;
+        }
+        .exp-tech {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          margin-top: 16px;
+        }
+        .exp-tech-tag { 
+          background: #2a2a2a; 
+          color: #E76F51; 
+          border: 1px solid #3a3a3a;
+          font-size: 11px;
+          font-weight: 500;
+          padding: 5px 12px;
+          border-radius: 20px;
+          transition: all 0.2s ease;
+        }
+        .exp-tech-tag:hover {
+          background: #E76F51;
+          color: #1a1a1a;
+          transform: translateY(-1px);
+        }
+
+        /* Project Cards - Slide from Bottom */
+        .work-card { 
+          background: #1a1a1a; 
+          border: 1px solid #2a2a2a;
+          border-radius: 20px;
+          padding: 24px;
+          transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+          display: flex;
+          flex-direction: column;
+          height: auto;
+          opacity: 0;
+        }
+        .work-card.animate-in {
+          animation: slideFromBottomSlow 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        .work-card:hover { 
+          border-color: #E76F51;
+          transform: translateY(-4px);
+        }
+        .work-card-title { 
+          color: #e0e0e0;
+          font-size: 20px;
+          font-weight: 700;
+          margin: 0 0 12px 0;
+          line-height: 1.3;
+        }
+        .work-card-desc { 
+          color: #b0b0b0;
+          font-size: 14px;
+          line-height: 1.6;
+          margin: 0 0 20px 0;
+          text-align: start;
+          flex: 1;
+        }
+        .work-card-tech {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          margin-bottom: 24px;
+        }
+        .work-tech-tag { 
+          background: #2a2a2a; 
+          color: #E76F51; 
+          border: 1px solid #3a3a3a;
+          font-size: 11px;
+          font-weight: 500;
+          padding: 5px 12px;
+          border-radius: 20px;
+          transition: all 0.2s ease;
+          cursor: pointer;
+        }
+        .work-tech-tag:hover { 
+          background: #E76F51; 
+          color: #1a1a1a; 
+          transform: translateY(-1px);
+        }
+        .work-tech-tag.expandable {
+          background: #E76F51;
+          color: white;
+          border-color: #E76F51;
+          cursor: pointer;
+        }
+        .work-tech-tag.expandable:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(231, 111, 81, 0.3);
+        }
+        .work-card-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 13px;
+          font-weight: 500;
+          color: #E76F51;
+          text-decoration: none;
+          border-bottom: 1.5px solid #3a3a3a;
+          padding-bottom: 4px;
+          transition: all 0.2s ease;
+          width: fit-content;
+        }
+        .work-card-link:hover {
+          gap: 12px;
+          border-bottom-color: #E76F51;
+        }
+        .work-card-link svg {
+          width: 13px;
+          height: 13px;
+          transition: transform 0.2s;
+        }
+        .work-card-link:hover svg {
+          transform: translateX(3px);
+        }
+
+        /* Filter Buttons */
+        .work-filter-btn { 
+          border: 1px solid #3a3a3a; 
+          color: #a0a0a0;
+          background: transparent;
+          padding: 8px 24px;
+          font-size: 14px;
+          font-weight: 400;
+          font-family: 'Jost', sans-serif;
+          border-radius: 40px;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          letter-spacing: 0.01em;
+        }
+        .work-filter-btn:hover { 
+          border-color: #E76F51; 
+          color: #E76F51; 
+          background: rgba(231, 111, 81, 0.08);
+        }
+        .work-filter-btn.active { 
+          border-color: #E76F51; 
+          background: rgba(231, 111, 81, 0.15); 
+          color: #E76F51;
+          font-weight: 500;
+        }
+
+        /* Load More Button */
+        .work-loadmore-btn {
+          background: transparent;
+          border: 1px solid #E76F51;
+          color: #E76F51;
+          padding: 12px 36px;
+          font-size: 15px;
+          font-weight: 500;
+          font-family: 'Jost', sans-serif;
+          border-radius: 40px;
+          cursor: pointer;
+          transition: all 0.25s;
+        }
+        .work-loadmore-btn:hover {
+          background: #E76F51;
+          color: #0a0a0a;
+        }
+
+        /* ── Light Mode (when body has light-mode class) ── */
+        body.light-mode .work-section { 
+          background: #ffffff; 
+        }
+        body.light-mode .work-title { 
+          color: #1a1a1a; 
+        }
+        body.light-mode .work-sub { 
+          color: #6c6c6c; 
+        }
+        
+        /* Experience Cards - Light Mode */
+        body.light-mode .experience-card { 
+          background: #ffffff; 
+          border-color: #e0e0e0;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+        body.light-mode .experience-card:hover { 
+          border-color: #E76F51;
+          box-shadow: 0 8px 20px rgba(231, 111, 81, 0.1);
+        }
+        body.light-mode .exp-title { 
+          color: #1a1a1a; 
+        }
+        body.light-mode .exp-company { 
+          color: #E76F51; 
+        }
+        body.light-mode .exp-period { 
+          color: #8a8a8a; 
+        }
+        body.light-mode .exp-description li { 
+          color: #5a5a5a; 
+        }
+        body.light-mode .exp-tech-tag { 
+          background: #f0f0f0; 
+          color: #E76F51; 
+          border-color: #e0e0e0;
+        }
+        body.light-mode .exp-tech-tag:hover {
+          background: #E76F51;
+          color: white;
+        }
+        
+        /* Project Cards - Light Mode */
+        body.light-mode .work-card { 
+          background: #ffffff; 
+          border-color: #e0e0e0;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+        body.light-mode .work-card:hover { 
+          border-color: #E76F51;
+          box-shadow: 0 8px 20px rgba(231, 111, 81, 0.1);
+        }
+        body.light-mode .work-card-title { 
+          color: #1a1a1a; 
+        }
+        body.light-mode .work-card-desc { 
+          color: #5a5a5a; 
+        }
+        body.light-mode .work-tech-tag { 
+          background: #f0f0f0; 
+          color: #E76F51; 
+          border-color: #e0e0e0;
+        }
+        body.light-mode .work-tech-tag:hover { 
+          background: #E76F51; 
+          color: white;
+        }
+        body.light-mode .work-card-link {
+          color: #E76F51;
+          border-bottom: 1.5px solid #e0e0e0;
+        }
+        body.light-mode .work-card-link:hover {
+          border-bottom-color: #E76F51;
+        }
+        body.light-mode .work-tech-tag.expandable {
+          background: #E76F51;
+          color: white;
+          border-color: #E76F51;
+        }
+        
+        /* Filter Buttons - Light Mode */
+        body.light-mode .work-filter-btn { 
+          border-color: #d0d0d0; 
+          color: #6c6c6c;
+        }
+        body.light-mode .work-filter-btn:hover { 
+          border-color: #E76F51; 
+          color: #E76F51; 
+          background: rgba(231, 111, 81, 0.08);
+        }
+        body.light-mode .work-filter-btn.active { 
+          border-color: #E76F51; 
+          background: rgba(231, 111, 81, 0.15); 
+          color: #E76F51;
+        }
+        
+        /* Load More Button - Light Mode */
+        body.light-mode .work-loadmore-btn { 
+          border-color: #E76F51; 
+          color: #E76F51;
+        }
+        body.light-mode .work-loadmore-btn:hover { 
+          background: #E76F51; 
+          color: #ffffff;
+        }
+
+        /* ── Section Layout Styles ── */
         .work-section {
           padding: 0px 64px 0px;
           font-family: 'Jost', sans-serif;
           position: relative;
           transition: background-color 0.3s ease;
+          overflow-x: hidden;
         }
 
         .work-container {
@@ -959,17 +1297,9 @@ Error generating stack: `+e.message+`
           margin: 0 auto;
         }
 
-        /* ── Header — starts hidden, plays when .animate-in is added ── */
         .work-header {
           text-align: center;
           margin-bottom: 64px;
-          opacity: 0;
-          animation: fadeUpWork 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-          animation-play-state: paused;
-        }
-
-        .work-header.animate-in {
-          animation-play-state: running;
         }
 
         .work-badge {
@@ -999,7 +1329,6 @@ Error generating stack: `+e.message+`
           transition: color 0.3s ease;
         }
 
-        /* ── Experience ── */
         .experience-section {
           margin-bottom: 80px;
         }
@@ -1007,126 +1336,18 @@ Error generating stack: `+e.message+`
         .experience-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          gap: 28px;
+          gap: 32px;
           margin-top: 40px;
         }
 
-        .experience-card {
-          border-radius: 20px;
-          padding: 28px;
-          transition: all 0.3s ease;
-          opacity: 0;
-          animation: slideInLeft 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-          animation-play-state: paused;
-        }
-
-        /* Stagger delays for experience cards */
-        .experience-card:nth-child(1) { animation-delay: 0.05s; }
-        .experience-card:nth-child(2) { animation-delay: 0.15s; }
-        .experience-card:nth-child(3) { animation-delay: 0.25s; }
-
-        .experience-card.animate-in {
-          animation-play-state: running;
-        }
-
-        .experience-card:hover {
-          transform: translateY(-4px);
-        }
-
-        .exp-header { margin-bottom: 20px; }
-
-        .exp-title {
-          font-size: 20px;
-          font-weight: 700;
-          margin: 0 0 6px 0;
-          transition: color 0.3s ease;
-        }
-
-        .exp-company {
-          font-size: 15px;
-          font-weight: 500;
-          margin: 0 0 4px 0;
-          transition: color 0.3s ease;
-        }
-
-        .exp-period {
-          font-size: 12px;
-          letter-spacing: 0.3px;
-          display: inline-block;
-          padding: 2px 0;
-          transition: color 0.3s ease;
-        }
-
-        .exp-description {
-          list-style: none;
-          padding: 0;
-          margin: 0 0 20px 0;
-        }
-
-        .exp-description li {
-          font-size: 14px;
-          line-height: 1.5;
-          margin-bottom: 8px;
-          padding-left: 18px;
-          position: relative;
-          text-align: start;
-          transition: color 0.3s ease;
-        }
-
-        .exp-description li::before {
-          content: "▹";
-          position: absolute;
-          left: 0;
-          color: #E76F51;
-          font-size: 12px;
-        }
-
-        .exp-tech {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 6px;
-          margin-top: 16px;
-        }
-
-        .exp-tech-tag {
-          font-size: 10px;
-          font-weight: 500;
-          padding: 4px 10px;
-          border-radius: 20px;
-          letter-spacing: 0.02em;
-          transition: all 0.2s ease;
-        }
-
-        /* ── Filters — starts hidden, plays when .animate-in is added ── */
         .work-filters {
           display: flex;
           flex-wrap: wrap;
           justify-content: center;
           gap: 12px;
           margin-bottom: 56px;
-          opacity: 0;
-          animation: fadeUpWork 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
-          animation-play-state: paused;
         }
 
-        .work-filters.animate-in {
-          animation-play-state: running;
-        }
-
-        .work-filter-btn {
-          background: transparent;
-          padding: 8px 24px;
-          font-size: 14px;
-          font-weight: 400;
-          font-family: 'Jost', sans-serif;
-          border: 1px solid;
-          border-radius: 40px;
-          cursor: pointer;
-          transition: all 0.2s ease;
-          letter-spacing: 0.01em;
-        }
-
-        /* ── Project grid ── */
         .work-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
@@ -1134,122 +1355,10 @@ Error generating stack: `+e.message+`
           margin-bottom: 56px;
         }
 
-        .work-card {
-          border-radius: 20px;
-          padding: 24px;
-          transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-          display: flex;
-          flex-direction: column;
-          height: auto;
-          min-height: auto;
-          opacity: 0;
-          animation: scaleIn 0.5s ease forwards;
-          animation-play-state: paused;
-        }
-
-        .work-card.animate-in {
-          animation-play-state: running;
-        }
-
-        .work-card-tech {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 8px;
-          margin-bottom: 24px;
-        }
-
-        .work-tech-tag {
-          font-size: 11px;
-          font-weight: 500;
-          padding: 5px 12px;
-          border-radius: 20px;
-          letter-spacing: 0.02em;
-          transition: all 0.2s ease;
-        }
-
-        .work-tech-tag.expandable {
-          background: #E76F51;
-          color: white;
-          border-color: #E76F51;
-          cursor: pointer;
-        }
-
-        .work-tech-tag.expandable:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 4px 12px rgba(231, 111, 81, 0.3);
-        }
-
-        .work-card-title {
-          font-size: 20px;
-          font-weight: 700;
-          margin: 0 0 12px 0;
-          line-height: 1.3;
-          transition: color 0.3s ease;
-        }
-
-        .work-card-desc {
-          font-size: 14px;
-          line-height: 1.6;
-          margin: 0 0 20px 0;
-          text-align: start;
-          flex: 1;
-          transition: color 0.3s ease;
-        }
-
-        .work-card-link {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          font-size: 13px;
-          font-weight: 500;
-          color: #E76F51;
-          text-decoration: none;
-          border-bottom: 1.5px solid #3a3a3a;
-          padding-bottom: 4px;
-          transition: border-color 0.2s, gap 0.2s;
-          width: fit-content;
-        }
-
-        .work-card-link:hover {
-          border-bottom-color: #E76F51;
-          gap: 12px;
-          color: #E76F51;
-        }
-
-        .work-card-link svg {
-          width: 13px;
-          height: 13px;
-          transition: transform 0.2s;
-        }
-
-        .work-card-link:hover svg {
-          transform: translateX(3px);
-        }
-
-        /* ── Load more ── */
         .work-loadmore {
           display: flex;
           justify-content: center;
           margin-top: 20px;
-        }
-
-        .work-loadmore-btn {
-          background: transparent;
-          border: 1px solid #E76F51;
-          padding: 12px 36px;
-          font-size: 15px;
-          font-weight: 500;
-          font-family: 'Jost', sans-serif;
-          border-radius: 40px;
-          cursor: pointer;
-          transition: all 0.25s;
-          backdrop-filter: blur(2px);
-        }
-
-        .work-loadmore-btn:hover {
-          background: #E76F51;
-          border-color: #E76F51;
-          color: #0a0a0a;
         }
 
         .section-divider {
@@ -1279,13 +1388,21 @@ Error generating stack: `+e.message+`
             grid-template-columns: 1fr;
             gap: 24px;
           }
-          .work-card { padding: 24px; }
-          .work-filters { gap: 8px; }
-          .work-filter-btn { padding: 6px 18px; font-size: 13px; }
-          .experience-card { padding: 24px; }
-          .work-card-desc { text-align: left; }
+          .work-card, .experience-card { 
+            padding: 24px; 
+          }
+          .work-filters { 
+            gap: 8px; 
+          }
+          .work-filter-btn { 
+            padding: 6px 18px; 
+            font-size: 13px; 
+          }
+          .work-card-desc { 
+            text-align: left; 
+          }
         }
-      `}),(0,y.jsx)(`section`,{className:`work-section`,id:`work`,ref:u,children:(0,y.jsxs)(`div`,{className:`work-container`,children:[(0,y.jsxs)(`div`,{className:`experience-section`,ref:d,children:[(0,y.jsxs)(`div`,{className:`work-header ${o?`animate-in`:``}`,children:[(0,y.jsx)(`span`,{className:`work-badge`,children:`✦ EXPERIENCE`}),(0,y.jsx)(`h2`,{className:`work-title`,children:`Work Experience`}),(0,y.jsx)(`p`,{className:`work-sub`,children:`Professional journey across AI development, IT support, and technical roles`})]}),(0,y.jsx)(`div`,{className:`experience-grid`,children:w.map(e=>(0,y.jsxs)(`div`,{className:`experience-card ${o?`animate-in`:``}`,children:[(0,y.jsxs)(`div`,{className:`exp-header`,children:[(0,y.jsx)(`h3`,{className:`exp-title`,children:e.title}),(0,y.jsx)(`p`,{className:`exp-company`,children:e.company}),(0,y.jsx)(`span`,{className:`exp-period`,children:e.period})]}),(0,y.jsx)(`ul`,{className:`exp-description`,children:e.description.map((e,t)=>(0,y.jsx)(`li`,{children:e},t))}),(0,y.jsx)(`div`,{className:`exp-tech`,children:e.technologies.map(e=>(0,y.jsx)(`span`,{className:`exp-tech-tag`,children:e},e))})]},e.id))})]}),(0,y.jsx)(`div`,{className:`section-divider`}),(0,y.jsxs)(`div`,{ref:f,children:[(0,y.jsxs)(`div`,{className:`work-header ${c?`animate-in`:``}`,children:[(0,y.jsx)(`span`,{className:`work-badge`,children:`✦ PORTFOLIO`}),(0,y.jsx)(`h2`,{className:`work-title`,children:`Featured Projects`}),(0,y.jsx)(`p`,{className:`work-sub`,children:`AI-driven applications, full‑stack platforms, data science projects, and machine learning experiments — turning ideas into production-ready solutions.`})]}),(0,y.jsx)(`div`,{className:`work-filters ${c?`animate-in`:``}`,children:ie.map(n=>(0,y.jsx)(`button`,{className:`work-filter-btn ${e===n?`active`:``}`,onClick:()=>t(n),children:n===`all`?`All Work`:n===`fullstack`?`Full Stack`:n===`web`?`Web Apps`:n===`ml`?`ML / DL`:n===`ai`?`AI / LLM`:`Data Science`},n))}),(0,y.jsx)(`div`,{className:`work-grid`,children:m.map((t,n)=>{let r=i[t.id],a=r?t.tech:t.tech.slice(0,4),o=t.tech.length>4&&!r;return(0,y.jsxs)(`div`,{className:`work-card ${c?`animate-in`:``}`,style:{animationDelay:`${n*.07}s`},children:[(0,y.jsx)(`h3`,{className:`work-card-title`,children:t.title}),(0,y.jsx)(`p`,{className:`work-card-desc`,children:t.description}),(0,y.jsxs)(`div`,{className:`work-card-tech`,children:[a.map((e,t)=>(0,y.jsx)(`span`,{className:`work-tech-tag ${r&&t>=4?`tech-tag-new`:``}`,children:e},e)),o&&(0,y.jsxs)(`span`,{className:`work-tech-tag expandable`,onClick:()=>v(t.id),children:[`+`,t.tech.length-4]})]}),t.github?(0,y.jsxs)(`a`,{href:t.github,target:`_blank`,rel:`noopener noreferrer`,className:`work-card-link`,children:[`View Project`,(0,y.jsx)(`svg`,{viewBox:`0 0 24 24`,fill:`none`,stroke:`currentColor`,strokeWidth:`2`,children:(0,y.jsx)(`path`,{d:`M7 17L17 7M17 7H7M17 7V17`,stroke:`currentColor`,strokeLinecap:`round`})})]}):(0,y.jsxs)(`span`,{className:`work-card-link`,style:{opacity:.6,cursor:`default`,borderBottom:`1.5px solid #3a3a3a`},children:[`Private Repository`,(0,y.jsx)(`svg`,{viewBox:`0 0 24 24`,fill:`none`,stroke:`currentColor`,strokeWidth:`2`,children:(0,y.jsx)(`path`,{d:`M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z`,stroke:`currentColor`,strokeLinecap:`round`})})]})]},`${t.id}-${e}`)})}),h&&(0,y.jsx)(`div`,{className:`work-loadmore`,children:(0,y.jsx)(`button`,{onClick:g,className:`work-loadmore-btn`,children:`Show more projects`})}),(0,y.jsx)(`div`,{className:`section-divider`})]})]})})]})}function oe(){let[e,t]=(0,_.useState)({name:``,email:``,message:``}),[n,r]=(0,_.useState)({submitted:!1,loading:!1,error:null}),[i,a]=(0,_.useState)(new Set),o=(0,_.useRef)(null),s=(0,_.useRef)(null),c=(0,_.useRef)(null),l=(0,_.useRef)(null),u=(0,_.useRef)(null),d=(0,_.useRef)([]),f=(0,_.useRef)([]),p=n=>{t({...e,[n.target.name]:n.target.value})};return(0,_.useEffect)(()=>{let e=new IntersectionObserver(t=>{t.forEach(t=>{t.isIntersecting&&c.current&&!i.has(`header`)&&(c.current.style.animation=`fadeUpContact 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards`,a(e=>new Set(e).add(`header`)),e.disconnect())})},{threshold:.3});return c.current&&e.observe(c.current),()=>e.disconnect()},[i]),(0,_.useEffect)(()=>{let e=new IntersectionObserver(t=>{t.forEach(t=>{t.isIntersecting&&l.current&&!i.has(`socialSection`)&&(l.current.style.animation=`slideInLeft 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards`,a(e=>new Set(e).add(`socialSection`)),e.disconnect())})},{threshold:.3});return l.current&&e.observe(l.current),()=>e.disconnect()},[i]),(0,_.useEffect)(()=>{let e=new IntersectionObserver(t=>{t.forEach(t=>{t.isIntersecting&&u.current&&!i.has(`formSection`)&&(u.current.style.animation=`slideInRight 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards`,a(e=>new Set(e).add(`formSection`)),e.disconnect())})},{threshold:.3});return u.current&&e.observe(u.current),()=>e.disconnect()},[i]),(0,_.useEffect)(()=>{let e=[];return d.current.forEach((t,n)=>{if(t&&!i.has(`social-icon-${n}`)){let r=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&(t.style.animation=`scaleInIcon 0.5s ease forwards`,t.style.animationDelay=`${.1*n}s`,a(e=>new Set(e).add(`social-icon-${n}`)),r.disconnect())})},{threshold:.5,rootMargin:`0px 0px -50px 0px`});r.observe(t),e.push(r)}}),()=>{e.forEach(e=>e.disconnect())}},[i]),(0,_.useEffect)(()=>{let e=[];return f.current.forEach((t,n)=>{if(t&&!i.has(`contact-info-${n}`)){let r=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&(t.style.animation=`slideInLeftCard 0.5s ease forwards`,t.style.animationDelay=`${.15*n}s`,a(e=>new Set(e).add(`contact-info-${n}`)),r.disconnect())})},{threshold:.5,rootMargin:`0px 0px -50px 0px`});r.observe(t),e.push(r)}}),()=>{e.forEach(e=>e.disconnect())}},[i]),(0,y.jsxs)(y.Fragment,{children:[(0,y.jsx)(`style`,{children:`
+      `}),(0,y.jsx)(`section`,{className:`work-section`,id:`work`,children:(0,y.jsxs)(`div`,{className:`work-container`,children:[(0,y.jsxs)(`div`,{className:`experience-section`,children:[(0,y.jsx)(`div`,{ref:g,children:o&&(0,y.jsxs)(`div`,{className:`work-header fade-up-slow`,children:[(0,y.jsx)(`span`,{className:`work-badge`,children:`✦ EXPERIENCE`}),(0,y.jsx)(`h2`,{className:`work-title`,children:`Work Experience`}),(0,y.jsx)(`p`,{className:`work-sub`,children:`Professional journey across AI development, IT support, and technical roles`})]})}),(0,y.jsx)(`div`,{ref:v,children:c&&(0,y.jsx)(`div`,{className:`experience-grid`,children:w.map((e,t)=>(0,y.jsxs)(`div`,{className:`experience-card animate-in card-stagger-${t%6+1}`,children:[(0,y.jsxs)(`div`,{className:`exp-header`,children:[(0,y.jsx)(`h3`,{className:`exp-title`,children:e.title}),(0,y.jsx)(`p`,{className:`exp-company`,children:e.company}),(0,y.jsx)(`span`,{className:`exp-period`,children:e.period})]}),(0,y.jsx)(`ul`,{className:`exp-description`,children:e.description.map((e,t)=>(0,y.jsx)(`li`,{children:e},t))}),(0,y.jsx)(`div`,{className:`exp-tech`,children:e.technologies.map(e=>(0,y.jsx)(`span`,{className:`exp-tech-tag`,children:e},e))})]},e.id))})})]}),(0,y.jsx)(`div`,{className:`section-divider`}),(0,y.jsxs)(`div`,{children:[(0,y.jsx)(`div`,{ref:b,children:u&&(0,y.jsxs)(`div`,{className:`work-header fade-up-slow`,children:[(0,y.jsx)(`span`,{className:`work-badge`,children:`✦ PORTFOLIO`}),(0,y.jsx)(`h2`,{className:`work-title`,children:`Featured Projects`}),(0,y.jsx)(`p`,{className:`work-sub`,children:`AI-driven applications, full‑stack platforms, data science projects, and machine learning experiments — turning ideas into production-ready solutions.`})]})}),(0,y.jsx)(`div`,{ref:x,children:f&&(0,y.jsx)(`div`,{className:`work-filters fade-scale-slow`,children:ie.map(n=>(0,y.jsx)(`button`,{className:`work-filter-btn ${e===n?`active`:``}`,onClick:()=>t(n),children:n===`all`?`All Work`:n===`fullstack`?`Full Stack`:n===`web`?`Web Apps`:n===`ml`?`ML / DL`:n===`ai`?`AI / LLM`:`Data Science`},n))})}),(0,y.jsx)(`div`,{ref:ee,children:m&&(0,y.jsxs)(y.Fragment,{children:[(0,y.jsx)(`div`,{className:`work-grid`,children:C.map((t,n)=>{let r=i[t.id],a=r?t.tech:t.tech.slice(0,4),o=t.tech.length>4&&!r;return(0,y.jsxs)(`div`,{className:`work-card animate-in card-stagger-${n%6+1}`,children:[(0,y.jsx)(`h3`,{className:`work-card-title`,children:t.title}),(0,y.jsx)(`p`,{className:`work-card-desc`,children:t.description}),(0,y.jsxs)(`div`,{className:`work-card-tech`,children:[a.map((e,t)=>(0,y.jsx)(`span`,{className:`work-tech-tag ${r&&t>=4?`tech-tag-new`:``}`,children:e},e)),o&&(0,y.jsxs)(`span`,{className:`work-tech-tag expandable`,onClick:()=>ae(t.id),children:[`+`,t.tech.length-4]})]}),t.github?(0,y.jsxs)(`a`,{href:t.github,target:`_blank`,rel:`noopener noreferrer`,className:`work-card-link`,children:[`View Project`,(0,y.jsx)(`svg`,{viewBox:`0 0 24 24`,fill:`none`,stroke:`currentColor`,strokeWidth:`2`,children:(0,y.jsx)(`path`,{d:`M7 17L17 7M17 7H7M17 7V17`,stroke:`currentColor`,strokeLinecap:`round`})})]}):(0,y.jsxs)(`span`,{className:`work-card-link`,style:{opacity:.6,cursor:`default`},children:[`Private Repository`,(0,y.jsx)(`svg`,{viewBox:`0 0 24 24`,fill:`none`,stroke:`currentColor`,strokeWidth:`2`,children:(0,y.jsx)(`path`,{d:`M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z`,stroke:`currentColor`,strokeLinecap:`round`})})]})]},`${t.id}-${e}`)})}),te&&(0,y.jsx)(`div`,{className:`work-loadmore`,children:(0,y.jsx)(`button`,{onClick:ne,className:`work-loadmore-btn`,children:`Show more projects`})})]})}),(0,y.jsx)(`div`,{className:`section-divider`})]})]})})]})}function oe(){let[e,t]=(0,_.useState)({name:``,email:``,message:``}),[n,r]=(0,_.useState)({submitted:!1,loading:!1,error:null}),[i,a]=(0,_.useState)(new Set),o=(0,_.useRef)(null),s=(0,_.useRef)(null),c=(0,_.useRef)(null),l=(0,_.useRef)(null),u=(0,_.useRef)(null),d=(0,_.useRef)([]),f=(0,_.useRef)([]),p=n=>{t({...e,[n.target.name]:n.target.value})};return(0,_.useEffect)(()=>{let e=new IntersectionObserver(t=>{t.forEach(t=>{t.isIntersecting&&c.current&&!i.has(`header`)&&(c.current.style.animation=`fadeUpContact 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards`,a(e=>new Set(e).add(`header`)),e.disconnect())})},{threshold:.3});return c.current&&e.observe(c.current),()=>e.disconnect()},[i]),(0,_.useEffect)(()=>{let e=new IntersectionObserver(t=>{t.forEach(t=>{t.isIntersecting&&l.current&&!i.has(`socialSection`)&&(l.current.style.animation=`slideInLeft 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards`,a(e=>new Set(e).add(`socialSection`)),e.disconnect())})},{threshold:.3});return l.current&&e.observe(l.current),()=>e.disconnect()},[i]),(0,_.useEffect)(()=>{let e=new IntersectionObserver(t=>{t.forEach(t=>{t.isIntersecting&&u.current&&!i.has(`formSection`)&&(u.current.style.animation=`slideInRight 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards`,a(e=>new Set(e).add(`formSection`)),e.disconnect())})},{threshold:.3});return u.current&&e.observe(u.current),()=>e.disconnect()},[i]),(0,_.useEffect)(()=>{let e=[];return d.current.forEach((t,n)=>{if(t&&!i.has(`social-icon-${n}`)){let r=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&(t.style.animation=`scaleInIcon 0.5s ease forwards`,t.style.animationDelay=`${.1*n}s`,a(e=>new Set(e).add(`social-icon-${n}`)),r.disconnect())})},{threshold:.5,rootMargin:`0px 0px -50px 0px`});r.observe(t),e.push(r)}}),()=>{e.forEach(e=>e.disconnect())}},[i]),(0,_.useEffect)(()=>{let e=[];return f.current.forEach((t,n)=>{if(t&&!i.has(`contact-info-${n}`)){let r=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&(t.style.animation=`slideInLeftCard 0.5s ease forwards`,t.style.animationDelay=`${.15*n}s`,a(e=>new Set(e).add(`contact-info-${n}`)),r.disconnect())})},{threshold:.5,rootMargin:`0px 0px -50px 0px`});r.observe(t),e.push(r)}}),()=>{e.forEach(e=>e.disconnect())}},[i]),(0,y.jsxs)(y.Fragment,{children:[(0,y.jsx)(`style`,{children:`
         @import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800&display=swap');
 
         * {
@@ -2024,7 +2141,7 @@ Error generating stack: `+e.message+`
             font-size: 12px;
           }
         }
-      `}),(0,y.jsx)(`section`,{className:`contact-section`,id:`contact`,ref:s,children:(0,y.jsxs)(`div`,{className:`contact-container`,children:[(0,y.jsxs)(`div`,{className:`contact-header`,ref:c,children:[(0,y.jsx)(`span`,{className:`contact-badge`,children:`✦ GET IN TOUCH`}),(0,y.jsx)(`h2`,{className:`contact-title`,children:`Let's Connect`}),(0,y.jsx)(`p`,{className:`contact-sub`,children:`Have a project in mind or just want to say hello? I'd love to hear from you.`})]}),(0,y.jsxs)(`div`,{className:`contact-content`,children:[(0,y.jsxs)(`div`,{className:`social-section`,ref:l,children:[(0,y.jsx)(`h3`,{className:`social-title`,children:`Connect with me`}),(0,y.jsx)(`p`,{className:`social-description`,children:`Feel free to reach out through any of these platforms. I'm always open to discussing new projects, creative ideas, or opportunities to collaborate.`}),(0,y.jsx)(`div`,{className:`social-icons`,children:[{name:`Facebook`,url:`https://www.facebook.com/prazeen.singh/`,icon:(0,y.jsx)(`svg`,{viewBox:`0 0 24 24`,fill:`currentColor`,children:(0,y.jsx)(`path`,{d:`M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z`})})},{name:`Instagram`,url:`https://www.instagram.com/przns7/`,icon:(0,y.jsx)(`svg`,{viewBox:`0 0 24 24`,fill:`currentColor`,children:(0,y.jsx)(`path`,{d:`M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z`})})},{name:`LinkedIn`,url:`https://www.linkedin.com/in/prajinsingh/`,icon:(0,y.jsx)(`svg`,{viewBox:`0 0 24 24`,fill:`currentColor`,children:(0,y.jsx)(`path`,{d:`M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z`})})},{name:`GitHub`,url:`https://github.com/Prazeen7`,icon:(0,y.jsx)(`svg`,{viewBox:`0 0 24 24`,fill:`currentColor`,children:(0,y.jsx)(`path`,{d:`M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z`})})}].map((e,t)=>(0,y.jsx)(`a`,{href:e.url,target:`_blank`,rel:`noopener noreferrer`,className:`social-icon-link`,"aria-label":e.name,ref:e=>d.current[t]=e,children:e.icon},e.name))}),(0,y.jsx)(`div`,{className:`contact-info`,children:[{icon:(0,y.jsx)(`svg`,{viewBox:`0 0 24 24`,fill:`none`,stroke:`currentColor`,strokeWidth:`1.5`,children:(0,y.jsx)(`path`,{d:`M22 6L12 13L2 6M22 6v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6l10 7l10-7z`,stroke:`currentColor`,fill:`none`})}),label:`EMAIL`,value:`prajin.singh9@gmail.com`,href:`mailto:prajin.singh9@gmail.com`},{icon:(0,y.jsx)(`svg`,{viewBox:`0 0 24 24`,fill:`none`,stroke:`currentColor`,strokeWidth:`1.5`,children:(0,y.jsx)(`path`,{d:`M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z`,stroke:`currentColor`,fill:`none`})}),label:`PHONE`,value:`+977-9803222093`,href:`tel:+9779803222093`},{icon:(0,y.jsxs)(`svg`,{viewBox:`0 0 24 24`,fill:`none`,stroke:`currentColor`,strokeWidth:`1.5`,children:[(0,y.jsx)(`path`,{d:`M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z`,stroke:`currentColor`,fill:`none`}),(0,y.jsx)(`circle`,{cx:`12`,cy:`10`,r:`3`,stroke:`currentColor`,fill:`none`})]}),label:`LOCATION`,value:`Kathmandu, Nepal`,href:null}].map((e,t)=>(0,y.jsxs)(`div`,{className:`contact-info-card`,ref:e=>f.current[t]=e,children:[(0,y.jsx)(`div`,{className:`contact-info-icon`,children:e.icon}),(0,y.jsxs)(`div`,{className:`contact-info-text`,children:[(0,y.jsxs)(`h4`,{children:[e.label,`:`]}),(0,y.jsx)(`p`,{children:e.href?(0,y.jsx)(`a`,{href:e.href,children:e.value}):e.value})]})]},t))})]}),(0,y.jsx)(`div`,{className:`form-section`,ref:u,children:(0,y.jsxs)(`form`,{ref:o,onSubmit:async n=>{if(n.preventDefault(),r({submitted:!1,loading:!0,error:null}),e.message.length<10){r({submitted:!1,loading:!1,error:`Please provide a more detailed message (at least 10 characters)`});return}try{let n=await fetch(`https://formspree.io/f/mykbzbyv`,{method:`POST`,headers:{"Content-Type":`application/json`,Accept:`application/json`},body:JSON.stringify({name:e.name,email:e.email,message:e.message,_subject:`Portfolio Contact: ${e.name}`,_replyto:e.email})});if(n.ok)r({submitted:!0,loading:!1,error:null}),t({name:``,email:``,message:``}),setTimeout(()=>{r(e=>({...e,submitted:!1}))},5e3);else{let e=await n.json();throw Error(e.error||`Something went wrong`)}}catch(e){r({submitted:!1,loading:!1,error:e.message||`Something went wrong. Please try again.`})}},children:[(0,y.jsx)(`input`,{type:`text`,name:`_gotcha`,style:{display:`none`},tabIndex:`-1`,autoComplete:`off`}),n.submitted&&(0,y.jsxs)(`div`,{className:`success-message`,children:[(0,y.jsx)(`span`,{className:`success-icon`,children:`✓`}),`Message sent successfully! I'll get back to you soon.`]}),n.error&&(0,y.jsxs)(`div`,{className:`error-message`,children:[(0,y.jsx)(`span`,{className:`error-icon`,children:`⚠️`}),n.error]}),(0,y.jsxs)(`div`,{className:`form-fields`,children:[(0,y.jsxs)(`div`,{className:`form-group`,children:[(0,y.jsx)(`label`,{htmlFor:`name`,className:`form-label`,children:`Full Name`}),(0,y.jsx)(`input`,{type:`text`,id:`name`,name:`name`,value:e.name,onChange:p,required:!0,className:`form-input`,placeholder:`John Doe`,disabled:n.loading})]}),(0,y.jsxs)(`div`,{className:`form-group`,children:[(0,y.jsx)(`label`,{htmlFor:`email`,className:`form-label`,children:`Email Address`}),(0,y.jsx)(`input`,{type:`email`,id:`email`,name:`email`,value:e.email,onChange:p,required:!0,className:`form-input`,placeholder:`john@example.com`,disabled:n.loading})]}),(0,y.jsxs)(`div`,{className:`form-group`,children:[(0,y.jsx)(`label`,{htmlFor:`message`,className:`form-label`,children:`Message`}),(0,y.jsx)(`textarea`,{id:`message`,name:`message`,value:e.message,onChange:p,required:!0,className:`form-textarea`,placeholder:`Your message here...`,disabled:n.loading})]})]}),(0,y.jsx)(`button`,{type:`submit`,className:`submit-btn`,disabled:n.loading,children:n.loading?(0,y.jsxs)(y.Fragment,{children:[(0,y.jsx)(`span`,{className:`loading-spinner`}),`Sending...`]}):`Send Message`})]})})]})]})})]})}var se=`/assets/Logo-qvSuH0Vp.png`;function ce({onLoadingComplete:e}){let[t,n]=(0,_.useState)(!1),[r,i]=(0,_.useState)(0),[a,o]=(0,_.useState)(`dark`);return(0,_.useEffect)(()=>{let e=localStorage.getItem(`theme`);e&&o(e)},[]),(0,_.useEffect)(()=>{let t=setInterval(()=>{i(e=>e>=100?(clearInterval(t),100):e+2)},50),r=setTimeout(()=>{n(!0),setTimeout(()=>{e&&e()},500)},2500);return()=>{clearTimeout(r),clearInterval(t)}},[e]),(0,y.jsxs)(y.Fragment,{children:[(0,y.jsx)(`style`,{children:`
+      `}),(0,y.jsx)(`section`,{className:`contact-section`,id:`contact`,ref:s,children:(0,y.jsxs)(`div`,{className:`contact-container`,children:[(0,y.jsxs)(`div`,{className:`contact-header`,ref:c,children:[(0,y.jsx)(`span`,{className:`contact-badge`,children:`✦ GET IN TOUCH`}),(0,y.jsx)(`h2`,{className:`contact-title`,children:`Let's Connect`}),(0,y.jsx)(`p`,{className:`contact-sub`,children:`Have a project in mind or just want to say hello? I'd love to hear from you.`})]}),(0,y.jsxs)(`div`,{className:`contact-content`,children:[(0,y.jsxs)(`div`,{className:`social-section`,ref:l,children:[(0,y.jsx)(`h3`,{className:`social-title`,children:`Connect with me`}),(0,y.jsx)(`p`,{className:`social-description`,children:`Feel free to reach out through any of these platforms. I'm always open to discussing new projects, creative ideas, or opportunities to collaborate.`}),(0,y.jsx)(`div`,{className:`social-icons`,children:[{name:`Facebook`,url:`https://www.facebook.com/prazeen.singh/`,icon:(0,y.jsx)(`svg`,{viewBox:`0 0 24 24`,fill:`currentColor`,children:(0,y.jsx)(`path`,{d:`M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z`})})},{name:`Instagram`,url:`https://www.instagram.com/przns7/`,icon:(0,y.jsx)(`svg`,{viewBox:`0 0 24 24`,fill:`currentColor`,children:(0,y.jsx)(`path`,{d:`M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z`})})},{name:`LinkedIn`,url:`https://www.linkedin.com/in/prajinsingh/`,icon:(0,y.jsx)(`svg`,{viewBox:`0 0 24 24`,fill:`currentColor`,children:(0,y.jsx)(`path`,{d:`M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z`})})},{name:`GitHub`,url:`https://github.com/Prazeen7`,icon:(0,y.jsx)(`svg`,{viewBox:`0 0 24 24`,fill:`currentColor`,children:(0,y.jsx)(`path`,{d:`M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z`})})}].map((e,t)=>(0,y.jsx)(`a`,{href:e.url,target:`_blank`,rel:`noopener noreferrer`,className:`social-icon-link`,"aria-label":e.name,ref:e=>d.current[t]=e,children:e.icon},e.name))}),(0,y.jsx)(`div`,{className:`contact-info`,children:[{icon:(0,y.jsx)(`svg`,{viewBox:`0 0 24 24`,fill:`none`,stroke:`currentColor`,strokeWidth:`1.5`,children:(0,y.jsx)(`path`,{d:`M22 6L12 13L2 6M22 6v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6l10 7l10-7z`,stroke:`currentColor`,fill:`none`})}),label:`EMAIL`,value:`prajin.singh9@gmail.com`,href:`mailto:prajin.singh9@gmail.com`},{icon:(0,y.jsx)(`svg`,{viewBox:`0 0 24 24`,fill:`none`,stroke:`currentColor`,strokeWidth:`1.5`,children:(0,y.jsx)(`path`,{d:`M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z`,stroke:`currentColor`,fill:`none`})}),label:`PHONE`,value:`+977-9803222093`,href:`tel:+9779803222093`},{icon:(0,y.jsxs)(`svg`,{viewBox:`0 0 24 24`,fill:`none`,stroke:`currentColor`,strokeWidth:`1.5`,children:[(0,y.jsx)(`path`,{d:`M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z`,stroke:`currentColor`,fill:`none`}),(0,y.jsx)(`circle`,{cx:`12`,cy:`10`,r:`3`,stroke:`currentColor`,fill:`none`})]}),label:`LOCATION`,value:`Kathmandu, Nepal`,href:null}].map((e,t)=>(0,y.jsxs)(`div`,{className:`contact-info-card`,ref:e=>f.current[t]=e,children:[(0,y.jsx)(`div`,{className:`contact-info-icon`,children:e.icon}),(0,y.jsxs)(`div`,{className:`contact-info-text`,children:[(0,y.jsxs)(`h4`,{children:[e.label,`:`]}),(0,y.jsx)(`p`,{children:e.href?(0,y.jsx)(`a`,{href:e.href,children:e.value}):e.value})]})]},t))})]}),(0,y.jsx)(`div`,{className:`form-section`,ref:u,children:(0,y.jsxs)(`form`,{ref:o,onSubmit:async n=>{if(n.preventDefault(),r({submitted:!1,loading:!0,error:null}),e.message.length<10){r({submitted:!1,loading:!1,error:`Please provide a more detailed message (at least 10 characters)`});return}try{let n=await fetch(`https://formspree.io/f/mykbzbyv`,{method:`POST`,headers:{"Content-Type":`application/json`,Accept:`application/json`},body:JSON.stringify({name:e.name,email:e.email,message:e.message,_subject:`Portfolio Contact: ${e.name}`,_replyto:e.email})});if(n.ok)r({submitted:!0,loading:!1,error:null}),t({name:``,email:``,message:``}),setTimeout(()=>{r(e=>({...e,submitted:!1}))},5e3);else{let e=await n.json();throw Error(e.error||`Something went wrong`)}}catch(e){r({submitted:!1,loading:!1,error:e.message||`Something went wrong. Please try again.`})}},children:[(0,y.jsx)(`input`,{type:`text`,name:`_gotcha`,style:{display:`none`},tabIndex:`-1`,autoComplete:`off`}),n.submitted&&(0,y.jsxs)(`div`,{className:`success-message`,children:[(0,y.jsx)(`span`,{className:`success-icon`,children:`✓`}),`Message sent successfully! I'll get back to you soon.`]}),n.error&&(0,y.jsxs)(`div`,{className:`error-message`,children:[(0,y.jsx)(`span`,{className:`error-icon`,children:`⚠️`}),n.error]}),(0,y.jsxs)(`div`,{className:`form-fields`,children:[(0,y.jsxs)(`div`,{className:`form-group`,children:[(0,y.jsx)(`label`,{htmlFor:`name`,className:`form-label`,children:`Full Name`}),(0,y.jsx)(`input`,{type:`text`,id:`name`,name:`name`,value:e.name,onChange:p,required:!0,className:`form-input`,placeholder:`John Doe`,disabled:n.loading})]}),(0,y.jsxs)(`div`,{className:`form-group`,children:[(0,y.jsx)(`label`,{htmlFor:`email`,className:`form-label`,children:`Email Address`}),(0,y.jsx)(`input`,{type:`email`,id:`email`,name:`email`,value:e.email,onChange:p,required:!0,className:`form-input`,placeholder:`john@example.com`,disabled:n.loading})]}),(0,y.jsxs)(`div`,{className:`form-group`,children:[(0,y.jsx)(`label`,{htmlFor:`message`,className:`form-label`,children:`Message`}),(0,y.jsx)(`textarea`,{id:`message`,name:`message`,value:e.message,onChange:p,required:!0,className:`form-textarea`,placeholder:`Your message here...`,disabled:n.loading})]})]}),(0,y.jsx)(`button`,{type:`submit`,className:`submit-btn`,disabled:n.loading,children:n.loading?(0,y.jsxs)(y.Fragment,{children:[(0,y.jsx)(`span`,{className:`loading-spinner`}),`Sending...`]}):`Send Message`})]})})]})]})})]})}var se=`/assets/Logo-qvSuH0Vp.png`;function ce({onLoadingComplete:e,theme:t,isThemeLoaded:n}){let[r,i]=(0,_.useState)(!1),[a,o]=(0,_.useState)(0);return(0,_.useEffect)(()=>{if(!n)return;let t=setInterval(()=>{o(e=>e>=100?(clearInterval(t),100):e+2)},50),r=setTimeout(()=>{i(!0),setTimeout(()=>{e&&e()},500)},2500);return()=>{clearTimeout(r),clearInterval(t)}},[e,n]),n?(0,y.jsxs)(y.Fragment,{children:[(0,y.jsx)(`style`,{children:`
         @keyframes pulseOpacity {
           0%, 100% {
             opacity: 0.3;
@@ -2311,4 +2428,4 @@ Error generating stack: `+e.message+`
             font-size: 10px;
           }
         }
-      `}),(0,y.jsx)(`div`,{className:`loader-container ${a} ${t?`fade-out`:``}`,children:(0,y.jsxs)(`div`,{className:`loader-content`,children:[(0,y.jsx)(`div`,{className:`logo-wrapper`,children:(0,y.jsx)(`img`,{src:se,alt:`Prajin Singh Logo`,className:`logo-image`})}),(0,y.jsx)(`div`,{className:`text-wrapper`,children:(0,y.jsx)(`span`,{className:`loader-text`,children:`PRAJIN SINGH`})}),(0,y.jsxs)(`div`,{className:`loading-container`,children:[(0,y.jsx)(`div`,{className:`loading-bar-bg`,children:(0,y.jsx)(`div`,{className:`loading-bar-fill`,style:{width:`${r}%`}})}),(0,y.jsxs)(`div`,{className:`loading-percentage`,children:[r,`%`]})]}),(0,y.jsx)(`div`,{className:`tagline`,children:`Building digital experiences`})]})})]})}function le(){let[e,t]=(0,_.useState)(!0),[n,r]=(0,_.useState)(!1);return(0,_.useEffect)(()=>{let e=Date.now();(async()=>{let n=Date.now()-e,i=Math.max(0,2500-n);setTimeout(()=>{t(!1),setTimeout(()=>{r(!0)},50)},i)})()},[]),(0,_.useEffect)(()=>(e?document.body.style.overflow=`hidden`:document.body.style.overflow=`auto`,()=>{document.body.style.overflow=`auto`}),[e]),(0,y.jsxs)(y.Fragment,{children:[e&&(0,y.jsx)(ce,{onLoadingComplete:()=>t(!1)}),n&&(0,y.jsxs)(`div`,{className:`App`,children:[(0,y.jsx)(x,{}),(0,y.jsx)(ne,{}),(0,y.jsx)(ae,{}),(0,y.jsx)(oe,{})]})]})}(0,g.createRoot)(document.getElementById(`root`)).render((0,y.jsx)(_.StrictMode,{children:(0,y.jsx)(le,{})}));
+      `}),(0,y.jsx)(`div`,{className:`loader-container ${t} ${r?`fade-out`:``}`,children:(0,y.jsxs)(`div`,{className:`loader-content`,children:[(0,y.jsx)(`div`,{className:`logo-wrapper`,children:(0,y.jsx)(`img`,{src:se,alt:`Prajin Singh Logo`,className:`logo-image`})}),(0,y.jsx)(`div`,{className:`text-wrapper`,children:(0,y.jsx)(`span`,{className:`loader-text`,children:`PRAJIN SINGH`})}),(0,y.jsxs)(`div`,{className:`loading-container`,children:[(0,y.jsx)(`div`,{className:`loading-bar-bg`,children:(0,y.jsx)(`div`,{className:`loading-bar-fill`,style:{width:`${a}%`}})}),(0,y.jsxs)(`div`,{className:`loading-percentage`,children:[a,`%`]})]}),(0,y.jsx)(`div`,{className:`tagline`,children:`Building digital experiences`})]})})]}):null}function le(){let[e,t]=(0,_.useState)(!0),[n,r]=(0,_.useState)(!1),[i,a]=(0,_.useState)(`dark`),[o,s]=(0,_.useState)(!1);return(0,_.useEffect)(()=>{let e=localStorage.getItem(`theme`);e||=window.matchMedia(`(prefers-color-scheme: dark)`).matches?`dark`:`light`,a(e),s(!0),e===`dark`?document.body.classList.remove(`light-mode`):document.body.classList.add(`light-mode`)},[]),(0,_.useEffect)(()=>{let e=e=>{if(e.key===`theme`){let t=e.newValue||`dark`;a(t),t===`dark`?document.body.classList.remove(`light-mode`):document.body.classList.add(`light-mode`)}};return window.addEventListener(`storage`,e),()=>window.removeEventListener(`storage`,e)},[]),(0,_.useEffect)(()=>{if(!o)return;let e=Date.now();(async()=>{let n=Date.now()-e,i=Math.max(0,2500-n);setTimeout(()=>{t(!1),setTimeout(()=>{r(!0)},50)},i)})()},[o]),(0,_.useEffect)(()=>(e?document.body.style.overflow=`hidden`:document.body.style.overflow=`auto`,()=>{document.body.style.overflow=`auto`}),[e]),(0,y.jsxs)(y.Fragment,{children:[e&&(0,y.jsx)(ce,{onLoadingComplete:()=>t(!1),theme:i,isThemeLoaded:o}),n&&(0,y.jsxs)(`div`,{className:`App`,children:[(0,y.jsx)(x,{theme:i,toggleTheme:()=>{let e=i===`dark`?`light`:`dark`;a(e),localStorage.setItem(`theme`,e),e===`dark`?document.body.classList.remove(`light-mode`):document.body.classList.add(`light-mode`)}}),(0,y.jsx)(ne,{theme:i}),(0,y.jsx)(ae,{theme:i}),(0,y.jsx)(oe,{theme:i})]})]})}(0,g.createRoot)(document.getElementById(`root`)).render((0,y.jsx)(_.StrictMode,{children:(0,y.jsx)(le,{})}));
