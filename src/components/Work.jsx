@@ -1,7 +1,6 @@
 // Work.jsx
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback, useMemo } from "react";
 
-// Project data extracted from the resume
 const PROJECTS = [
   {
     id: 1,
@@ -96,9 +95,38 @@ const PROJECTS = [
     live: null,
     category: "ai",
   },
+  {
+    id: 10,
+    title: "Website Log Analysis & Insights Dashboard",
+    description:
+      "Analysis website logs to extract meaningful insights and display them on an interactive dashboard. Processes log files to identify patterns, detect anomalies, and visualize key metrics for better decision-making.",
+    tech: ["Python", "Log Analysis", "Data Visualization", "React"],
+    github: "https://github.com/Prazeen7/Log-Feature",
+    live: null,
+    category: "ds",
+  },
+  {
+    id: 11,
+    title: "Google Analytics Data Pipeline with Gzip Optimization",
+    description:
+      "Engineered a high-performance data pipeline that collects website data via Google BigQuery, exports to Google Cloud Storage using scheduled CRON jobs, and optimizes delivery with gzip compression. Implemented worker-based parallel fetching for fast dashboard rendering in React.",
+    tech: ["Node.js", "BigQuery", "GCS", "CRON", "React", "Gzip"],
+    github: null,
+    live: null,
+    category: "ds",
+  },
+  {
+    id: 12,
+    title: "Textile Design Classification Using Deep Learning",
+    description:
+      "Collected and generated textile design datasets, performed extensive data cleaning and preprocessing, and trained a deep learning model to classify textile designs into multiple categories including Abstract, Border, Animals, Mirror, Tribal, Traditional, Geometry, and more. Achieved high accuracy in distinguishing intricate design patterns.",
+    tech: ["Python", "TensorFlow", "CNN", "Data Augmentation", "Image Classification"],
+    github: null,
+    live: null,
+    category: "ml",
+  },
 ];
 
-// Work Experience data from resume
 const WORK_EXPERIENCE = [
   {
     id: 1,
@@ -134,26 +162,33 @@ const WORK_EXPERIENCE = [
   },
 ];
 
-const CATEGORIES = ["all", "fullstack", "web", "ml", "ai"];
+const CATEGORIES = ["all", "fullstack", "web", "ml", "ai", "ds"];
 
 export default function Work() {
   const [activeCategory, setActiveCategory] = useState("all");
   const [visibleCount, setVisibleCount] = useState(6);
-  
-  const expSectionRef = useRef(null);
-  const projectsSectionRef = useRef(null);
-  const expHeaderRef = useRef(null);
-  const projectsHeaderRef = useRef(null);
-  const filtersRef = useRef(null);
-  const experienceRefs = useRef([]);
-  const projectRefs = useRef([]);
+  const [expandedTech, setExpandedTech] = useState({});
 
-  const filteredProjects =
+  // Scroll visibility state for each section
+  const [experienceVisible, setExperienceVisible] = useState(false);
+  const [projectsVisible, setProjectsVisible] = useState(false);
+
+  const sectionRef = useRef(null);
+  const experienceRef = useRef(null);
+  const projectsRef = useRef(null);
+
+  const filteredProjects = useMemo(() =>
     activeCategory === "all"
       ? PROJECTS
-      : PROJECTS.filter((p) => p.category === activeCategory);
+      : PROJECTS.filter((p) => p.category === activeCategory),
+    [activeCategory]
+  );
 
-  const displayedProjects = filteredProjects.slice(0, visibleCount);
+  const displayedProjects = useMemo(() =>
+    filteredProjects.slice(0, visibleCount),
+    [filteredProjects, visibleCount]
+  );
+
   const hasMore = visibleCount < filteredProjects.length;
 
   const loadMore = () => {
@@ -164,109 +199,42 @@ export default function Work() {
     setVisibleCount(6);
   }, [activeCategory]);
 
-  // Observer for Experience section header
+  // IntersectionObserver for experience section
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && expHeaderRef.current) {
-            expHeaderRef.current.style.animation = "fadeUpWork 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards";
-            observer.disconnect();
-          }
-        });
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setExperienceVisible(true);
+          observer.disconnect();
+        }
       },
-      { threshold: 0.3 }
+      { threshold: 0.1 }
     );
-
-    if (expHeaderRef.current) {
-      observer.observe(expHeaderRef.current);
-    }
-
+    if (experienceRef.current) observer.observe(experienceRef.current);
     return () => observer.disconnect();
   }, []);
 
-  // Observer for Projects section header and filters
+  // IntersectionObserver for projects section
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            if (projectsHeaderRef.current) {
-              projectsHeaderRef.current.style.animation = "fadeUpWork 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards";
-            }
-            if (filtersRef.current) {
-              filtersRef.current.style.animation = "fadeUpWork 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards";
-            }
-            observer.disconnect();
-          }
-        });
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setProjectsVisible(true);
+          observer.disconnect();
+        }
       },
-      { threshold: 0.3 }
+      { threshold: 0.05 }
     );
-
-    if (projectsHeaderRef.current) {
-      observer.observe(projectsHeaderRef.current);
-    }
-
+    if (projectsRef.current) observer.observe(projectsRef.current);
     return () => observer.disconnect();
   }, []);
 
-  // Observer for experience cards - simplified approach
-  useEffect(() => {
-    // Small delay to ensure refs are populated
-    const timeout = setTimeout(() => {
-      experienceRefs.current.forEach((card) => {
-        if (card) {
-          // Set opacity to 0 initially
-          card.style.opacity = "0";
-          
-          const observer = new IntersectionObserver(
-            (entries) => {
-              entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                  entry.target.style.animation = "slideInLeft 0.5s ease forwards";
-                  observer.unobserve(entry.target);
-                }
-              });
-            },
-            { threshold: 0.2, rootMargin: "0px 0px -50px 0px" }
-          );
-          observer.observe(card);
-        }
-      });
-    }, 100);
-
-    return () => clearTimeout(timeout);
-  }, [WORK_EXPERIENCE]); // Only run once for experience cards
-
-  // Observer for project cards - runs when displayedProjects changes
-  useEffect(() => {
-    // Clean up previous animations and set up new ones
-    const timeout = setTimeout(() => {
-      projectRefs.current.forEach((card) => {
-        if (card) {
-          // Reset any existing animations and set opacity to 0
-          card.style.animation = "";
-          card.style.opacity = "0";
-          
-          const observer = new IntersectionObserver(
-            (entries) => {
-              entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                  entry.target.style.animation = "scaleIn 0.5s ease forwards";
-                  observer.unobserve(entry.target);
-                }
-              });
-            },
-            { threshold: 0.2, rootMargin: "0px 0px -50px 0px" }
-          );
-          observer.observe(card);
-        }
-      });
-    }, 50);
-
-    return () => clearTimeout(timeout);
-  }, [displayedProjects]); // Re-run when displayed projects change
+  const toggleTechExpand = (projectId) => {
+    setExpandedTech(prev => ({
+      ...prev,
+      [projectId]: true
+    }));
+  };
 
   return (
     <>
@@ -306,189 +274,58 @@ export default function Work() {
           }
         }
 
-        /* Dark Mode Styles */
-        body.dark-mode .work-section {
-          background: #0a0a0a;
+        @keyframes techTagFadeIn {
+          from {
+            opacity: 0;
+            transform: scale(0.8);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
         }
 
-        body.dark-mode .work-title {
-          color: #e0e0e0;
-        }
+        /* ── Dark Mode ── */
+        body.dark-mode .work-section { background: #0a0a0a; }
+        body.dark-mode .work-title { color: #e0e0e0; }
+        body.dark-mode .work-sub { color: #a0a0a0; }
+        body.dark-mode .experience-card { background: #1a1a1a; border-color: #2a2a2a; }
+        body.dark-mode .experience-card:hover { border-color: #E76F51; }
+        body.dark-mode .exp-title { color: #e0e0e0; }
+        body.dark-mode .exp-company { color: #E76F51; }
+        body.dark-mode .exp-period { color: #8a8a8a; }
+        body.dark-mode .exp-description li { color: #b0b0b0; }
+        body.dark-mode .exp-tech-tag { background: #2a2a2a; color: #E76F51; border-color: #3a3a3a; }
+        body.dark-mode .work-card { background: #1a1a1a; border-color: #2a2a2a; }
+        body.dark-mode .work-card:hover { border-color: #E76F51; }
+        body.dark-mode .work-card-title { color: #e0e0e0; }
+        body.dark-mode .work-card-desc { color: #b0b0b0; }
+        body.dark-mode .work-tech-tag { background: #2a2a2a; color: #E76F51; border-color: #3a3a3a; cursor: pointer; transition: all 0.2s ease; }
+        body.dark-mode .work-tech-tag:hover { background: #E76F51; color: #1a1a1a; transform: translateY(-1px); }
+        body.dark-mode .work-filter-btn { border-color: #3a3a3a; color: #a0a0a0; }
+        body.dark-mode .work-filter-btn:hover { border-color: #E76F51; color: #E76F51; background: rgba(231, 111, 81, 0.08); }
+        body.dark-mode .work-filter-btn.active { border-color: #E76F51; background: rgba(231, 111, 81, 0.15); color: #E76F51; font-weight: 500; }
 
-        body.dark-mode .work-sub {
-          color: #a0a0a0;
-        }
+        /* ── Light Mode ── */
+        body.light-mode .work-section { background: #ffffff; }
+        body.light-mode .work-title { color: #1a1a1a; }
+        body.light-mode .work-sub { color: #6c6c6c; }
+        body.light-mode .experience-card { background: #f8f9fa; border-color: #e0e0e0; }
+        body.light-mode .experience-card:hover { border-color: #E76F51; box-shadow: 0 12px 24px -8px rgba(231, 111, 81, 0.15); }
+        body.light-mode .exp-title { color: #1a1a1a; }
+        body.light-mode .exp-company { color: #E76F51; }
+        body.light-mode .exp-period { color: #8a8a8a; }
+        body.light-mode .exp-description li { color: #5a5a5a; }
+        body.light-mode .exp-tech-tag { background: #e8e8e8; color: #E76F51; border-color: #d0d0d0; }
+        body.light-mode .work-tech-tag { background: #f0f0f0; color: #E76F51; border-color: #e0e0e0; cursor: pointer; transition: all 0.2s ease; }
+        body.light-mode .work-tech-tag:hover { background: #E76F51; color: white; transform: translateY(-1px); }
+        body.light-mode .work-filter-btn { border-color: #d0d0d0; color: #6c6c6c; }
+        body.light-mode .work-filter-btn:hover { border-color: #E76F51; color: #E76F51; background: rgba(231, 111, 81, 0.08); }
+        body.light-mode .work-filter-btn.active { border-color: #E76F51; background: rgba(231, 111, 81, 0.15); color: #E76F51; font-weight: 500; }
+        body.light-mode .work-loadmore-btn { border-color: #E76F51; color: #E76F51; }
+        body.light-mode .work-loadmore-btn:hover { background: #E76F51; color: #ffffff; }
 
-        body.dark-mode .experience-card {
-          background: #1a1a1a;
-          border-color: #2a2a2a;
-        }
-
-        body.dark-mode .experience-card:hover {
-          border-color: #E76F51;
-        }
-
-        body.dark-mode .exp-title {
-          color: #e0e0e0;
-        }
-
-        body.dark-mode .exp-company {
-          color: #E76F51;
-        }
-
-        body.dark-mode .exp-period {
-          color: #8a8a8a;
-        }
-
-        body.dark-mode .exp-description li {
-          color: #b0b0b0;
-        }
-
-        body.dark-mode .exp-tech-tag {
-          background: #2a2a2a;
-          color: #E76F51;
-          border-color: #3a3a3a;
-        }
-
-        body.dark-mode .work-card {
-          background: #1a1a1a;
-          border-color: #2a2a2a;
-        }
-
-        body.dark-mode .work-card:hover {
-          border-color: #E76F51;
-        }
-
-        body.dark-mode .work-card-title {
-          color: #e0e0e0;
-        }
-
-        body.dark-mode .work-card-desc {
-          color: #b0b0b0;
-        }
-
-        body.dark-mode .work-tech-tag {
-          background: #2a2a2a;
-          color: #E76F51;
-          border-color: #3a3a3a;
-        }
-
-        body.dark-mode .work-filter-btn {
-          border-color: #3a3a3a;
-          color: #a0a0a0;
-        }
-
-        body.dark-mode .work-filter-btn:hover {
-          border-color: #E76F51;
-          color: #E76F51;
-          background: rgba(231, 111, 81, 0.08);
-        }
-
-        body.dark-mode .work-filter-btn.active {
-          border-color: #E76F51;
-          background: rgba(231, 111, 81, 0.15);
-          color: #E76F51;
-          font-weight: 500;
-        }
-
-        /* Light Mode Styles */
-        body.light-mode .work-section {
-          background: #ffffff;
-        }
-
-        body.light-mode .work-title {
-          color: #1a1a1a;
-        }
-
-        body.light-mode .work-sub {
-          color: #6c6c6c;
-        }
-
-        body.light-mode .experience-card {
-          background: #f8f9fa;
-          border-color: #e0e0e0;
-        }
-
-        body.light-mode .experience-card:hover {
-          border-color: #E76F51;
-          box-shadow: 0 12px 24px -8px rgba(231, 111, 81, 0.15);
-        }
-
-        body.light-mode .exp-title {
-          color: #1a1a1a;
-        }
-
-        body.light-mode .exp-company {
-          color: #E76F51;
-        }
-
-        body.light-mode .exp-period {
-          color: #8a8a8a;
-        }
-
-        body.light-mode .exp-description li {
-          color: #5a5a5a;
-        }
-
-        body.light-mode .exp-tech-tag {
-          background: #e8e8e8;
-          color: #E76F51;
-          border-color: #d0d0d0;
-        }
-
-        body.light-mode .work-card {
-          background: #ffffff;
-          border-color: #e0e0e0;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-        }
-
-        body.light-mode .work-card:hover {
-          border-color: #E76F51;
-          box-shadow: 0 12px 24px -8px rgba(231, 111, 81, 0.15);
-        }
-
-        body.light-mode .work-card-title {
-          color: #1a1a1a;
-        }
-
-        body.light-mode .work-card-desc {
-          color: #5a5a5a;
-        }
-
-        body.light-mode .work-tech-tag {
-          background: #f0f0f0;
-          color: #E76F51;
-          border-color: #e0e0e0;
-        }
-
-        body.light-mode .work-filter-btn {
-          border-color: #d0d0d0;
-          color: #6c6c6c;
-        }
-
-        body.light-mode .work-filter-btn:hover {
-          border-color: #E76F51;
-          color: #E76F51;
-          background: rgba(231, 111, 81, 0.08);
-        }
-
-        body.light-mode .work-filter-btn.active {
-          border-color: #E76F51;
-          background: rgba(231, 111, 81, 0.15);
-          color: #E76F51;
-          font-weight: 500;
-        }
-
-        body.light-mode .work-loadmore-btn {
-          border-color: #E76F51;
-          color: #E76F51;
-        }
-
-        body.light-mode .work-loadmore-btn:hover {
-          background: #E76F51;
-          color: #ffffff;
-        }
-
+        /* ── Section ── */
         .work-section {
           padding: 0px 64px 0px;
           font-family: 'Jost', sans-serif;
@@ -501,11 +338,17 @@ export default function Work() {
           margin: 0 auto;
         }
 
-        /* header */
+        /* ── Header — starts hidden, plays when .animate-in is added ── */
         .work-header {
           text-align: center;
           margin-bottom: 64px;
           opacity: 0;
+          animation: fadeUpWork 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+          animation-play-state: paused;
+        }
+
+        .work-header.animate-in {
+          animation-play-state: running;
         }
 
         .work-badge {
@@ -535,7 +378,7 @@ export default function Work() {
           transition: color 0.3s ease;
         }
 
-        /* Experience Section */
+        /* ── Experience ── */
         .experience-section {
           margin-bottom: 80px;
         }
@@ -551,15 +394,25 @@ export default function Work() {
           border-radius: 20px;
           padding: 28px;
           transition: all 0.3s ease;
+          opacity: 0;
+          animation: slideInLeft 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+          animation-play-state: paused;
+        }
+
+        /* Stagger delays for experience cards */
+        .experience-card:nth-child(1) { animation-delay: 0.05s; }
+        .experience-card:nth-child(2) { animation-delay: 0.15s; }
+        .experience-card:nth-child(3) { animation-delay: 0.25s; }
+
+        .experience-card.animate-in {
+          animation-play-state: running;
         }
 
         .experience-card:hover {
           transform: translateY(-4px);
         }
 
-        .exp-header {
-          margin-bottom: 20px;
-        }
+        .exp-header { margin-bottom: 20px; }
 
         .exp-title {
           font-size: 20px;
@@ -595,7 +448,7 @@ export default function Work() {
           margin-bottom: 8px;
           padding-left: 18px;
           position: relative;
-          text-align: justify;
+          text-align: start;
           transition: color 0.3s ease;
         }
 
@@ -623,7 +476,7 @@ export default function Work() {
           transition: all 0.2s ease;
         }
 
-        /* category filter */
+        /* ── Filters — starts hidden, plays when .animate-in is added ── */
         .work-filters {
           display: flex;
           flex-wrap: wrap;
@@ -631,6 +484,12 @@ export default function Work() {
           gap: 12px;
           margin-bottom: 56px;
           opacity: 0;
+          animation: fadeUpWork 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
+          animation-play-state: paused;
+        }
+
+        .work-filters.animate-in {
+          animation-play-state: running;
         }
 
         .work-filter-btn {
@@ -646,7 +505,7 @@ export default function Work() {
           letter-spacing: 0.01em;
         }
 
-        /* grid - 3 columns with proper spacing */
+        /* ── Project grid ── */
         .work-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
@@ -662,27 +521,13 @@ export default function Work() {
           flex-direction: column;
           height: auto;
           min-height: auto;
+          opacity: 0;
+          animation: scaleIn 0.5s ease forwards;
+          animation-play-state: paused;
         }
 
-        .work-card:hover {
-          transform: translateY(-4px);
-        }
-
-        .work-card-title {
-          font-size: 20px;
-          font-weight: 700;
-          margin: 0 0 12px 0;
-          line-height: 1.3;
-          transition: color 0.3s ease;
-        }
-
-        .work-card-desc {
-          font-size: 14px;
-          line-height: 1.6;
-          margin: 0 0 20px 0;
-          text-align: justify;
-          flex: 1;
-          transition: color 0.3s ease;
+        .work-card.animate-in {
+          animation-play-state: running;
         }
 
         .work-card-tech {
@@ -699,6 +544,35 @@ export default function Work() {
           border-radius: 20px;
           letter-spacing: 0.02em;
           transition: all 0.2s ease;
+        }
+
+        .work-tech-tag.expandable {
+          background: #E76F51;
+          color: white;
+          border-color: #E76F51;
+          cursor: pointer;
+        }
+
+        .work-tech-tag.expandable:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(231, 111, 81, 0.3);
+        }
+
+        .work-card-title {
+          font-size: 20px;
+          font-weight: 700;
+          margin: 0 0 12px 0;
+          line-height: 1.3;
+          transition: color 0.3s ease;
+        }
+
+        .work-card-desc {
+          font-size: 14px;
+          line-height: 1.6;
+          margin: 0 0 20px 0;
+          text-align: start;
+          flex: 1;
+          transition: color 0.3s ease;
         }
 
         .work-card-link {
@@ -731,7 +605,7 @@ export default function Work() {
           transform: translateX(3px);
         }
 
-        /* load more */
+        /* ── Load more ── */
         .work-loadmore {
           display: flex;
           justify-content: center;
@@ -763,6 +637,10 @@ export default function Work() {
           margin: 60px 0;
         }
 
+        .tech-tag-new {
+          animation: techTagFadeIn 0.3s ease forwards;
+        }
+
         @media (max-width: 1024px) {
           .work-grid,
           .experience-grid {
@@ -780,44 +658,32 @@ export default function Work() {
             grid-template-columns: 1fr;
             gap: 24px;
           }
-          .work-card {
-            padding: 24px;
-          }
-          .work-filters {
-            gap: 8px;
-          }
-          .work-filter-btn {
-            padding: 6px 18px;
-            font-size: 13px;
-          }
-          .experience-card {
-            padding: 24px;
-          }
-          .work-card-desc {
-            text-align: left;
-          }
+          .work-card { padding: 24px; }
+          .work-filters { gap: 8px; }
+          .work-filter-btn { padding: 6px 18px; font-size: 13px; }
+          .experience-card { padding: 24px; }
+          .work-card-desc { text-align: left; }
         }
       `}</style>
 
-      <section className="work-section" id="work">
+      <section className="work-section" id="work" ref={sectionRef}>
         <div className="work-container">
-          {/* Work Experience Section */}
-          <div className="experience-section" ref={expSectionRef}>
-            <div className="work-header" ref={expHeaderRef}>
+
+          {/* ── Work Experience ── */}
+          <div className="experience-section" ref={experienceRef}>
+            <div className={`work-header ${experienceVisible ? "animate-in" : ""}`}>
               <span className="work-badge">✦ EXPERIENCE</span>
               <h2 className="work-title">Work Experience</h2>
               <p className="work-sub">
-                Professional journey across AI development, IT support, and
-                technical roles
+                Professional journey across AI development, IT support, and technical roles
               </p>
             </div>
 
             <div className="experience-grid">
-              {WORK_EXPERIENCE.map((exp, idx) => (
+              {WORK_EXPERIENCE.map((exp) => (
                 <div
                   key={exp.id}
-                  className="experience-card"
-                  ref={(el) => (experienceRefs.current[idx] = el)}
+                  className={`experience-card ${experienceVisible ? "animate-in" : ""}`}
                 >
                   <div className="exp-header">
                     <h3 className="exp-title">{exp.title}</h3>
@@ -831,9 +697,7 @@ export default function Work() {
                   </ul>
                   <div className="exp-tech">
                     {exp.technologies.map((tech) => (
-                      <span key={tech} className="exp-tech-tag">
-                        {tech}
-                      </span>
+                      <span key={tech} className="exp-tech-tag">{tech}</span>
                     ))}
                   </div>
                 </div>
@@ -843,19 +707,18 @@ export default function Work() {
 
           <div className="section-divider"></div>
 
-          {/* Projects Section */}
-          <div ref={projectsSectionRef}>
-            <div className="work-header" ref={projectsHeaderRef}>
+          {/* ── Projects ── */}
+          <div ref={projectsRef}>
+            <div className={`work-header ${projectsVisible ? "animate-in" : ""}`}>
               <span className="work-badge">✦ PORTFOLIO</span>
               <h2 className="work-title">Featured Projects</h2>
               <p className="work-sub">
-                AI-driven applications, full‑stack platforms, and machine
-                learning experiments — turning ideas into production-ready
-                solutions.
+                AI-driven applications, full‑stack platforms, data science projects, and machine
+                learning experiments — turning ideas into production-ready solutions.
               </p>
             </div>
 
-            <div className="work-filters" ref={filtersRef}>
+            <div className={`work-filters ${projectsVisible ? "animate-in" : ""}`}>
               {CATEGORIES.map((cat) => (
                 <button
                   key={cat}
@@ -870,54 +733,75 @@ export default function Work() {
                         ? "Web Apps"
                         : cat === "ml"
                           ? "ML / DL"
-                          : "AI / LLM"}
+                          : cat === "ai"
+                            ? "AI / LLM"
+                            : "Data Science"}
                 </button>
               ))}
             </div>
 
             <div className="work-grid">
-              {displayedProjects.map((project, idx) => (
-                <div
-                  key={`${project.id}-${activeCategory}`}
-                  className="work-card"
-                  ref={(el) => (projectRefs.current[idx] = el)}
-                >
-                  <h3 className="work-card-title">{project.title}</h3>
-                  <p className="work-card-desc">{project.description}</p>
-                  <div className="work-card-tech">
-                    {project.tech.slice(0, 4).map((t) => (
-                      <span key={t} className="work-tech-tag">
-                        {t}
-                      </span>
-                    ))}
-                    {project.tech.length > 4 && (
-                      <span className="work-tech-tag">
-                        +{project.tech.length - 4}
+              {displayedProjects.map((project, idx) => {
+                const isExpanded = expandedTech[project.id];
+                const displayTech = isExpanded ? project.tech : project.tech.slice(0, 4);
+                const hasMoreTech = project.tech.length > 4 && !isExpanded;
+
+                return (
+                  <div
+                    key={`${project.id}-${activeCategory}`}
+                    className={`work-card ${projectsVisible ? "animate-in" : ""}`}
+                    style={{ animationDelay: `${idx * 0.07}s` }}
+                  >
+                    <h3 className="work-card-title">{project.title}</h3>
+                    <p className="work-card-desc">{project.description}</p>
+                    <div className="work-card-tech">
+                      {displayTech.map((t, techIdx) => (
+                        <span
+                          key={t}
+                          className={`work-tech-tag ${isExpanded && techIdx >= 4 ? "tech-tag-new" : ""}`}
+                        >
+                          {t}
+                        </span>
+                      ))}
+                      {hasMoreTech && (
+                        <span
+                          className="work-tech-tag expandable"
+                          onClick={() => toggleTechExpand(project.id)}
+                        >
+                          +{project.tech.length - 4}
+                        </span>
+                      )}
+                    </div>
+                    {project.github ? (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="work-card-link"
+                      >
+                        View Project
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeLinecap="round" />
+                        </svg>
+                      </a>
+                    ) : (
+                      <span
+                        className="work-card-link"
+                        style={{ opacity: 0.6, cursor: "default", borderBottom: "1.5px solid #3a3a3a" }}
+                      >
+                        Private Repository
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path
+                            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                          />
+                        </svg>
                       </span>
                     )}
                   </div>
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="work-card-link"
-                  >
-                    View Project
-                    <svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    >
-                      <path
-                        d="M7 17L17 7M17 7H7M17 7V17"
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                      />
-                    </svg>
-                  </a>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             {hasMore && (
