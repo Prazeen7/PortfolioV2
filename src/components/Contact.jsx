@@ -1010,7 +1010,6 @@ export default function Contact() {
       <section className="contact-section" id="contact" ref={sectionRef}>
         <div className="contact-container">
           <div className="contact-header" ref={headerRef}>
-            <span className="contact-badge">✦ GET IN TOUCH</span>
             <h2 className="contact-title">Let's Connect</h2>
             <p className="contact-sub">
               Have a project in mind or just want to say hello? I'd love to hear

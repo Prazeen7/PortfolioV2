@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
+import ResumePDF from "../assets/Resume.pdf";
 
 const navLinks = [
   { label: "HOME", href: "home" },
   { label: "WORK", href: "work" },
+  { label: "PROJECTS", href: "projects" },
   { label: "CONTACT", href: "contact" },
 ];
 
@@ -349,6 +351,7 @@ export default function Navbar() {
         .nb-scrolled .right-line {
           opacity: 0.6;
         }
+
 
         /* Responsive adjustments */
         @media (max-width: 768px) {

@@ -5,6 +5,8 @@ import Home from './components/Home';
 import Work from './components/Work';
 import Contact from './components/Contact';
 import Loader from './components/Loader';
+import Projects from './components/Projects';
+import Footer from './components/Footer';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -117,7 +119,9 @@ function App() {
           <Navbar theme={theme} toggleTheme={toggleTheme} />
           <Home theme={theme} />
           <Work theme={theme} />
+          <Projects theme={theme} />
           <Contact theme={theme} />
+          <Footer theme={theme} />
         </div>
       )}
     </>

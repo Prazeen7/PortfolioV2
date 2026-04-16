@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import PP from "../assets/pp.jpg";
+import PP from "../assets/pp2.jpg";
 
 const TITLES = ["AI Developer", "Web Developer", "Data Scientist"];
 
@@ -151,6 +151,22 @@ export default function Home() {
         @keyframes blink {
           0%, 100% { opacity: 1; }
           50%       { opacity: 0; }
+        }
+
+        @keyframes spin-border {
+          0%   { --ring-angle: 0deg; }
+          100% { --ring-angle: 360deg; }
+        }
+
+        @keyframes ring-pulse {
+          0%, 100% { opacity: 0.35; transform: scale(1); }
+          50%       { opacity: 0.70; transform: scale(1.012); }
+        }
+
+        @property --ring-angle {
+          syntax: '<angle>';
+          initial-value: 0deg;
+          inherits: false;
         }
 
         /* Base styles that work for both themes */
@@ -380,9 +396,9 @@ export default function Home() {
         }
 
         .hm-avatar-wrap {
-          width: 360px;
-          height: 360px;
-          border-radius: 50%;
+          width: 300px;
+          height: 400px;
+          border-radius: 16px;
           overflow: hidden;
           display: flex;
           align-items: center;
@@ -391,26 +407,59 @@ export default function Home() {
           transition: background-color 0.3s ease;
         }
 
+        /* ── Animated avatar rings ── */
         .hm-avatar-ring {
           position: absolute;
-          inset: -12px;
-          border-radius: 50%;
-          border: 1px solid;
+          inset: -10px;
+          border-radius: 24px;
           pointer-events: none;
+          padding: 2px;
+          /* conic-gradient mask trick for a spinning border */
+          background: conic-gradient(
+            from var(--ring-angle),
+            #E76F51 0deg,
+            #F4A261 60deg,
+            transparent 120deg,
+            transparent 240deg,
+            #E76F51 300deg,
+            #E76F51 360deg
+          );
+          -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
           opacity: 0;
-          animation: fadeIn 1s ease 0.7s forwards;
-          transition: border-color 0.3s ease;
+          animation:
+            fadeIn 1s ease 0.7s forwards,
+            spin-border 3s linear 1.7s infinite;
         }
 
         .hm-avatar-ring-2 {
           position: absolute;
-          inset: -28px;
-          border-radius: 50%;
-          border: 1px solid;
+          inset: -24px;
+          border-radius: 32px;
           pointer-events: none;
+          padding: 1.5px;
+          background: conic-gradient(
+            from calc(var(--ring-angle) + 180deg),
+            rgba(231,111,81,0.55) 0deg,
+            rgba(244,162,97,0.55) 60deg,
+            transparent 130deg,
+            transparent 230deg,
+            rgba(231,111,81,0.55) 300deg,
+            rgba(231,111,81,0.55) 360deg
+          );
+          -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
           opacity: 0;
-          animation: fadeIn 1s ease 0.9s forwards;
-          transition: border-color 0.3s ease;
+          animation:
+            fadeIn 1s ease 0.9s forwards,
+            spin-border 5s linear 1.9s infinite reverse,
+            ring-pulse 4s ease-in-out 2s infinite;
         }
 
         .section-divider {
@@ -494,12 +543,10 @@ export default function Home() {
           background: #1a1a1a;
         }
 
-        body.dark-mode .hm-avatar-ring {
-          border-color: #404040;
-        }
-
+        /* rings are gradient-based — no border-color override needed */
+        body.dark-mode .hm-avatar-ring,
         body.dark-mode .hm-avatar-ring-2 {
-          border-color: #2a2a2a;
+          filter: brightness(1.1);
         }
 
         body.dark-mode .section-divider {
@@ -577,12 +624,9 @@ export default function Home() {
           background: #f0f0f0;
         }
 
-        body.light-mode .hm-avatar-ring {
-          border-color: #d0d0d0;
-        }
-
+        body.light-mode .hm-avatar-ring,
         body.light-mode .hm-avatar-ring-2 {
-          border-color: #e0e0e0;
+          filter: brightness(0.9);
         }
 
         body.light-mode .section-divider {
@@ -598,8 +642,8 @@ export default function Home() {
             min-height: auto;
           }
           .hm-avatar-wrap {
-            width: 260px;
-            height: 260px;
+            width: 200px;
+            height: 267px;
           }
           .hm-left {
             align-items: center;
@@ -684,7 +728,7 @@ export default function Home() {
             <img
               src={PP}
               alt="Prajin Singh"
-              style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
+              style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center",  }}
             />
           </div>
         </div>
