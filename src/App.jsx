@@ -21,7 +21,7 @@ function App() {
     let initialTheme = savedTheme;
     
     if (!initialTheme) {
-      initialTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      initialTheme = 'dark';
     }
     
     setTheme(initialTheme);
