@@ -180,7 +180,10 @@ export default function WorkExperience() {
         }
 
         /* ─── Layout ─────────────────────────────────────────── */
-        .experience-section { margin-bottom: 80px; }
+        .experience-section {
+          margin-bottom: 80px;
+          padding: 0 24px;
+        }
         .experience-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
@@ -190,7 +193,7 @@ export default function WorkExperience() {
         .section-divider {
           height: 1px;
           background: linear-gradient(to right, transparent, #E76F51, transparent);
-          margin: 60px 0;
+          margin: 60px 24px;
         }
 
         /* ─── Light Mode ─────────────────────────────────────── */
@@ -212,26 +215,34 @@ export default function WorkExperience() {
 
         /* ─── Responsive ─────────────────────────────────────── */
         @media (max-width: 1024px) {
-          .experience-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+          .experience-section { padding: 0 20px; margin-bottom: 64px; }
+          .section-divider { margin: 50px 20px; }
+          .experience-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
           .wk-header { margin-bottom: 48px; }
         }
         @media (max-width: 768px) {
-          .experience-section { margin-bottom: 56px; }
-          .experience-grid { grid-template-columns: 1fr; gap: 20px; }
+          .experience-section { padding: 0 16px; margin-bottom: 48px; }
+          .section-divider { margin: 40px 16px; }
+          .experience-grid { grid-template-columns: 1fr; gap: 16px; margin-top: 28px; }
           .experience-card { padding: 20px; }
-          .wk-header { margin-bottom: 40px; }
+          .wk-header { margin-bottom: 36px; }
           .exp-title { font-size: 17px; }
           .exp-company { font-size: 14px; }
           .exp-description li { font-size: 13px; }
+          .exp-tech { gap: 6px; }
         }
         @media (max-width: 480px) {
-          .experience-section { margin-bottom: 40px; }
-          .experience-grid { gap: 16px; }
-          .experience-card { padding: 18px 16px; border-radius: 16px; }
-          .wk-header { margin-bottom: 32px; padding: 0 8px; }
-          .exp-title { font-size: 16px; }
-          .exp-tech-tag { font-size: 10px; padding: 4px 10px; }
-          .section-divider { margin: 40px 0; }
+          .experience-section { padding: 0 12px; margin-bottom: 36px; }
+          .section-divider { margin: 32px 12px; }
+          .experience-grid { gap: 12px; margin-top: 20px; }
+          .experience-card { padding: 16px 14px; border-radius: 16px; }
+          .wk-header { margin-bottom: 28px; padding: 0; }
+          .work-badge { font-size: 11px; }
+          .exp-title { font-size: 15px; }
+          .exp-company { font-size: 13px; }
+          .exp-period { font-size: 11px; }
+          .exp-description li { font-size: 12.5px; }
+          .exp-tech-tag { font-size: 10px; padding: 4px 9px; }
         }
       `}</style>
 

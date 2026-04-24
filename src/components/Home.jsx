@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import PP from "../assets/pp2.jpg";
+import PP from "../assets/pp4.png";
 
 const TITLES = ["AI Developer", "Web Developer", "Data Scientist"];
 

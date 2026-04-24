@@ -136,6 +136,7 @@ export default function Projects() {
   const [currentIndex, setCurrentIndex]     = useState(0);
   const [cardsPerView, setCardsPerView]     = useState(3);
   const [touchStart, setTouchStart]         = useState(null);
+  const [autoPlayEnabled, setAutoPlayEnabled] = useState(true); // set false on dot click
 
   const sectionRef    = useRef(null);
   const hasAnimated   = useRef(false);
@@ -192,7 +193,7 @@ export default function Projects() {
 
   /* ── Continuous auto-play — starts once section is visible ── */
   useEffect(() => {
-    if (!isVisible || total <= cardsPerView) return;
+    if (!isVisible || total <= cardsPerView || !autoPlayEnabled) return;
 
     intervalRef.current = setInterval(() => {
       if (isPausedRef.current) return; // skip tick while hovered
@@ -202,7 +203,7 @@ export default function Projects() {
     }, AUTOPLAY_DELAY);
 
     return () => clearInterval(intervalRef.current);
-  }, [isVisible, cardsPerView, total]); // restarts on category change (total changes)
+  }, [isVisible, cardsPerView, total, autoPlayEnabled]); // restarts on category change (total changes)
 
   /* ── Pause / resume — ONLY on the card viewport ── */
   const handleTrackEnter = useCallback(() => { isPausedRef.current = true;  }, []);
@@ -217,7 +218,12 @@ export default function Projects() {
     });
   }, [total, cardsPerView]);
 
-  const goToIndex = useCallback((idx) => setCurrentIndex(idx), []);
+  const goToIndex = useCallback((idx) => {
+    // Stop autoplay permanently when user manually selects a dot
+    setAutoPlayEnabled(false);
+    clearInterval(intervalRef.current);
+    setCurrentIndex(idx);
+  }, []);
 
   /* ── Keyboard ── */
   useEffect(() => {
@@ -470,6 +476,9 @@ export default function Projects() {
           margin:60px 0;
         }
 
+        /* ─── Section wrapper ────────────────────────────────── */
+        #projects { padding: 0 24px; }
+
         /* ─── Light Mode ─────────────────────────────────────── */
         body.light-mode .work-title  { color:#1a1a1a; }
         body.light-mode .work-sub    { color:#6c6c6c; }
@@ -493,46 +502,51 @@ export default function Projects() {
 
         /* ─── Responsive ─────────────────────────────────────── */
         @media (max-width:1024px) {
+          #projects { padding: 0 20px; }
           .prj-header { margin-bottom: 48px; }
           .work-filters { margin-bottom: 36px; }
-          .carousel-arrow-prev { left:-14px; }
-          .carousel-arrow-next { right:-14px; }
+          .carousel-outer { padding: 0 22px; }
+          .carousel-arrow-prev { left: -11px; }
+          .carousel-arrow-next { right: -11px; }
           /* on tablet, stagger by 2 */
           .prj-animate .carousel-slide:nth-child(2n+1) .work-card { transition-delay: 0.30s; }
           .prj-animate .carousel-slide:nth-child(2n+2) .work-card { transition-delay: 0.44s; }
         }
         @media (max-width:768px) {
+          #projects { padding: 0 16px; }
+          .section-divider { margin: 40px 0; }
           .prj-header { margin-bottom: 40px; }
-          .work-filters { gap:8px; margin-bottom:28px; }
-          .work-filter-btn { padding:6px 16px; font-size:12px; }
-          .carousel-outer { padding:0 16px; }
-          .carousel-arrow { width:38px; height:38px; }
-          .carousel-arrow-prev { left:-10px; }
-          .carousel-arrow-next { right:-10px; }
+          .work-filters { gap:8px; margin-bottom:28px; flex-wrap: wrap; }
+          .work-filter-btn { padding:6px 14px; font-size:12px; }
+          /* 20px padding gives the 36px arrow (r=18px) a clean gutter */
+          .carousel-outer { padding: 0 20px; }
+          .carousel-arrow { width:36px; height:36px; }
+          .carousel-arrow-prev { left: -18px; }
+          .carousel-arrow-next { right: -18px; }
           .carousel-slide { padding:0 8px; }
           .work-card { padding:20px; }
           .work-card-title { font-size:16px; }
           .work-card-desc { font-size:13px; }
-          /* on mobile, all cards same delay */
           .prj-animate .carousel-slide .work-card { transition-delay: 0.30s; }
         }
+        /* ≤640px = 1-card view: hide arrows, use swipe + dots only */
+        @media (max-width:640px) {
+          .carousel-arrow { display: none; }
+          .carousel-outer { padding: 0; }
+        }
         @media (max-width:480px) {
-          .prj-header { margin-bottom: 28px; padding: 0 8px; }
-          .work-filters { gap:6px; margin-bottom:22px; }
-          .work-filter-btn { padding:5px 12px; font-size:11px; border-radius:30px; }
-          .carousel-outer { padding:0 12px; }
-          .carousel-arrow { width:32px; height:32px; }
-          .carousel-arrow svg { width:14px; height:14px; }
-          .carousel-arrow-prev { left:-8px; }
-          .carousel-arrow-next { right:-8px; }
+          #projects { padding: 0 12px; }
+          .section-divider { margin: 32px 0; }
+          .prj-header { margin-bottom: 24px; padding: 0; }
+          .work-filters { gap:6px; margin-bottom:20px; }
+          .work-filter-btn { padding:5px 10px; font-size:11px; border-radius:30px; letter-spacing: 0; }
           .carousel-slide { padding:0 6px; }
           .work-card { padding:16px 14px; border-radius:16px; }
           .work-card-title { font-size:15px; }
           .work-card-desc { font-size:12.5px; }
-          .work-tech-tag { font-size:10px; padding:4px 10px; }
-          .carousel-dots { margin-top:14px; }
-          .carousel-counter { font-size:12px; margin-top:10px; }
-          .section-divider { margin:40px 0; }
+          .work-tech-tag { font-size:10px; padding:4px 9px; }
+          .carousel-dots { margin-top:12px; gap: 6px; }
+          .carousel-counter { font-size:12px; margin-top:8px; }
         }
       `}</style>
 
