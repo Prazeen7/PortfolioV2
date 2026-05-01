@@ -100,7 +100,11 @@ const RollingNumber = ({ target, suffix = "+", duration = 3000 }) => {
   );
 };
 
+const ROW1_SKILLS = ["React", "Node.js", "Express.js", "SQL", "NoSQL", "Machine Learning", "Deep Learning", "MERN", "JavaScript", "Python"];
+const ROW2_SKILLS = ["C", "C++", "C#", "Java", "PHP", "Unity", "Figma", "Linux", "CUDA", "Data Science", "JWT"];
+
 export default function Home() {
+  const [marqueesPaused, setMarqueesPaused] = useState(false);
   const [displayed, setDisplayed] = useState("");
   const [titleIndex, setTitleIndex] = useState(0);
   const [phase, setPhase] = useState("typing");
@@ -316,32 +320,80 @@ export default function Home() {
           fill: currentColor;
         }
 
+        /* ── Conveyor belt tech stack ── */
+        @keyframes marquee-left {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        @keyframes marquee-right {
+          0%   { transform: translateX(-50%); }
+          100% { transform: translateX(0); }
+        }
+
         .hm-skills-wrap {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 8px;
-          padding: 14px 18px;
+          width: 100%;
+          box-sizing: border-box;
           border: 1px solid;
           border-radius: 6px;
           margin-top: 4px;
           position: relative;
           transition: border-color 0.3s ease;
+          /* overflow: visible — keeps ::before label above the border */
+          padding: 14px 0;
         }
 
         .hm-skills-wrap::before {
           content: "TECH STACK";
           position: absolute;
-          top: -9px;
+          top: 0;
           left: 14px;
+          transform: translateY(-50%);
           padding: 0 6px;
           font-size: 9px;
           font-weight: 600;
           letter-spacing: 0.18em;
           font-family: 'Jost', sans-serif;
           transition: background-color 0.3s ease, color 0.3s ease;
+          z-index: 2;
+        }
+
+        /* Inner track clips the scrolling rows and hosts the fade overlay */
+        .hm-marquee-track {
+          position: relative;
+          overflow: hidden;
+          width: 100%;
+        }
+
+        /* Fade-out left/right edges on the track */
+        .hm-marquee-track::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          z-index: 1;
+        }
+
+        .hm-marquee-row {
+          display: flex;
+          gap: 8px;
+          width: max-content;
+          padding: 0 4px;
+          margin-bottom: 6px;
+        }
+        .hm-marquee-row:last-child { margin-bottom: 0; }
+
+        .hm-marquee-row--left {
+          animation: marquee-left 28s linear infinite;
+        }
+        .hm-marquee-row--right {
+          animation: marquee-right 22s linear infinite;
+        }
+        .hm-marquee-row.paused {
+          animation-play-state: paused;
         }
 
         .hm-skill-tag {
+          flex-shrink: 0;
           font-size: 11px;
           font-weight: 500;
           letter-spacing: 0.08em;
@@ -351,6 +403,7 @@ export default function Home() {
           background: transparent;
           transition: all 0.2s ease;
           cursor: default;
+          white-space: nowrap;
         }
 
         .hm-stats {
@@ -512,6 +565,10 @@ export default function Home() {
           color: #E76F51;
         }
 
+        body.dark-mode .hm-marquee-track::after {
+          background: linear-gradient(to right, #0a0a0a 0%, transparent 12%, transparent 88%, #0a0a0a 100%);
+        }
+
         body.dark-mode .hm-skill-tag {
           border-color: #404040;
           color: #c0c0c0;
@@ -593,6 +650,10 @@ export default function Home() {
           color: #E76F51;
         }
 
+        body.light-mode .hm-marquee-track::after {
+          background: linear-gradient(to right, #ffffff 0%, transparent 12%, transparent 88%, #ffffff 100%);
+        }
+
         body.light-mode .hm-skill-tag {
           border-color: #d0d0d0;
           color: #5a5a5a;
@@ -648,12 +709,39 @@ export default function Home() {
           .hm-left {
             align-items: center;
             text-align: center;
+            width: 100%;
           }
           .hm-stats {
             justify-content: center;
           }
+          /* Conveyor belt responsive */
           .hm-skills-wrap {
-            justify-content: center;
+            width: 100%;
+            max-width: 100%;
+            padding: 12px 0;
+          }
+          .hm-skill-tag {
+            font-size: 10px;
+            padding: 4px 9px;
+          }
+          .hm-marquee-row--left {
+            animation-duration: 20s;
+          }
+          .hm-marquee-row--right {
+            animation-duration: 16s;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .hm-skill-tag {
+            font-size: 10px;
+            padding: 3px 8px;
+          }
+          .hm-marquee-row--left {
+            animation-duration: 18s;
+          }
+          .hm-marquee-row--right {
+            animation-duration: 14s;
           }
         }
       `}</style>
@@ -693,10 +781,25 @@ export default function Home() {
             </a>
           </div>
 
-          <div className="hm-skills-wrap">
-            {["React", "Node.js", "Python", "ML / DL", "SQL", "JavaScript", "Figma", "Unity", "MERN", "Java", "C/C++/C#"].map((skill) => (
-              <span key={skill} className="hm-skill-tag">{skill}</span>
-            ))}
+          <div
+            className="hm-skills-wrap"
+            onMouseEnter={() => setMarqueesPaused(true)}
+            onMouseLeave={() => setMarqueesPaused(false)}
+          >
+            <div className="hm-marquee-track">
+              {/* Row 1 — scrolls left */}
+              <div className={`hm-marquee-row hm-marquee-row--left${marqueesPaused ? " paused" : ""}`}>
+                {[...ROW1_SKILLS, ...ROW1_SKILLS].map((skill, i) => (
+                  <span key={`r1-${i}`} className="hm-skill-tag">{skill}</span>
+                ))}
+              </div>
+              {/* Row 2 — scrolls right */}
+              <div className={`hm-marquee-row hm-marquee-row--right${marqueesPaused ? " paused" : ""}`}>
+                {[...ROW2_SKILLS, ...ROW2_SKILLS].map((skill, i) => (
+                  <span key={`r2-${i}`} className="hm-skill-tag">{skill}</span>
+                ))}
+              </div>
+            </div>
           </div>
 
           <div className="hm-stats">
