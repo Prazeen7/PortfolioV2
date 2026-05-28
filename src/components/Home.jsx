@@ -100,7 +100,7 @@ const RollingNumber = ({ target, suffix = "+", duration = 3000 }) => {
   );
 };
 
-const ROW1_SKILLS = ["React", "Node.js", "Express.js", "SQL", "NoSQL", "Machine Learning", "Deep Learning", "MERN", "JavaScript", "Python"];
+const ROW1_SKILLS = ["React", "Node.js", "Express.js", "SQL", "NoSQL", "Machine Learning", "Deep Learning", "MERN", "JavaScript", "Python", "AWS", "Dockers"];
 const ROW2_SKILLS = ["C", "C++", "C#", "Java", "PHP", "Unity", "Figma", "Linux", "CUDA", "Data Science", "JWT"];
 
 export default function Home() {
