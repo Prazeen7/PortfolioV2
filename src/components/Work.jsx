@@ -1,4 +1,3 @@
-// Work.jsx
 import { useEffect, useRef, useState } from "react";
 
 const WORK_EXPERIENCE = [
@@ -38,6 +37,8 @@ const WORK_EXPERIENCE = [
 
 export default function WorkExperience() {
   const [isVisible, setIsVisible] = useState(false);
+  const [hoveredCard, setHoveredCard] = useState(null);
+  const [animationKey, setAnimationKey] = useState(0);
   const sectionRef = useRef(null);
   const hasAnimated = useRef(false);
 
@@ -56,6 +57,16 @@ export default function WorkExperience() {
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
+
+  const handleMouseEnter = (id) => {
+    setHoveredCard(id);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredCard(null);
+    // Force restart animation by changing key
+    setAnimationKey(prev => prev + 1);
+  };
 
   return (
     <>
@@ -88,42 +99,201 @@ export default function WorkExperience() {
           transform: translateY(0);
         }
 
-        /* ─── Card base — transparent background ────────────── */
+        /* ─── Desktop: Hover Container ──────────────────────── */
+        .experience-hover-item {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0;
+          transform: translateY(20px);
+          transition: opacity 0.7s cubic-bezier(0.25,0.46,0.45,0.94),
+                      transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+        }
+
+        .wk-animate .experience-hover-item {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        .wk-animate .experience-hover-item:nth-child(1) { transition-delay: 0.10s; }
+        .wk-animate .experience-hover-item:nth-child(2) { transition-delay: 0.22s; }
+        .wk-animate .experience-hover-item:nth-child(3) { transition-delay: 0.34s; }
+
+        .company-name {
+          font-size: 24px;
+          font-weight: 600;
+          color: #e0e0e0;
+          cursor: pointer;
+          padding: 16px 24px;
+          border-radius: 12px;
+          transition: all 0.3s ease;
+          position: relative;
+          z-index: 2;
+          text-align: center;
+          max-width: 280px; /* Limit width to help prevent excessive wrapping */
+        }
+
+        .company-name:hover {
+          color: #E76F51;
+          background: rgba(231, 111, 81, 0.05);
+        }
+
+        /* ─── Card base — glassmorphism effect ─────────────── */
         .experience-card {
-          background: transparent;           /* fully transparent */
+          background: rgba(255, 255, 255, 0.05);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
           border: 1px solid rgba(255, 255, 255, 0.18);
           border-radius: 20px;
           padding: 24px;
           display: flex;
           flex-direction: column;
           height: auto;
-          /* backdrop‑filter removed */
           box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-          opacity: 0;
-          transform: translateX(-40px);
-          transition:
-            opacity  0.7s cubic-bezier(0.25,0.46,0.45,0.94),
-            transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94),
-            border-color 0.3s ease,
-            box-shadow 0.3s ease;
+          transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+          min-width: 380px;
+          max-width: 420px;
         }
 
-        .wk-animate .experience-card {
-          opacity: 1;
-          transform: translateX(0);
+        /* Desktop: Absolute positioned cards */
+        @media (min-width: 769px) {
+          .experience-card {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            z-index: 100;
+            bottom: 100%;
+            margin-bottom: 24px;
+            max-width: min(420px, calc(100vw - 48px)); /* Prevent card from exceeding viewport width minus padding */
+            min-width: min(380px, calc(100vw - 48px));
+          }
+
+          /* Continuous sequential reveal animation */
+          .wk-animate .experience-hover-item:nth-child(1) .experience-card {
+            animation: cardRevealContinuous 9s ease-in-out infinite;
+            animation-delay: 0s;
+          }
+
+          .wk-animate .experience-hover-item:nth-child(2) .experience-card {
+            animation: cardRevealContinuous 9s ease-in-out infinite;
+            animation-delay: 3s;
+          }
+
+          .wk-animate .experience-hover-item:nth-child(3) .experience-card {
+            animation: cardRevealContinuous 9s ease-in-out infinite;
+            animation-delay: 6s;
+          }
+
+          @keyframes cardRevealContinuous {
+            0% {
+              opacity: 0;
+              transform: translateX(-50%) translateY(20px);
+              pointer-events: none;
+            }
+            10% {
+              opacity: 1;
+              transform: translateX(-50%) translateY(-8px);
+              pointer-events: auto;
+            }
+            30% {
+              opacity: 1;
+              transform: translateX(-50%) translateY(-8px);
+              pointer-events: auto;
+            }
+            40% {
+              opacity: 0;
+              transform: translateX(-50%) translateY(-8px);
+              pointer-events: none;
+            }
+            100% {
+              opacity: 0;
+              transform: translateX(-50%) translateY(20px);
+              pointer-events: none;
+            }
+          }
+
+          /* Hover state - pauses animation and shows card */
+          .experience-hover-item.is-hovered .experience-card {
+            opacity: 1 !important;
+            pointer-events: auto !important;
+            transform: translateX(-50%) translateY(-8px) !important;
+            animation-play-state: paused !important;
+          }
+
+          /* Pause all animations when any item is hovered */
+          .experience-grid:has(.experience-hover-item.is-hovered) .experience-card {
+            animation-play-state: paused !important;
+          }
+
+          /* Only show the hovered card */
+          .experience-grid:has(.experience-hover-item.is-hovered) .experience-hover-item:not(.is-hovered) .experience-card {
+            opacity: 0 !important;
+            pointer-events: none !important;
+          }
+
+          .experience-card:hover {
+            border-color: #E76F51;
+            box-shadow: 0 12px 28px rgba(231,111,81,0.15);
+            background: rgba(231, 111, 81, 0.08);
+          }
+          
+          /* Ensure parent container can show absolute positioned children */
+          .experience-hover-item {
+            position: relative;
+            isolation: isolate;
+          }
         }
 
-        .wk-animate .experience-card:nth-child(1) { transition-delay: 0.10s; }
-        .wk-animate .experience-card:nth-child(2) { transition-delay: 0.22s; }
-        .wk-animate .experience-card:nth-child(3) { transition-delay: 0.34s; }
-        .wk-animate .experience-card:nth-child(4) { transition-delay: 0.46s; }
-        .wk-animate .experience-card:nth-child(5) { transition-delay: 0.58s; }
-        .wk-animate .experience-card:nth-child(6) { transition-delay: 0.70s; }
+        /* Mobile: Grid cards */
+        @media (max-width: 768px) {
+          .experience-hover-item {
+            position: static;
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.7s cubic-bezier(0.25,0.46,0.45,0.94),
+                        transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+            display: flex;
+            height: 100%;
+          }
 
-        .wk-animate .experience-card:hover {
-          border-color: #E76F51;
-          transform: translateY(-4px);
-          box-shadow: 0 12px 28px rgba(231,111,81,0.15);
+          .wk-animate .experience-hover-item {
+            opacity: 1;
+            transform: translateX(0);
+          }
+
+          .company-name {
+            display: none;
+          }
+
+          .experience-card {
+            position: static;
+            opacity: 1;
+            pointer-events: auto;
+            transform: none;
+            min-width: auto;
+            max-width: none;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+          }
+
+          .experience-card:hover {
+            border-color: #E76F51;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(231,111,81,0.15);
+            background: rgba(231, 111, 81, 0.08);
+          }
+
+          .exp-description {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+          }
         }
 
         /* ─── Card internals ─────────────────────────────────── */
@@ -192,11 +362,38 @@ export default function WorkExperience() {
           max-width: 1250px;
           margin: 0 auto;
         }
-        .experience-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 32px;
-          margin-top: 40px;
+        
+        /* Desktop & Tablet: Horizontal layout with hover */
+        @media (min-width: 769px) {
+          .experience-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 80px;
+            margin-top: 80px;
+            padding: 300px 24px 80px 24px; /* Added horizontal padding */
+            position: relative;
+            min-height: 120px;
+          }
+          
+          .experience-section {
+            margin-bottom: 120px;
+          }
+          
+          .wk-header {
+            margin-top: 80px;
+          }
+        }
+
+        /* Mobile: Grid layout */
+        @media (max-width: 768px) {
+          .experience-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin-top: 28px;
+            grid-auto-rows: 1fr;
+          }
         }
         .section-divider {
           height: 2px;
@@ -214,13 +411,28 @@ export default function WorkExperience() {
         /* ─── Light Mode ─────────────────────────────────────── */
         body.light-mode .work-title { color: #1a1a1a; }
         body.light-mode .work-sub   { color: #6c6c6c; }
+        body.light-mode .company-name { color: #1a1a1a; }
+        body.light-mode .company-name:hover { color: #E76F51; background: rgba(231,111,81,0.08); }
         body.light-mode .experience-card {
-          background: transparent;           /* fully transparent in light mode too */
+          background: rgba(255, 255, 255, 0.4);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
           border-color: rgba(0, 0, 0, 0.15);
           box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.10);
         }
-        body.light-mode .wk-animate .experience-card:hover {
-          border-color: #E76F51; box-shadow: 0 8px 20px rgba(231,111,81,0.1);
+        @media (min-width: 769px) {
+          body.light-mode .experience-hover-item:hover .experience-card {
+            border-color: #E76F51; 
+            box-shadow: 0 12px 28px rgba(231,111,81,0.2);
+            background: rgba(231, 111, 81, 0.12);
+          }
+        }
+        @media (max-width: 768px) {
+          body.light-mode .experience-card:hover {
+            border-color: #E76F51; 
+            box-shadow: 0 8px 20px rgba(231,111,81,0.1);
+            background: rgba(231, 111, 81, 0.12);
+          }
         }
         body.light-mode .exp-title   { color: #1a1a1a; }
         body.light-mode .exp-company { color: #E76F51; }
@@ -230,16 +442,9 @@ export default function WorkExperience() {
         body.light-mode .exp-tech-tag:hover { background: #E76F51; color: white; }
 
         /* ─── Responsive ─────────────────────────────────────── */
-        @media (max-width: 1024px) {
-          .experience-section { padding: 0 20px; margin-bottom: 64px; }
-          .section-divider { margin: 50px 20px; }
-          .experience-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
-          .wk-header { margin-bottom: 48px; margin-top: 60px; }
-        }
         @media (max-width: 768px) {
           .experience-section { padding: 0 16px; margin-bottom: 48px; }
           .section-divider { margin: 40px 16px; }
-          .experience-grid { grid-template-columns: 1fr; gap: 16px; margin-top: 28px; }
           .experience-card { padding: 20px; }
           .wk-header { margin-bottom: 36px; margin-top: 48px; }
           .exp-title { font-size: 17px; }
@@ -260,6 +465,12 @@ export default function WorkExperience() {
           .exp-description li { font-size: 12.5px; }
           .exp-tech-tag { font-size: 10px; padding: 4px 9px; }
         }
+        
+        /* Ensure proper spacing between sections on all screens */
+        .section-divider {
+          position: relative;
+          z-index: 1;
+        }
       `}</style>
 
       <div id="work">
@@ -275,23 +486,31 @@ export default function WorkExperience() {
               </p>
             </div>
 
-            <div className="experience-grid">
+            <div className="experience-grid" key={animationKey}>
               {WORK_EXPERIENCE.map((exp) => (
-                <div key={exp.id} className="experience-card">
-                  <div className="exp-header">
-                    <h3 className="exp-title">{exp.title}</h3>
-                    <p className="exp-company">{exp.company}</p>
-                    <span className="exp-period">{exp.period}</span>
-                  </div>
-                  <ul className="exp-description">
-                    {exp.description.map((item, i) => (
-                      <li key={i}>{item}</li>
-                    ))}
-                  </ul>
-                  <div className="exp-tech">
-                    {exp.technologies.map((tech) => (
-                      <span key={tech} className="exp-tech-tag">{tech}</span>
-                    ))}
+                <div 
+                  key={exp.id} 
+                  className={`experience-hover-item${hoveredCard === exp.id ? ' is-hovered' : ''}`}
+                  onMouseEnter={() => handleMouseEnter(exp.id)}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <div className="company-name">{exp.company}</div>
+                  <div className="experience-card">
+                    <div className="exp-header">
+                      <h3 className="exp-title">{exp.title}</h3>
+                      <p className="exp-company">{exp.company}</p>
+                      <span className="exp-period">{exp.period}</span>
+                    </div>
+                    <ul className="exp-description">
+                      {exp.description.map((item, i) => (
+                        <li key={i}>{item}</li>
+                      ))}
+                    </ul>
+                    <div className="exp-tech">
+                      {exp.technologies.map((tech) => (
+                        <span key={tech} className="exp-tech-tag">{tech}</span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               ))}

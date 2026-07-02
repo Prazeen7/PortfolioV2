@@ -232,7 +232,7 @@ const DotPattern = ({
     return (
         <div
             ref={containerRef}
-            className={`overflow-hidden ${className}`}
+            className={`overflow-hidden dot-pattern-wrapper ${className}`}
             style={{
                 position: 'absolute',
                 inset: 0,
@@ -241,6 +241,14 @@ const DotPattern = ({
                 backgroundColor: 'transparent'
             }}
         >
+            <style>{`
+                @media (max-width: 768px) {
+                    .dot-pattern-wrapper {
+                        display: none !important;
+                    }
+                }
+            `}</style>
+            
             <canvas
                 ref={canvasRef}
                 className="absolute inset-0 h-full w-full pointer-events-none"
