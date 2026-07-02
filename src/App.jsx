@@ -119,7 +119,7 @@ function App() {
         }
         
         body.dark-mode .unified-bg-wrapper {
-          background: #0a0a0a;
+          background: #1a1a1a;
         }
         
         body.light-mode .unified-bg-wrapper {

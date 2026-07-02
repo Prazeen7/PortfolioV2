@@ -41,9 +41,11 @@ export default function WorkExperience() {
   const [animationKey, setAnimationKey] = useState(0);
   const [activeCardIndex, setActiveCardIndex] = useState(0);
   const [isUserHovering, setIsUserHovering] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const sectionRef = useRef(null);
   const hasAnimated = useRef(false);
   const animationIntervalRef = useRef(null);
+  const transitionTimeoutRef = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -63,7 +65,7 @@ export default function WorkExperience() {
 
   // Auto-cycle through cards (desktop only)
   useEffect(() => {
-    if (!isVisible || isUserHovering) return;
+    if (!isVisible || isUserHovering || isTransitioning) return;
 
     // Check if we're on desktop
     const isDesktop = window.innerWidth > 768;
@@ -79,9 +81,15 @@ export default function WorkExperience() {
         clearInterval(animationIntervalRef.current);
       }
     };
-  }, [isVisible, isUserHovering]);
+  }, [isVisible, isUserHovering, isTransitioning]);
 
   const handleMouseEnter = (id) => {
+    // Clear any pending transition
+    if (transitionTimeoutRef.current) {
+      clearTimeout(transitionTimeoutRef.current);
+      transitionTimeoutRef.current = null;
+    }
+    setIsTransitioning(false);
     setIsUserHovering(true);
     setHoveredCard(id);
     // Pause the animation
@@ -92,10 +100,24 @@ export default function WorkExperience() {
 
   const handleMouseLeave = () => {
     setIsUserHovering(false);
-    setHoveredCard(null);
-    // Force restart animation by changing key
-    setAnimationKey(prev => prev + 1);
+    // Start transition delay before resuming animation
+    setIsTransitioning(true);
+    transitionTimeoutRef.current = setTimeout(() => {
+      setHoveredCard(null);
+      setIsTransitioning(false);
+      // Force restart animation by changing key
+      setAnimationKey(prev => prev + 1);
+    }, 400); // 400ms delay before resuming
   };
+
+  // Cleanup transition timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (transitionTimeoutRef.current) {
+        clearTimeout(transitionTimeoutRef.current);
+      }
+    };
+  }, []);
 
   return (
     <>
@@ -491,9 +513,9 @@ export default function WorkExperience() {
 
             <div className="experience-grid" key={animationKey}>
               {WORK_EXPERIENCE.map((exp, index) => {
-                const isActive = isUserHovering 
-                  ? hoveredCard === exp.id 
-                  : index === activeCardIndex;
+                const isActive = (isUserHovering || isTransitioning) && hoveredCard === exp.id
+                  ? true
+                  : (!isUserHovering && !isTransitioning && index === activeCardIndex);
                 
                 return (
                   <div 

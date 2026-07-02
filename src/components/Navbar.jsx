@@ -90,7 +90,7 @@ export default function Navbar({ theme, toggleTheme }) {
         /* Dark Mode Variables */
         body.dark-mode {
           --bg-primary: #000000;
-          --bg-secondary: rgba(0, 0, 0, 0.85);
+          --bg-secondary: rgba(26, 26, 26, 0.4);
           --text-primary: #8a8278;
           --text-hover: #E76F51;
           --text-scrolled: #d4cdc4;
@@ -102,7 +102,7 @@ export default function Navbar({ theme, toggleTheme }) {
         /* Light Mode Variables */
         body.light-mode {
           --bg-primary: #ffffff;
-          --bg-secondary: rgba(255, 255, 255, 0.95);
+          --bg-secondary: rgba(255, 255, 255, 0.4);
           --text-primary: #5a5248;
           --text-hover: #E76F51;
           --text-scrolled: #2c2c2c;
@@ -131,14 +131,28 @@ export default function Navbar({ theme, toggleTheme }) {
           transform: translateX(-50%);
           box-sizing: border-box;
           background: transparent;
+          border-bottom: 1px solid transparent;
           z-index: 1000;
           transition: all 0.3s ease;
         }
 
         .nb-nav.nb-scrolled {
           background: var(--bg-secondary);
-          backdrop-filter: blur(8px);
+          backdrop-filter: blur(16px) saturate(180%);
+          -webkit-backdrop-filter: blur(16px) saturate(180%);
+          box-shadow: 
+            0 8px 32px 0 rgba(0, 0, 0, 0.37),
+            inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
           padding: 20px 40px;
+        }
+
+        body.light-mode .nb-nav.nb-scrolled {
+          background: var(--bg-secondary);
+          box-shadow: 
+            0 8px 32px 0 rgba(31, 38, 135, 0.10),
+            inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
+          border-bottom: 1px solid rgba(0, 0, 0, 0.08);
         }
 
         /* Left side wrapper */
