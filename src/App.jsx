@@ -1,4 +1,3 @@
-// App.jsx
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
@@ -7,6 +6,7 @@ import Contact from './components/Contact';
 import Loader from './components/Loader';
 import Projects from './components/Projects';
 import Footer from './components/Footer';
+import AnimatedBackground from './components/AnimatedBackground';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -29,9 +29,11 @@ function App() {
     
     // Apply theme to body immediately
     if (initialTheme === 'dark') {
+      document.body.classList.add('dark-mode');
       document.body.classList.remove('light-mode');
     } else {
       document.body.classList.add('light-mode');
+      document.body.classList.remove('dark-mode');
     }
   }, []);
 
@@ -43,9 +45,11 @@ function App() {
     
     // Apply theme to body
     if (newTheme === 'dark') {
+      document.body.classList.add('dark-mode');
       document.body.classList.remove('light-mode');
     } else {
       document.body.classList.add('light-mode');
+      document.body.classList.remove('dark-mode');
     }
   };
 
@@ -56,9 +60,11 @@ function App() {
         const newTheme = e.newValue || 'dark';
         setTheme(newTheme);
         if (newTheme === 'dark') {
+          document.body.classList.add('dark-mode');
           document.body.classList.remove('light-mode');
         } else {
           document.body.classList.add('light-mode');
+          document.body.classList.remove('dark-mode');
         }
       }
     };
@@ -104,6 +110,45 @@ function App() {
 
   return (
     <>
+      <style>{`
+        .unified-bg-wrapper {
+          position: relative;
+          width: 100%;
+          background: var(--bg);
+          transition: background-color 0.3s ease;
+        }
+        
+        body.dark-mode .unified-bg-wrapper {
+          background: #0a0a0a;
+        }
+        
+        body.light-mode .unified-bg-wrapper {
+          background: #ffffff;
+        }
+        
+        /* Enhanced divider at top of unified wrapper */
+        .section-divider-top {
+          height: 2px;
+          background: linear-gradient(to right, transparent, #E76F51 20%, #E76F51 80%, transparent);
+          box-shadow: 0 0 20px rgba(231, 111, 81, 0.5);
+          margin: 0;
+          position: sticky;
+          top: 0;
+          z-index: 10;
+        }
+        
+        body.light-mode .section-divider-top {
+          box-shadow: 0 0 15px rgba(231, 111, 81, 0.4);
+        }
+        
+        /* Ensure Home takes full viewport */
+        .home-wrapper {
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+        }
+      `}</style>
+      
       {/* Loader with theme prop */}
       {loading && (
         <Loader 
@@ -117,10 +162,22 @@ function App() {
       {showContent && (
         <div className="App">
           <Navbar theme={theme} toggleTheme={toggleTheme} />
-          <Home theme={theme} />
-          <Work theme={theme} />
-          <Projects theme={theme} />
-          <Contact theme={theme} />
+          
+          <div className="home-wrapper">
+            <Home theme={theme} />
+          </div>
+          
+          {/* Unified background wrapper for Work, Projects, Contact */}
+          <div className="unified-bg-wrapper">
+            {/* Divider to separate Home from animated sections */}
+            <div className="section-divider-top"></div>
+            
+            <AnimatedBackground opacity={0.6} />
+            <Work theme={theme} />
+            <Projects theme={theme} />
+            <Contact theme={theme} />
+          </div>
+          
           <Footer theme={theme} />
         </div>
       )}

@@ -78,11 +78,18 @@ export default function Footer() {
 
         /* ─── Footer shell ─────────────────────────────────── */
         .ft-root {
+          width: 100%;
           font-family: 'Jost', sans-serif;
           border-top: 1px solid #2a2a2a;
           padding: 64px 64px 32px;
           transition: border-color 0.3s ease, background-color 0.3s ease;
         }
+        
+        .ft-content {
+          max-width: 1250px;
+          margin: 0 auto;
+        }
+        
         body.light-mode .ft-root { border-top-color: #e0e0e0; }
 
         /* ─── Scroll-in — each row slides up from below ─────── */
@@ -315,6 +322,7 @@ export default function Footer() {
         className={`ft-root${isVisible ? " ft-animate" : ""}`}
         id="footer"
       >
+        <div className="ft-content">
         {/* ── Top row ── */}
         <div className="ft-top">
 
@@ -380,6 +388,7 @@ export default function Footer() {
           <p className="ft-copy">
             © {year} <span>Prajin Singh</span>. All rights reserved.
           </p>
+        </div>
         </div>
       </footer>
     </>

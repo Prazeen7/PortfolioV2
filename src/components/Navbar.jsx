@@ -8,36 +8,11 @@ const navLinks = [
   { label: "CONTACT", href: "contact" },
 ];
 
-export default function Navbar() {
+export default function Navbar({ theme, toggleTheme }) {
   const [active, setActive] = useState("HOME");
   const [isScrolled, setIsScrolled] = useState(false);
   const [navbarHeight, setNavbarHeight] = useState(80);
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme) {
-        return savedTheme === 'dark';
-      }
-      return window.matchMedia('(prefers-color-scheme: dark)').matches;
-    }
-    return true;
-  });
-
-  useEffect(() => {
-    if (isDarkMode) {
-      document.body.classList.add('dark-mode');
-      document.body.classList.remove('light-mode');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.body.classList.add('light-mode');
-      document.body.classList.remove('dark-mode');
-      localStorage.setItem('theme', 'light');
-    }
-  }, [isDarkMode]);
-
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-  };
+  const isDarkMode = theme === 'dark';
 
   const getNavbarHeight = () => {
     if (typeof window !== 'undefined') {

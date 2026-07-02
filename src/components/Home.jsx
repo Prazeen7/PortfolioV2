@@ -1,5 +1,7 @@
 import { useEffect, useState, useRef } from "react";
-import PP from "../assets/pp4.png";
+import PP from "../assets/ppmain2.png";
+import DotPattern from './DotPattern';
+
 
 const TITLES = ["AI Developer", "Web Developer", "Data Scientist"];
 
@@ -103,7 +105,8 @@ const RollingNumber = ({ target, suffix = "+", duration = 3000 }) => {
 const ROW1_SKILLS = ["React", "Node.js", "Express.js", "SQL", "NoSQL", "Machine Learning", "Deep Learning", "MERN", "JavaScript", "Python", "AWS", "Dockers"];
 const ROW2_SKILLS = ["C", "C++", "C#", "Java", "PHP", "Unity", "Figma", "Linux", "CUDA", "Data Science", "JWT"];
 
-export default function Home() {
+export default function Home({ theme }) {
+  const isDark = theme === 'dark';
   const [marqueesPaused, setMarqueesPaused] = useState(false);
   const [displayed, setDisplayed] = useState("");
   const [titleIndex, setTitleIndex] = useState(0);
@@ -157,23 +160,7 @@ export default function Home() {
           50%       { opacity: 0; }
         }
 
-        @keyframes spin-border {
-          0%   { --ring-angle: 0deg; }
-          100% { --ring-angle: 360deg; }
-        }
-
-        @keyframes ring-pulse {
-          0%, 100% { opacity: 0.35; transform: scale(1); }
-          50%       { opacity: 0.70; transform: scale(1.012); }
-        }
-
-        @property --ring-angle {
-          syntax: '<angle>';
-          initial-value: 0deg;
-          inherits: false;
-        }
-
-        /* Base styles that work for both themes */
+        /* Odometer styles */
         .odometer-container {
           display: inline-flex;
           align-items: center;
@@ -220,17 +207,31 @@ export default function Home() {
           font-size: 22px;
         }
 
+        /* Section and layout */
         .hm-section {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 60px 64px;
-          min-height: calc(100vh - 80px);
+          width: 100%;
+          height: 100vh;
           box-sizing: border-box;
+          padding-top: 80px;
           position: relative;
           overflow: hidden;
           font-family: 'Jost', sans-serif;
           transition: background-color 0.3s ease;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+           position: relative;
+        }
+
+        .hm-content {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 60px 64px;
+          max-width: 1350px;
+          margin: 0 auto;
+          width: 100%;
+          gap: 60px; /* increased gap for more space between left and right */
         }
 
         .hm-left {
@@ -239,7 +240,8 @@ export default function Home() {
           align-items: flex-start;
           gap: 24px;
           z-index: 2;
-          max-width: 520px;
+          max-width: 480px; /* reduced to give more room for the image */
+          flex: 1;
         }
 
         .hm-left > * {
@@ -320,7 +322,68 @@ export default function Home() {
           fill: currentColor;
         }
 
-        /* ── Conveyor belt tech stack ── */
+        .hm-scroll-indicator {
+  position: absolute;
+  left: 50%;
+  bottom: 32px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 3;
+  opacity: 0;
+  animation: fadeIn 0.8s ease 1.4s forwards;
+}
+
+.hm-scroll-mouse {
+  width: 22px;
+  height: 36px;
+  border: 2px solid;
+  border-radius: 12px;
+  position: relative;
+  transition: border-color 0.3s ease;
+}
+
+.hm-scroll-dot {
+  width: 4px;
+  height: 8px;
+  border-radius: 2px;
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scrollDot 1.6s ease infinite;
+}
+
+@keyframes scrollDot {
+  0%   { opacity: 1; top: 6px; }
+  70%  { opacity: 0; top: 18px; }
+  100% { opacity: 0; top: 6px; }
+}
+
+.hm-scroll-text {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+}
+
+/* dark mode */
+body.dark-mode .hm-scroll-mouse { border-color: #404040; }
+body.dark-mode .hm-scroll-dot { background: #E76F51; }
+body.dark-mode .hm-scroll-text { color: #a0a0a0; }
+
+/* light mode */
+body.light-mode .hm-scroll-mouse { border-color: #d0d0d0; }
+body.light-mode .hm-scroll-dot { background: #E76F51; }
+body.light-mode .hm-scroll-text { color: #6c6c6c; }
+
+@media (max-width: 768px) {
+    .hm-scroll-indicator { display: none; }
+
+  }
+
+        /* Conveyor belt tech stack */
         @keyframes marquee-left {
           0%   { transform: translateX(0); }
           100% { transform: translateX(-50%); }
@@ -338,7 +401,6 @@ export default function Home() {
           margin-top: 4px;
           position: relative;
           transition: border-color 0.3s ease;
-          /* overflow: visible — keeps ::before label above the border */
           padding: 14px 0;
         }
 
@@ -357,14 +419,12 @@ export default function Home() {
           z-index: 2;
         }
 
-        /* Inner track clips the scrolling rows and hosts the fade overlay */
         .hm-marquee-track {
           position: relative;
           overflow: hidden;
           width: 100%;
         }
 
-        /* Fade-out left/right edges on the track */
         .hm-marquee-track::after {
           content: "";
           position: absolute;
@@ -440,80 +500,64 @@ export default function Home() {
           transition: color 0.3s ease;
         }
 
+        /* ================================================================
+           AVATAR – no card, soft fade, shifted right with more space
+           ================================================================ */
         .hm-right {
+          flex: 1.6; /* increased from 1.4 to give more weight to the right side */
           position: relative;
           z-index: 2;
-          flex-shrink: 0;
           opacity: 0;
           animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+          display: flex;
+          justify-content: flex-end;
+          background: transparent !important;
         }
 
         .hm-avatar-wrap {
-          width: 300px;
-          height: 400px;
-          border-radius: 16px;
-          overflow: hidden;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          width: 100%;
+          max-width: 560px;
+          aspect-ratio: 3 / 4;
           position: relative;
-          transition: background-color 0.3s ease;
+          background: transparent !important;
+          box-shadow: none !important;
+          transform: translateX(100px);
         }
 
-        /* ── Animated avatar rings ── */
-        .hm-avatar-ring {
+        /* Soft grey glow behind the image */
+        .hm-avatar-wrap::before {
+          content: "";
           position: absolute;
-          inset: -10px;
-          border-radius: 24px;
-          pointer-events: none;
-          padding: 2px;
-          /* conic-gradient mask trick for a spinning border */
-          background: conic-gradient(
-            from var(--ring-angle),
-            #E76F51 0deg,
-            #F4A261 60deg,
-            transparent 120deg,
-            transparent 240deg,
-            #E76F51 300deg,
-            #E76F51 360deg
+          inset: -20%;
+          border-radius: 50%;
+          background: radial-gradient(
+            ellipse at 50% 40%,
+            var(--glow-color, rgba(180, 180, 180, 0.15)) 0%,
+            transparent 70%
           );
-          -webkit-mask:
-            linear-gradient(#fff 0 0) content-box,
-            linear-gradient(#fff 0 0);
-          -webkit-mask-composite: xor;
-          mask-composite: exclude;
-          opacity: 0;
-          animation:
-            fadeIn 1s ease 0.7s forwards,
-            spin-border 3s linear 1.7s infinite;
+          pointer-events: none;
+          z-index: 0;
+          transition: background 0.3s ease;
         }
 
-        .hm-avatar-ring-2 {
-          position: absolute;
-          inset: -24px;
-          border-radius: 32px;
-          pointer-events: none;
-          padding: 1.5px;
-          background: conic-gradient(
-            from calc(var(--ring-angle) + 180deg),
-            rgba(231,111,81,0.55) 0deg,
-            rgba(244,162,97,0.55) 60deg,
-            transparent 130deg,
-            transparent 230deg,
-            rgba(231,111,81,0.55) 300deg,
-            rgba(231,111,81,0.55) 360deg
-          );
-          -webkit-mask:
-            linear-gradient(#fff 0 0) content-box,
-            linear-gradient(#fff 0 0);
-          -webkit-mask-composite: xor;
-          mask-composite: exclude;
-          opacity: 0;
-          animation:
-            fadeIn 1s ease 0.9s forwards,
-            spin-border 5s linear 1.9s infinite reverse,
-            ring-pulse 4s ease-in-out 2s infinite;
-        }
+        /* The image – enlarged, right‑shifted, soft fade on ALL edges */
+        .hm-avatar-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right 5% center;
+  display: block;
+  position: relative;
+  z-index: 1;
+  mask-image:
+    radial-gradient(ellipse at 50% 38%, black 28%, transparent 92%),
+    linear-gradient(to bottom, black 45%, transparent 100%);
+  -webkit-mask-image:
+    radial-gradient(ellipse at 50% 38%, black 28%, transparent 92%),
+    linear-gradient(to bottom, black 45%, transparent 100%);
+  mask-composite: intersect;
+  -webkit-mask-composite: source-in, source-over;
+}
 
         .section-divider {
           height: 1px;
@@ -523,198 +567,183 @@ export default function Home() {
           line-height: 0;
           transition: background 0.3s ease;
           background-color: transparent;
+          margin-bottom: 0;
         }
 
-        /* Dark mode styles */
+        /* ---- Dark mode ---- */
         body.dark-mode {
           background-color: #0a0a0a;
         }
-
         body.dark-mode .hm-section {
-          background: #0a0a0a;
+          background: transparent;
         }
-
         body.dark-mode .hm-greeting {
           color: #a0a0a0;
         }
-
         body.dark-mode .hm-greeting span {
           color: #e0e0e0;
         }
-
         body.dark-mode .hm-title {
           color: #E76F51;
         }
-
         body.dark-mode .hm-social-btn {
           border-color: #404040;
           color: #a0a0a0;
         }
-
         body.dark-mode .hm-social-btn:hover {
           border-color: #E76F51;
           color: #E76F51;
         }
-
         body.dark-mode .hm-skills-wrap {
           border-color: #404040;
         }
-
         body.dark-mode .hm-skills-wrap::before {
           background: #0a0a0a;
           color: #E76F51;
         }
-
         body.dark-mode .hm-marquee-track::after {
           background: linear-gradient(to right, #0a0a0a 0%, transparent 12%, transparent 88%, #0a0a0a 100%);
         }
-
         body.dark-mode .hm-skill-tag {
           border-color: #404040;
           color: #c0c0c0;
         }
-
         body.dark-mode .hm-skill-tag:hover {
           border-color: #E76F51;
           color: #E76F51;
           background: #1a1a1a;
         }
-
         body.dark-mode .hm-stat {
           border-right-color: #404040;
         }
-
         body.dark-mode .hm-stat-num .odometer-value {
           color: #e0e0e0;
         }
-
         body.dark-mode .odometer-suffix {
           color: #e0e0e0;
         }
-
         body.dark-mode .hm-stat-label {
           color: #a0a0a0;
         }
-
         body.dark-mode .hm-avatar-wrap {
-          background: #1a1a1a;
+          background: transparent !important;
+          box-shadow: none !important;
+          --glow-color: rgba(200, 200, 200, 0.20);
         }
-
-        /* rings are gradient-based — no border-color override needed */
-        body.dark-mode .hm-avatar-ring,
-        body.dark-mode .hm-avatar-ring-2 {
-          filter: brightness(1.1);
+        body.dark-mode .hm-right {
+          background: transparent !important;
         }
-
         body.dark-mode .section-divider {
           background: linear-gradient(to right, transparent, #E76F51, transparent);
         }
 
-        /* Light mode styles */
+        /* ---- Light mode ---- */
         body.light-mode {
           background-color: #ffffff;
         }
-
         body.light-mode .hm-section {
-          background: #ffffff;
+          background: transparent;
         }
-
         body.light-mode .hm-greeting {
           color: #6c6c6c;
         }
-
         body.light-mode .hm-greeting span {
           color: #2c2c2c;
         }
-
         body.light-mode .hm-title {
           color: #E76F51;
         }
-
         body.light-mode .hm-social-btn {
           border-color: #d0d0d0;
           color: #6c6c6c;
         }
-
         body.light-mode .hm-social-btn:hover {
           border-color: #E76F51;
           color: #E76F51;
         }
-
         body.light-mode .hm-skills-wrap {
           border-color: #d0d0d0;
         }
-
         body.light-mode .hm-skills-wrap::before {
           background: #ffffff;
           color: #E76F51;
         }
-
         body.light-mode .hm-marquee-track::after {
           background: linear-gradient(to right, #ffffff 0%, transparent 12%, transparent 88%, #ffffff 100%);
         }
-
         body.light-mode .hm-skill-tag {
           border-color: #d0d0d0;
           color: #5a5a5a;
         }
-
         body.light-mode .hm-skill-tag:hover {
           border-color: #E76F51;
           color: #E76F51;
           background: #f5f5f5;
         }
-
         body.light-mode .hm-stat {
           border-right-color: #d0d0d0;
         }
-
         body.light-mode .hm-stat-num .odometer-value {
           color: #2c2c2c;
         }
-
         body.light-mode .odometer-suffix {
           color: #2c2c2c;
         }
-
         body.light-mode .hm-stat-label {
           color: #6c6c6c;
         }
-
         body.light-mode .hm-avatar-wrap {
-          background: #f0f0f0;
+          background: transparent !important;
+          box-shadow: none !important;
+          --glow-color: rgba(80, 80, 80, 0.10);
         }
-
-        body.light-mode .hm-avatar-ring,
-        body.light-mode .hm-avatar-ring-2 {
-          filter: brightness(0.9);
+        body.light-mode .hm-right {
+          background: transparent !important;
         }
-
         body.light-mode .section-divider {
           background: linear-gradient(to right, transparent, #E76F51, transparent);
-          background-color: transparent;
         }
 
+        /* ---- Responsive ---- */
         @media (max-width: 768px) {
-          .hm-section {
+
+        
+            .hm-section {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+    padding-top: 0px; /* a bit more breathing room under the navbar on mobile */
+    padding-bottom: 60px;
+  }
+
+  .hm-avatar-wrap {
+          transform: translateX(0px);
+        }
+
+          .hm-content {
             flex-direction: column-reverse;
-            padding: 80px 24px;
-            gap: 40px;
-            min-height: auto;
-          }
-          .hm-avatar-wrap {
-            width: 200px;
-            height: 267px;
+            padding: 60px 24px;
+            gap: 30px;
           }
           .hm-left {
             align-items: center;
             text-align: center;
+            max-width: 100%;
+            flex: unset;
+          }
+          .hm-right {
+            flex: unset;
             width: 100%;
+            justify-content: center;
+            background: transparent !important;
+            transform: translateX(50px);
+          }
+          .hm-avatar-wrap {
+            max-width: 340px;
           }
           .hm-stats {
             justify-content: center;
           }
-          /* Conveyor belt responsive */
           .hm-skills-wrap {
             width: 100%;
             max-width: 100%;
@@ -743,100 +772,116 @@ export default function Home() {
           .hm-marquee-row--right {
             animation-duration: 14s;
           }
+          .hm-avatar-wrap {
+            max-width: 250px;
+          }
         }
       `}</style>
 
+
+
       <section className="hm-section" id="home">
-        <div className="hm-left">
-          <p className="hm-greeting">
-            Hi I am
-            <span>Prajin Singh</span>
-          </p>
 
-          <h1 className="hm-title">
-            {displayed}
-            <span className="hm-cursor" />
-          </h1>
+        <DotPattern
+          dotSize={2}
+          gap={24}
+          baseColor={isDark ? '#161616' : '#e8e8e8'}
+          glowColor="#E76F51"
+          proximity={120}
+          glowIntensity={1}
+          waveSpeed={0.5}
+        />
+        <div style={{ position: 'relative', zIndex: 1, width: '100%' }}>
+          <div className="hm-content">
+            <div className="hm-left">
+              <p className="hm-greeting">
+                Hi I am
+                <span>Prajin Singh</span>
+              </p>
 
-          <div className="hm-socials">
-            <a href="https://www.instagram.com/przns7/" className="hm-social-btn" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
-              </svg>
-            </a>
-            <a href="https://np.linkedin.com/in/prajinsingh" className="hm-social-btn" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-              </svg>
-            </a>
-            <a href="https://github.com/Prazeen7" className="hm-social-btn" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-              </svg>
-            </a>
-            <a href="mailto:prajin.singh9@gmail.com" className="hm-social-btn" aria-label="Email" target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-              </svg>
-            </a>
-          </div>
+              <h1 className="hm-title">
+                {displayed}
+                <span className="hm-cursor" />
+              </h1>
 
-          <div
-            className="hm-skills-wrap"
-            onMouseEnter={() => setMarqueesPaused(true)}
-            onMouseLeave={() => setMarqueesPaused(false)}
-          >
-            <div className="hm-marquee-track">
-              {/* Row 1 — scrolls left */}
-              <div className={`hm-marquee-row hm-marquee-row--left${marqueesPaused ? " paused" : ""}`}>
-                {[...ROW1_SKILLS, ...ROW1_SKILLS].map((skill, i) => (
-                  <span key={`r1-${i}`} className="hm-skill-tag">{skill}</span>
-                ))}
+              <div className="hm-socials">
+                <a href="https://www.instagram.com/przns7/" className="hm-social-btn" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                  </svg>
+                </a>
+                <a href="https://np.linkedin.com/in/prajinsingh" className="hm-social-btn" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                  </svg>
+                </a>
+                <a href="https://github.com/Prazeen7" className="hm-social-btn" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+                  </svg>
+                </a>
+                <a href="mailto:prajin.singh9@gmail.com" className="hm-social-btn" aria-label="Email" target="_blank" rel="noopener noreferrer">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                  </svg>
+                </a>
               </div>
-              {/* Row 2 — scrolls right */}
-              <div className={`hm-marquee-row hm-marquee-row--right${marqueesPaused ? " paused" : ""}`}>
-                {[...ROW2_SKILLS, ...ROW2_SKILLS].map((skill, i) => (
-                  <span key={`r2-${i}`} className="hm-skill-tag">{skill}</span>
-                ))}
+
+              <div
+                className="hm-skills-wrap"
+                onMouseEnter={() => setMarqueesPaused(true)}
+                onMouseLeave={() => setMarqueesPaused(false)}
+              >
+                <div className="hm-marquee-track">
+                  <div className={`hm-marquee-row hm-marquee-row--left${marqueesPaused ? " paused" : ""}`}>
+                    {[...ROW1_SKILLS, ...ROW1_SKILLS].map((skill, i) => (
+                      <span key={`r1-${i}`} className="hm-skill-tag">{skill}</span>
+                    ))}
+                  </div>
+                  <div className={`hm-marquee-row hm-marquee-row--right${marqueesPaused ? " paused" : ""}`}>
+                    {[...ROW2_SKILLS, ...ROW2_SKILLS].map((skill, i) => (
+                      <span key={`r2-${i}`} className="hm-skill-tag">{skill}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="hm-stats">
+                <div className="hm-stat">
+                  <div className="hm-stat-num">
+                    <RollingNumber target={1} suffix="+" duration={3000} />
+                  </div>
+                  <div className="hm-stat-label">Experiences</div>
+                </div>
+                <div className="hm-stat">
+                  <div className="hm-stat-num">
+                    <RollingNumber target={20} suffix="+" duration={3000} />
+                  </div>
+                  <div className="hm-stat-label">Project done</div>
+                </div>
+                <div className="hm-stat">
+                  <div className="hm-stat-num">
+                    <RollingNumber target={15} suffix="+" duration={3000} />
+                  </div>
+                  <div className="hm-stat-label">Technologies</div>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="hm-stats">
-            <div className="hm-stat">
-              <div className="hm-stat-num">
-                <RollingNumber target={1} suffix="+" duration={3000} />
+            <div className="hm-right">
+              <div className="hm-avatar-wrap">
+                <img src={PP} alt="Prajin Singh" />
               </div>
-              <div className="hm-stat-label">Experiences</div>
-            </div>
-            <div className="hm-stat">
-              <div className="hm-stat-num">
-                <RollingNumber target={20} suffix="+" duration={3000} />
-              </div>
-              <div className="hm-stat-label">Project done</div>
-            </div>
-            <div className="hm-stat">
-              <div className="hm-stat-num">
-                <RollingNumber target={15} suffix="+" duration={3000} />
-              </div>
-              <div className="hm-stat-label">Technologies</div>
             </div>
           </div>
         </div>
-
-        <div className="hm-right">
-          <div className="hm-avatar-ring-2" />
-          <div className="hm-avatar-ring" />
-          <div className="hm-avatar-wrap">
-            <img
-              src={PP}
-              alt="Prajin Singh"
-              style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center",  }}
-            />
+        <div className="hm-scroll-indicator" aria-hidden="true" style={{ zIndex: 2 }}>
+          <div className="hm-scroll-mouse">
+            <div className="hm-scroll-dot" />
           </div>
+          <span className="hm-scroll-text">SCROLL</span>
         </div>
       </section>
-      <div className="section-divider"></div>
     </>
   );
 }

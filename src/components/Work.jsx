@@ -37,9 +37,8 @@ const WORK_EXPERIENCE = [
 ];
 
 export default function WorkExperience() {
-  // Start as false — cards render immediately but are invisible
   const [isVisible, setIsVisible] = useState(false);
-  const sectionRef  = useRef(null);
+  const sectionRef = useRef(null);
   const hasAnimated = useRef(false);
 
   useEffect(() => {
@@ -48,7 +47,7 @@ export default function WorkExperience() {
         if (entry.isIntersecting && !hasAnimated.current) {
           setIsVisible(true);
           hasAnimated.current = true;
-          observer.disconnect(); // fire once, never again
+          observer.disconnect();
         }
       },
       { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
@@ -74,10 +73,10 @@ export default function WorkExperience() {
         }
 
         /* ─── Header animation ───────────────────────────────── */
-        /*  Always invisible until .wk-animate is added by JS    */
         .wk-header {
           text-align: center;
           margin-bottom: 64px;
+          margin-top: 80px;
           padding: 0 16px;
           opacity: 0;
           transform: translateY(30px);
@@ -89,16 +88,17 @@ export default function WorkExperience() {
           transform: translateY(0);
         }
 
-        /* ─── Card base — always in DOM, starts invisible ────── */
+        /* ─── Card base — transparent background ────────────── */
         .experience-card {
-          background: #1a1a1a;
-          border: 1px solid #2a2a2a;
+          background: transparent;           /* fully transparent */
+          border: 1px solid rgba(255, 255, 255, 0.18);
           border-radius: 20px;
           padding: 24px;
           display: flex;
           flex-direction: column;
           height: auto;
-          /* invisible by default — no opacity:0 tricks, use transform+opacity transition */
+          /* backdrop‑filter removed */
+          box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
           opacity: 0;
           transform: translateX(-40px);
           transition:
@@ -106,16 +106,13 @@ export default function WorkExperience() {
             transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94),
             border-color 0.3s ease,
             box-shadow 0.3s ease;
-          /* hover uses a separate transform, so we can't combine — handle below */
         }
 
-        /* When the section has been seen, animate cards in */
         .wk-animate .experience-card {
           opacity: 1;
           transform: translateX(0);
         }
 
-        /* Stagger — delay each card's transition start */
         .wk-animate .experience-card:nth-child(1) { transition-delay: 0.10s; }
         .wk-animate .experience-card:nth-child(2) { transition-delay: 0.22s; }
         .wk-animate .experience-card:nth-child(3) { transition-delay: 0.34s; }
@@ -123,7 +120,6 @@ export default function WorkExperience() {
         .wk-animate .experience-card:nth-child(5) { transition-delay: 0.58s; }
         .wk-animate .experience-card:nth-child(6) { transition-delay: 0.70s; }
 
-        /* Hover — only when already visible */
         .wk-animate .experience-card:hover {
           border-color: #E76F51;
           transform: translateY(-4px);
@@ -181,8 +177,20 @@ export default function WorkExperience() {
 
         /* ─── Layout ─────────────────────────────────────────── */
         .experience-section {
+          width: 100%;
           margin-bottom: 80px;
           padding: 0 24px;
+          position: relative;
+          overflow: visible;
+          background: transparent;
+        }
+        .experience-section > * {
+          position: relative;
+          z-index: 1;
+        }
+        .experience-content {
+          max-width: 1250px;
+          margin: 0 auto;
         }
         .experience-grid {
           display: grid;
@@ -191,17 +199,25 @@ export default function WorkExperience() {
           margin-top: 40px;
         }
         .section-divider {
-          height: 1px;
-          background: linear-gradient(to right, transparent, #E76F51, transparent);
+          height: 2px;
+          background: linear-gradient(to right, transparent, #E76F51 20%, #E76F51 80%, transparent);
+          box-shadow: 0 0 20px rgba(231, 111, 81, 0.5);
           margin: 60px 24px;
+          position: relative;
+          z-index: 2;
+        }
+        
+        body.light-mode .section-divider {
+          box-shadow: 0 0 15px rgba(231, 111, 81, 0.4);
         }
 
         /* ─── Light Mode ─────────────────────────────────────── */
         body.light-mode .work-title { color: #1a1a1a; }
         body.light-mode .work-sub   { color: #6c6c6c; }
         body.light-mode .experience-card {
-          background: #ffffff; border-color: #e0e0e0;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+          background: transparent;           /* fully transparent in light mode too */
+          border-color: rgba(0, 0, 0, 0.15);
+          box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.10);
         }
         body.light-mode .wk-animate .experience-card:hover {
           border-color: #E76F51; box-shadow: 0 8px 20px rgba(231,111,81,0.1);
@@ -218,14 +234,14 @@ export default function WorkExperience() {
           .experience-section { padding: 0 20px; margin-bottom: 64px; }
           .section-divider { margin: 50px 20px; }
           .experience-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
-          .wk-header { margin-bottom: 48px; }
+          .wk-header { margin-bottom: 48px; margin-top: 60px; }
         }
         @media (max-width: 768px) {
           .experience-section { padding: 0 16px; margin-bottom: 48px; }
           .section-divider { margin: 40px 16px; }
           .experience-grid { grid-template-columns: 1fr; gap: 16px; margin-top: 28px; }
           .experience-card { padding: 20px; }
-          .wk-header { margin-bottom: 36px; }
+          .wk-header { margin-bottom: 36px; margin-top: 48px; }
           .exp-title { font-size: 17px; }
           .exp-company { font-size: 14px; }
           .exp-description li { font-size: 13px; }
@@ -236,7 +252,7 @@ export default function WorkExperience() {
           .section-divider { margin: 32px 12px; }
           .experience-grid { gap: 12px; margin-top: 20px; }
           .experience-card { padding: 16px 14px; border-radius: 16px; }
-          .wk-header { margin-bottom: 28px; padding: 0; }
+          .wk-header { margin-bottom: 28px; padding: 0; margin-top: 40px; }
           .work-badge { font-size: 11px; }
           .exp-title { font-size: 15px; }
           .exp-company { font-size: 13px; }
@@ -247,45 +263,39 @@ export default function WorkExperience() {
       `}</style>
 
       <div id="work">
-        {/*
-          The wrapper always renders — cards stay in the DOM.
-          .wk-animate is added once when the observer fires,
-          triggering the CSS transitions. It is never removed,
-          so scrolling away and back does NOT replay the animation.
-        */}
         <div
           className={`experience-section${isVisible ? " wk-animate" : ""}`}
           ref={sectionRef}
         >
-          {/* Header */}
-          <div className="wk-header">
-            <h2 className="work-title">Work Experience</h2>
-            <p className="work-sub">
-              Professional journey across AI development, IT support, and technical roles
-            </p>
-          </div>
+          <div className="experience-content">
+            <div className="wk-header">
+              <h2 className="work-title">Work Experience</h2>
+              <p className="work-sub">
+                Professional journey across AI development, IT support, and technical roles
+              </p>
+            </div>
 
-          {/* Cards grid — always in DOM */}
-          <div className="experience-grid">
-            {WORK_EXPERIENCE.map((exp) => (
-              <div key={exp.id} className="experience-card">
-                <div className="exp-header">
-                  <h3 className="exp-title">{exp.title}</h3>
-                  <p className="exp-company">{exp.company}</p>
-                  <span className="exp-period">{exp.period}</span>
+            <div className="experience-grid">
+              {WORK_EXPERIENCE.map((exp) => (
+                <div key={exp.id} className="experience-card">
+                  <div className="exp-header">
+                    <h3 className="exp-title">{exp.title}</h3>
+                    <p className="exp-company">{exp.company}</p>
+                    <span className="exp-period">{exp.period}</span>
+                  </div>
+                  <ul className="exp-description">
+                    {exp.description.map((item, i) => (
+                      <li key={i}>{item}</li>
+                    ))}
+                  </ul>
+                  <div className="exp-tech">
+                    {exp.technologies.map((tech) => (
+                      <span key={tech} className="exp-tech-tag">{tech}</span>
+                    ))}
+                  </div>
                 </div>
-                <ul className="exp-description">
-                  {exp.description.map((item, i) => (
-                    <li key={i}>{item}</li>
-                  ))}
-                </ul>
-                <div className="exp-tech">
-                  {exp.technologies.map((tech) => (
-                    <span key={tech} className="exp-tech-tag">{tech}</span>
-                  ))}
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
 

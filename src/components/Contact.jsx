@@ -35,7 +35,6 @@ export default function Contact() {
     e.preventDefault();
     setFormStatus({ submitted: false, loading: true, error: null });
 
-    // Client-side validation
     if (formData.message.length < 10) {
       setFormStatus({
         submitted: false,
@@ -64,8 +63,6 @@ export default function Contact() {
       if (response.ok) {
         setFormStatus({ submitted: true, loading: false, error: null });
         setFormData({ name: "", email: "", message: "" });
-
-        // Auto-hide success message after 5 seconds
         setTimeout(() => {
           setFormStatus((prev) => ({ ...prev, submitted: false }));
         }, 5000);
@@ -225,25 +222,8 @@ export default function Contact() {
     };
   }, [animatedElements]);
 
+  // Updated socialLinks: removed Facebook and Instagram
   const socialLinks = [
-    {
-      name: "Facebook",
-      url: "https://www.facebook.com/prazeen.singh/",
-      icon: (
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-        </svg>
-      ),
-    },
-    {
-      name: "Instagram",
-      url: "https://www.instagram.com/przns7/",
-      icon: (
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
-        </svg>
-      ),
-    },
     {
       name: "LinkedIn",
       url: "https://www.linkedin.com/in/prajinsingh/",
@@ -376,7 +356,7 @@ export default function Contact() {
 
         /* Dark Mode Styles */
         body.dark-mode .contact-section {
-          background: #0a0a0a;
+          background: transparent;
         }
 
         body.dark-mode .contact-title {
@@ -396,20 +376,27 @@ export default function Contact() {
         }
 
         body.dark-mode .social-icon-link {
-          background: #1a1a1a;
-          border-color: #2a2a2a;
-          color: #b0b0b0;
+          background: transparent !important;
+          backdrop-filter: none !important;
+          -webkit-backdrop-filter: none !important;
+          box-shadow: none !important;
+          border-color: rgba(255, 255, 255, 0.18);
+          color: #ffffff; /* icon color white in dark mode */
         }
 
         body.dark-mode .social-icon-link:hover {
           border-color: #E76F51;
           color: #E76F51;
-          background: rgba(231, 111, 81, 0.1);
+          background: transparent !important;
         }
 
-        body.dark-mode .contact-info-card {
-          background: #1a1a1a;
-          border-color: #2a2a2a;
+        body.dark-mode .contact-info-card,
+        body.dark-mode .form-section {
+          background: transparent !important;
+          backdrop-filter: none !important;
+          -webkit-backdrop-filter: none !important;
+          box-shadow: none !important;
+          border-color: rgba(255, 255, 255, 0.18);
         }
 
         body.dark-mode .contact-info-card:hover {
@@ -421,26 +408,19 @@ export default function Contact() {
           color: #e0e0e0;
         }
 
-        body.dark-mode .form-section {
-          background: #1a1a1a;
-          border-color: #2a2a2a;
-        }
-
-        body.dark-mode .form-label {
-          color: #b0b0b0;
-        }
-
         body.dark-mode .form-input,
         body.dark-mode .form-textarea {
-          background: #0a0a0a;
-          border-color: #2a2a2a;
+          background: rgba(10, 10, 10, 0.2);
+          border-color: rgba(255, 255, 255, 0.18);
           color: #e0e0e0;
+          backdrop-filter: blur(10px) saturate(150%);
+          -webkit-backdrop-filter: blur(10px) saturate(150%);
         }
 
         body.dark-mode .form-input:focus,
         body.dark-mode .form-textarea:focus {
           border-color: #E76F51;
-          background: #0f0f0f;
+          background: rgba(15, 15, 15, 0.3);
         }
 
         body.dark-mode .form-input::placeholder,
@@ -462,7 +442,7 @@ export default function Contact() {
 
         /* Light Mode Styles */
         body.light-mode .contact-section {
-          background: #ffffff;
+          background: transparent;
         }
 
         body.light-mode .contact-title {
@@ -482,26 +462,32 @@ export default function Contact() {
         }
 
         body.light-mode .social-icon-link {
-          background: #f8f9fa;
-          border-color: #e0e0e0;
-          color: #6c6c6c;
+          background: transparent !important;
+          backdrop-filter: none !important;
+          -webkit-backdrop-filter: none !important;
+          box-shadow: none !important;
+          border-color: rgba(0, 0, 0, 0.12);
+          color: #000000; /* icon color black in light mode */
         }
 
         body.light-mode .social-icon-link:hover {
           border-color: #E76F51;
           color: #E76F51;
-          background: rgba(231, 111, 81, 0.05);
+          background: transparent !important;
         }
 
-        body.light-mode .contact-info-card {
-          background: #ffffff;
-          border-color: #e0e0e0;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        body.light-mode .contact-info-card,
+        body.light-mode .form-section {
+          background: transparent !important;
+          backdrop-filter: none !important;
+          -webkit-backdrop-filter: none !important;
+          box-shadow: none !important;
+          border-color: rgba(0, 0, 0, 0.12);
         }
 
         body.light-mode .contact-info-card:hover {
           border-color: #E76F51;
-          box-shadow: 0 4px 12px rgba(231, 111, 81, 0.1);
+          box-shadow: none !important;
         }
 
         body.light-mode .contact-info-text p,
@@ -509,27 +495,19 @@ export default function Contact() {
           color: #1a1a1a;
         }
 
-        body.light-mode .form-section {
-          background: #ffffff;
-          border-color: #e0e0e0;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        body.light-mode .form-label {
-          color: #6c6c6c;
-        }
-
         body.light-mode .form-input,
         body.light-mode .form-textarea {
-          background: #f8f9fa;
-          border-color: #e0e0e0;
+          background: rgba(255, 255, 255, 0.3);
+          border-color: rgba(0, 0, 0, 0.12);
           color: #1a1a1a;
+          backdrop-filter: blur(10px) saturate(150%);
+          -webkit-backdrop-filter: blur(10px) saturate(150%);
         }
 
         body.light-mode .form-input:focus,
         body.light-mode .form-textarea:focus {
           border-color: #E76F51;
-          background: #ffffff;
+          background: rgba(255, 255, 255, 0.45);
         }
 
         body.light-mode .form-input::placeholder,
@@ -553,12 +531,17 @@ export default function Contact() {
           width: 100%;
           font-family: 'Jost', sans-serif;
           position: relative;
-          overflow-x: hidden;
+          overflow: visible;
           transition: background-color 0.3s ease;
         }
 
+        .contact-section > .contact-container {
+          position: relative;
+          z-index: 1;
+        }
+
         .contact-container {
-          max-width: 1300px;
+          max-width: 1250px;
           width: 100%;
           margin: 0 auto;
           padding: 0px 64px 100px;
@@ -643,6 +626,7 @@ export default function Contact() {
           transition: all 0.3s ease;
           text-decoration: none;
           opacity: 0;
+          border: 1px solid;
         }
 
         .social-icon-link:hover {
@@ -1134,7 +1118,6 @@ export default function Contact() {
             {/* Contact Form */}
             <div className="form-section" ref={formSectionRef}>
               <form ref={formRef} onSubmit={handleSubmit}>
-                {/* Honeypot field for spam prevention */}
                 <input
                   type="text"
                   name="_gotcha"
@@ -1142,7 +1125,7 @@ export default function Contact() {
                   tabIndex="-1"
                   autoComplete="off"
                 />
-                
+
                 {formStatus.submitted && (
                   <div className="success-message">
                     <span className="success-icon">✓</span>
