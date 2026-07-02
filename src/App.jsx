@@ -173,8 +173,8 @@ function App() {
             <div className="section-divider-top"></div>
             
             <AnimatedBackground opacity={0.6} />
-            <Work theme={theme} />
             <Projects theme={theme} />
+            <Work theme={theme} />
             <Contact theme={theme} />
           </div>
           

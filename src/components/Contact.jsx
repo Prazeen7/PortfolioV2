@@ -376,10 +376,12 @@ export default function Contact() {
         }
 
         body.dark-mode .social-icon-link {
-          background: transparent !important;
-          backdrop-filter: none !important;
-          -webkit-backdrop-filter: none !important;
-          box-shadow: none !important;
+          background: rgba(10, 10, 10, 0.4) !important;
+          backdrop-filter: blur(16px) saturate(180%) !important;
+          -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+          box-shadow: 
+            0 8px 32px 0 rgba(0, 0, 0, 0.37),
+            inset 0 1px 0 0 rgba(255, 255, 255, 0.05) !important;
           border-color: rgba(255, 255, 255, 0.18);
           color: #ffffff; /* icon color white in dark mode */
         }
@@ -387,20 +389,28 @@ export default function Contact() {
         body.dark-mode .social-icon-link:hover {
           border-color: #E76F51;
           color: #E76F51;
-          background: transparent !important;
+          background: rgba(231, 111, 81, 0.1) !important;
+          box-shadow: 
+            0 12px 32px rgba(231, 111, 81, 0.15),
+            inset 0 1px 0 0 rgba(255, 255, 255, 0.1) !important;
         }
 
         body.dark-mode .contact-info-card,
         body.dark-mode .form-section {
-          background: transparent !important;
-          backdrop-filter: none !important;
-          -webkit-backdrop-filter: none !important;
-          box-shadow: none !important;
+          background: rgba(10, 10, 10, 0.4) !important;
+          backdrop-filter: blur(16px) saturate(180%) !important;
+          -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+          box-shadow: 
+            0 8px 32px 0 rgba(0, 0, 0, 0.37),
+            inset 0 1px 0 0 rgba(255, 255, 255, 0.05) !important;
           border-color: rgba(255, 255, 255, 0.18);
         }
 
         body.dark-mode .contact-info-card:hover {
           border-color: #E76F51;
+          box-shadow: 
+            0 12px 32px rgba(231, 111, 81, 0.15),
+            inset 0 1px 0 0 rgba(255, 255, 255, 0.1) !important;
         }
 
         body.dark-mode .contact-info-text p,
@@ -462,10 +472,12 @@ export default function Contact() {
         }
 
         body.light-mode .social-icon-link {
-          background: transparent !important;
-          backdrop-filter: none !important;
-          -webkit-backdrop-filter: none !important;
-          box-shadow: none !important;
+          background: rgba(255, 255, 255, 0.4) !important;
+          backdrop-filter: blur(16px) saturate(180%) !important;
+          -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+          box-shadow: 
+            0 8px 32px 0 rgba(31, 38, 135, 0.10),
+            inset 0 1px 0 0 rgba(255, 255, 255, 0.5) !important;
           border-color: rgba(0, 0, 0, 0.12);
           color: #000000; /* icon color black in light mode */
         }
@@ -473,21 +485,28 @@ export default function Contact() {
         body.light-mode .social-icon-link:hover {
           border-color: #E76F51;
           color: #E76F51;
-          background: transparent !important;
+          background: rgba(231, 111, 81, 0.1) !important;
+          box-shadow: 
+            0 12px 32px rgba(231, 111, 81, 0.15),
+            inset 0 1px 0 0 rgba(255, 255, 255, 0.8) !important;
         }
 
         body.light-mode .contact-info-card,
         body.light-mode .form-section {
-          background: transparent !important;
-          backdrop-filter: none !important;
-          -webkit-backdrop-filter: none !important;
-          box-shadow: none !important;
+          background: rgba(255, 255, 255, 0.4) !important;
+          backdrop-filter: blur(16px) saturate(180%) !important;
+          -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+          box-shadow: 
+            0 8px 32px 0 rgba(31, 38, 135, 0.10),
+            inset 0 1px 0 0 rgba(255, 255, 255, 0.5) !important;
           border-color: rgba(0, 0, 0, 0.12);
         }
 
         body.light-mode .contact-info-card:hover {
           border-color: #E76F51;
-          box-shadow: none !important;
+          box-shadow: 
+            0 12px 32px rgba(231, 111, 81, 0.15),
+            inset 0 1px 0 0 rgba(255, 255, 255, 0.8) !important;
         }
 
         body.light-mode .contact-info-text p,

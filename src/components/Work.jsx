@@ -39,8 +39,11 @@ export default function WorkExperience() {
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredCard, setHoveredCard] = useState(null);
   const [animationKey, setAnimationKey] = useState(0);
+  const [activeCardIndex, setActiveCardIndex] = useState(0);
+  const [isUserHovering, setIsUserHovering] = useState(false);
   const sectionRef = useRef(null);
   const hasAnimated = useRef(false);
+  const animationIntervalRef = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -58,11 +61,37 @@ export default function WorkExperience() {
     return () => observer.disconnect();
   }, []);
 
+  // Auto-cycle through cards (desktop only)
+  useEffect(() => {
+    if (!isVisible || isUserHovering) return;
+
+    // Check if we're on desktop
+    const isDesktop = window.innerWidth > 768;
+    if (!isDesktop) return;
+
+    // Start cycling through cards
+    animationIntervalRef.current = setInterval(() => {
+      setActiveCardIndex((prev) => (prev + 1) % WORK_EXPERIENCE.length);
+    }, 3000); // 3 seconds per card
+
+    return () => {
+      if (animationIntervalRef.current) {
+        clearInterval(animationIntervalRef.current);
+      }
+    };
+  }, [isVisible, isUserHovering]);
+
   const handleMouseEnter = (id) => {
+    setIsUserHovering(true);
     setHoveredCard(id);
+    // Pause the animation
+    if (animationIntervalRef.current) {
+      clearInterval(animationIntervalRef.current);
+    }
   };
 
   const handleMouseLeave = () => {
+    setIsUserHovering(false);
     setHoveredCard(null);
     // Force restart animation by changing key
     setAnimationKey(prev => prev + 1);
@@ -127,16 +156,32 @@ export default function WorkExperience() {
           cursor: pointer;
           padding: 16px 24px;
           border-radius: 12px;
-          transition: all 0.3s ease;
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
           position: relative;
           z-index: 2;
           text-align: center;
-          max-width: 280px; /* Limit width to help prevent excessive wrapping */
+          max-width: 280px;
         }
 
         .company-name:hover {
           color: #E76F51;
           background: rgba(231, 111, 81, 0.05);
+        }
+
+        /* Active state for company name - state driven */
+        @media (min-width: 769px) {
+          .company-name.is-active {
+            color: #E76F51;
+            background: rgba(231, 111, 81, 0.15);
+            transform: scale(1.05);
+          }
+
+          /* Dim non-active company names when one is active */
+          .experience-grid:has(.company-name.is-active) .company-name:not(.is-active) {
+            color: #6a6a6a;
+            background: transparent;
+            transform: scale(1);
+          }
         }
 
         /* ─── Card base — glassmorphism effect ─────────────── */
@@ -164,75 +209,20 @@ export default function WorkExperience() {
             transform: translateX(-50%);
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.4s ease, transform 0.4s ease;
+            transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                        transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 100;
             bottom: 100%;
             margin-bottom: 24px;
-            max-width: min(420px, calc(100vw - 48px)); /* Prevent card from exceeding viewport width minus padding */
+            max-width: min(420px, calc(100vw - 48px));
             min-width: min(380px, calc(100vw - 48px));
           }
 
-          /* Continuous sequential reveal animation */
-          .wk-animate .experience-hover-item:nth-child(1) .experience-card {
-            animation: cardRevealContinuous 9s ease-in-out infinite;
-            animation-delay: 0s;
-          }
-
-          .wk-animate .experience-hover-item:nth-child(2) .experience-card {
-            animation: cardRevealContinuous 9s ease-in-out infinite;
-            animation-delay: 3s;
-          }
-
-          .wk-animate .experience-hover-item:nth-child(3) .experience-card {
-            animation: cardRevealContinuous 9s ease-in-out infinite;
-            animation-delay: 6s;
-          }
-
-          @keyframes cardRevealContinuous {
-            0% {
-              opacity: 0;
-              transform: translateX(-50%) translateY(20px);
-              pointer-events: none;
-            }
-            10% {
-              opacity: 1;
-              transform: translateX(-50%) translateY(-8px);
-              pointer-events: auto;
-            }
-            30% {
-              opacity: 1;
-              transform: translateX(-50%) translateY(-8px);
-              pointer-events: auto;
-            }
-            40% {
-              opacity: 0;
-              transform: translateX(-50%) translateY(-8px);
-              pointer-events: none;
-            }
-            100% {
-              opacity: 0;
-              transform: translateX(-50%) translateY(20px);
-              pointer-events: none;
-            }
-          }
-
-          /* Hover state - pauses animation and shows card */
-          .experience-hover-item.is-hovered .experience-card {
-            opacity: 1 !important;
-            pointer-events: auto !important;
-            transform: translateX(-50%) translateY(-8px) !important;
-            animation-play-state: paused !important;
-          }
-
-          /* Pause all animations when any item is hovered */
-          .experience-grid:has(.experience-hover-item.is-hovered) .experience-card {
-            animation-play-state: paused !important;
-          }
-
-          /* Only show the hovered card */
-          .experience-grid:has(.experience-hover-item.is-hovered) .experience-hover-item:not(.is-hovered) .experience-card {
-            opacity: 0 !important;
-            pointer-events: none !important;
+          /* Show card when parent has is-active class */
+          .experience-hover-item.is-active .experience-card {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateX(-50%) translateY(-8px);
           }
 
           .experience-card:hover {
@@ -413,6 +403,19 @@ export default function WorkExperience() {
         body.light-mode .work-sub   { color: #6c6c6c; }
         body.light-mode .company-name { color: #1a1a1a; }
         body.light-mode .company-name:hover { color: #E76F51; background: rgba(231,111,81,0.08); }
+        
+        /* Light mode company name active state */
+        @media (min-width: 769px) {
+          body.light-mode .company-name.is-active {
+            color: #E76F51;
+            background: rgba(231, 111, 81, 0.2);
+            transform: scale(1.05);
+          }
+
+          body.light-mode .experience-grid:has(.company-name.is-active) .company-name:not(.is-active) {
+            color: #b0b0b0;
+          }
+        }
         body.light-mode .experience-card {
           background: rgba(255, 255, 255, 0.4);
           backdrop-filter: blur(10px);
@@ -487,33 +490,41 @@ export default function WorkExperience() {
             </div>
 
             <div className="experience-grid" key={animationKey}>
-              {WORK_EXPERIENCE.map((exp) => (
-                <div 
-                  key={exp.id} 
-                  className={`experience-hover-item${hoveredCard === exp.id ? ' is-hovered' : ''}`}
-                  onMouseEnter={() => handleMouseEnter(exp.id)}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  <div className="company-name">{exp.company}</div>
-                  <div className="experience-card">
-                    <div className="exp-header">
-                      <h3 className="exp-title">{exp.title}</h3>
-                      <p className="exp-company">{exp.company}</p>
-                      <span className="exp-period">{exp.period}</span>
+              {WORK_EXPERIENCE.map((exp, index) => {
+                const isActive = isUserHovering 
+                  ? hoveredCard === exp.id 
+                  : index === activeCardIndex;
+                
+                return (
+                  <div 
+                    key={exp.id} 
+                    className={`experience-hover-item${isActive ? ' is-active' : ''}`}
+                    onMouseEnter={() => handleMouseEnter(exp.id)}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    <div className={`company-name${isActive ? ' is-active' : ''}`}>
+                      {exp.company}
                     </div>
-                    <ul className="exp-description">
-                      {exp.description.map((item, i) => (
-                        <li key={i}>{item}</li>
-                      ))}
-                    </ul>
-                    <div className="exp-tech">
-                      {exp.technologies.map((tech) => (
-                        <span key={tech} className="exp-tech-tag">{tech}</span>
-                      ))}
+                    <div className="experience-card">
+                      <div className="exp-header">
+                        <h3 className="exp-title">{exp.title}</h3>
+                        <p className="exp-company">{exp.company}</p>
+                        <span className="exp-period">{exp.period}</span>
+                      </div>
+                      <ul className="exp-description">
+                        {exp.description.map((item, i) => (
+                          <li key={i}>{item}</li>
+                        ))}
+                      </ul>
+                      <div className="exp-tech">
+                        {exp.technologies.map((tech) => (
+                          <span key={tech} className="exp-tech-tag">{tech}</span>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>

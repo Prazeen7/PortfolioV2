@@ -3,10 +3,10 @@ import { useEffect, useRef, useState } from "react";
 import ResumePDF from "../assets/Resume.pdf";
 
 const NAV_LINKS = [
-  { label: "Home",       href: "#home" },
+  { label: "Home", href: "#home" },
+  { label: "Projects", href: "#projects" },
   { label: "Experience", href: "#work" },
-  { label: "Projects",   href: "#projects" },
-  { label: "Contact",    href: "#contact" },
+  { label: "Contact", href: "#contact" },
 ];
 
 const SOCIAL_LINKS = [
@@ -50,7 +50,7 @@ const SOCIAL_LINKS = [
 
 export default function Footer() {
   const [isVisible, setIsVisible] = useState(false);
-  const footerRef   = useRef(null);
+  const footerRef = useRef(null);
   const hasAnimated = useRef(false);
 
   /* ── Intersection observer — fires once, adds .ft-animate ── */
@@ -323,72 +323,72 @@ export default function Footer() {
         id="footer"
       >
         <div className="ft-content">
-        {/* ── Top row ── */}
-        <div className="ft-top">
+          {/* ── Top row ── */}
+          <div className="ft-top">
 
-          {/* Brand + Social */}
-          <div className="ft-brand">
-            <h2 className="ft-logo">Prajin<span>.</span></h2>
-            <p className="ft-tagline">
-              I specialize in building web applications, deploying and training machine learning models, and turning complex data into clear, actionable insights. With expertise in modern frameworks and both ML and DL technologies, I bring ideas to life through clean, impactful code.
+            {/* Brand + Social */}
+            <div className="ft-brand">
+              <h2 className="ft-logo">Prajin<span>.</span></h2>
+              <p className="ft-tagline">
+                I specialize in building web applications, deploying and training machine learning models, and turning complex data into clear, actionable insights. With expertise in modern frameworks and both ML and DL technologies, I bring ideas to life through clean, impactful code.
 
-            </p>
-            <div className="ft-socials">
-              {SOCIAL_LINKS.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="ft-social-btn"
-                  aria-label={s.label}
-                >
-                  {s.icon}
-                </a>
-              ))}
+              </p>
+              <div className="ft-socials">
+                {SOCIAL_LINKS.map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="ft-social-btn"
+                    aria-label={s.label}
+                  >
+                    {s.icon}
+                  </a>
+                ))}
+              </div>
             </div>
+
+            {/* Quick Nav */}
+            <div className="ft-nav-col">
+              <p className="ft-col-heading">Navigation</p>
+              <ul className="ft-nav-list">
+                {NAV_LINKS.map((l) => (
+                  <li key={l.label}>
+                    <a href={l.href} className="ft-nav-link">{l.label}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Download CV */}
+            <div className="ft-cv-col">
+              <p className="ft-col-heading">Resume</p>
+              <a
+                href={ResumePDF}
+                download="Prajin_Singh_Resume.pdf"
+                className="ft-cv-btn"
+                aria-label="Download CV"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 3v13M7 11l5 5 5-5" />
+                  <path d="M5 20h14" />
+                </svg>
+                Download CV
+              </a>
+            </div>
+
           </div>
 
-          {/* Quick Nav */}
-          <div className="ft-nav-col">
-            <p className="ft-col-heading">Navigation</p>
-            <ul className="ft-nav-list">
-              {NAV_LINKS.map((l) => (
-                <li key={l.label}>
-                  <a href={l.href} className="ft-nav-link">{l.label}</a>
-                </li>
-              ))}
-            </ul>
+          {/* ── Divider ── */}
+          <div className="ft-divider" />
+
+          {/* ── Bottom row ── */}
+          <div className="ft-bottom">
+            <p className="ft-copy">
+              © {year} <span>Prajin Singh</span>. All rights reserved.
+            </p>
           </div>
-
-          {/* Download CV */}
-          <div className="ft-cv-col">
-            <p className="ft-col-heading">Resume</p>
-            <a
-              href={ResumePDF}
-              download="Prajin_Singh_Resume.pdf"
-              className="ft-cv-btn"
-              aria-label="Download CV"
-            >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 3v13M7 11l5 5 5-5" />
-                <path d="M5 20h14" />
-              </svg>
-              Download CV
-            </a>
-          </div>
-
-        </div>
-
-        {/* ── Divider ── */}
-        <div className="ft-divider" />
-
-        {/* ── Bottom row ── */}
-        <div className="ft-bottom">
-          <p className="ft-copy">
-            © {year} <span>Prajin Singh</span>. All rights reserved.
-          </p>
-        </div>
         </div>
       </footer>
     </>

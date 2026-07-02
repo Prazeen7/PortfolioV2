@@ -13,8 +13,8 @@ export default function AnimatedBackground({ opacity = 0.35 }) {
     const backgroundStars = [];
     const NUM_BG_STARS = 20;
     const BASE_COLOR = "#e86f51";
-    const GRID_COLS = 6;
-    const GRID_ROWS = 5;
+    const GRID_COLS = 4;
+    const GRID_ROWS = 3;
 
     // ---- Background star (bright, simple) ----
     const createBgStar = () => ({

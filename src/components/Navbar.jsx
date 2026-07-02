@@ -3,8 +3,8 @@ import ResumePDF from "../assets/Resume.pdf";
 
 const navLinks = [
   { label: "HOME", href: "home" },
+    { label: "PROJECTS", href: "projects" },
   { label: "WORK", href: "work" },
-  { label: "PROJECTS", href: "projects" },
   { label: "CONTACT", href: "contact" },
 ];
 
