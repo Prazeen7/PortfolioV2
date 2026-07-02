@@ -524,22 +524,22 @@ body.light-mode .hm-scroll-text { color: #6c6c6c; }
           transform: translateX(100px);
         }
 
-        /* Subtle grey gradient that blends completely into background */
+        /* Subtle grey gradient that stays just behind the image */
         .hm-avatar-wrap::before {
           content: "";
           position: absolute;
-          inset: -60%;
+          inset: 5%;
           border-radius: 50%;
           background: radial-gradient(
             ellipse at 50% 45%,
-            var(--glow-color, rgba(160, 160, 160, 0.05)) 0%,
-            var(--glow-color, rgba(160, 160, 160, 0.02)) 25%,
-            transparent 50%
+            var(--glow-color, rgba(160, 160, 160, 0.12)) 0%,
+            var(--glow-color, rgba(160, 160, 160, 0.05)) 35%,
+            transparent 60%
           );
           pointer-events: none;
           z-index: 0;
           transition: background 0.3s ease;
-          filter: blur(40px);
+          filter: blur(45px);
         }
 
         /* The image – blends directly into background with soft fade on all edges */
@@ -630,7 +630,7 @@ body.light-mode .hm-scroll-text { color: #6c6c6c; }
         body.dark-mode .hm-avatar-wrap {
           background: transparent !important;
           box-shadow: none !important;
-          --glow-color: rgba(180, 180, 180, 0.04);
+          --glow-color: rgba(200, 200, 200, 0.10);
         }
         body.dark-mode .hm-right {
           background: transparent !important;
@@ -697,7 +697,7 @@ body.light-mode .hm-scroll-text { color: #6c6c6c; }
         body.light-mode .hm-avatar-wrap {
           background: transparent !important;
           box-shadow: none !important;
-          --glow-color: rgba(100, 100, 100, 0.03);
+          --glow-color: rgba(120, 120, 120, 0.08);
         }
         body.light-mode .hm-right {
           background: transparent !important;
