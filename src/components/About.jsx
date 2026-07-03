@@ -121,7 +121,7 @@ export default function About({ theme }) {
         // Scroll to description content on mobile after content loads
         if (isMobile && descriptionContentRef.current) {
           setTimeout(() => {
-            const navbarHeight = 80; // Adjust based on your navbar height
+            const navbarHeight = 80; 
             const elementPosition = descriptionContentRef.current.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
 
@@ -158,7 +158,7 @@ export default function About({ theme }) {
         // Scroll to description content on mobile after content loads
         if (isMobile && descriptionContentRef.current) {
           setTimeout(() => {
-            const navbarHeight = 80; // Adjust based on your navbar height
+            const navbarHeight = 80; 
             const elementPosition = descriptionContentRef.current.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
 
