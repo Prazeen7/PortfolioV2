@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
+import About from './components/About';
 import Home from './components/Home';
 import Work from './components/Work';
 import Contact from './components/Contact';
@@ -123,7 +124,7 @@ function App() {
         }
         
         body.light-mode .unified-bg-wrapper {
-          background: #ffffff;
+          background: #f5f5f5;
         }
         
         /* Enhanced divider at top of unified wrapper */
@@ -167,12 +168,13 @@ function App() {
             <Home theme={theme} />
           </div>
           
-          {/* Unified background wrapper for Work, Projects, Contact */}
+          {/* Unified background wrapper for About, Projects, Work, Contact */}
           <div className="unified-bg-wrapper">
             {/* Divider to separate Home from animated sections */}
             <div className="section-divider-top"></div>
             
             <AnimatedBackground opacity={0.6} />
+            <About theme={theme} />
             <Projects theme={theme} />
             <Work theme={theme} />
             <Contact theme={theme} />

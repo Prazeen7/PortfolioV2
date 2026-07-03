@@ -4,6 +4,7 @@ import ResumePDF from "../assets/Resume.pdf";
 
 const NAV_LINKS = [
   { label: "Home", href: "#home" },
+  { label: "About", href: "#about" },
   { label: "Projects", href: "#projects" },
   { label: "Experience", href: "#work" },
   { label: "Contact", href: "#contact" },

@@ -562,14 +562,18 @@ body.light-mode .hm-scroll-text { color: #6c6c6c; }
 }
 
         .section-divider {
-          height: 1px;
-          background: linear-gradient(to right, transparent, #E76F51, transparent);
-          margin: 0;
-          padding: 0;
-          line-height: 0;
-          transition: background 0.3s ease;
-          background-color: transparent;
-          margin-bottom: 0;
+          height: 2px;
+          background: linear-gradient(
+            to right,
+            transparent,
+            #E76F51 20%,
+            #E76F51 80%,
+            transparent
+          );
+          box-shadow: 0 0 20px rgba(231, 111, 81, 0.5);
+          margin: 60px 0;
+          position: relative;
+          z-index: 2;
         }
 
         /* ---- Dark mode ---- */
@@ -636,7 +640,7 @@ body.light-mode .hm-scroll-text { color: #6c6c6c; }
           background: transparent !important;
         }
         body.dark-mode .section-divider {
-          background: linear-gradient(to right, transparent, #E76F51, transparent);
+          box-shadow: 0 0 20px rgba(231, 111, 81, 0.5);
         }
 
         /* ---- Light mode ---- */
@@ -703,7 +707,7 @@ body.light-mode .hm-scroll-text { color: #6c6c6c; }
           background: transparent !important;
         }
         body.light-mode .section-divider {
-          background: linear-gradient(to right, transparent, #E76F51, transparent);
+          box-shadow: 0 0 15px rgba(231, 111, 81, 0.4);
         }
 
         /* ---- Responsive ---- */
