@@ -121,7 +121,7 @@ export default function About({ theme }) {
         // Scroll to description content on mobile after content loads
         if (isMobile && descriptionContentRef.current) {
           setTimeout(() => {
-            const navbarHeight = 80; 
+            const navbarHeight = 80;
             const elementPosition = descriptionContentRef.current.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
 
@@ -158,7 +158,7 @@ export default function About({ theme }) {
         // Scroll to description content on mobile after content loads
         if (isMobile && descriptionContentRef.current) {
           setTimeout(() => {
-            const navbarHeight = 80; 
+            const navbarHeight = 80;
             const elementPosition = descriptionContentRef.current.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
 
@@ -1256,8 +1256,9 @@ export default function About({ theme }) {
                       <div className="year">2017 - 2019</div>
                       <div className="description">
                         Completed higher secondary education with a GPA of <strong>2.91</strong>,
-                        building a solid foundation in mathematics, physics, and computer science that
-                        sparked my interest in technology.
+                        specializing in Management with Computer Science. This program introduced me
+                        to programming and technology, laying the foundation for my interest in
+                        software development.
                       </div>
                     </div>
 
