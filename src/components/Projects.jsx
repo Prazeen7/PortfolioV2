@@ -26,7 +26,18 @@ import GEA from '../assets/Projects/GEA.png'
 import log from '../assets/Projects/log.png'
 import TTS from '../assets/Projects/TTS.png'
 import VTB from '../assets/Projects/VTB.png'
-
+import GEA1 from '../assets/Projects/GEA/GEA (12).png'
+import GEA2 from '../assets/Projects/GEA/GEA (11).png'
+import GEA3 from '../assets/Projects/GEA/GEA (10).png'
+import GEA4 from '../assets/Projects/GEA/GEA (9).png'
+import GEA5 from '../assets/Projects/GEA/GEA (8).png'
+import GEA6 from '../assets/Projects/GEA/GEA (7).png'
+import GEA7 from '../assets/Projects/GEA/GEA (6).png'
+import GEA8 from '../assets/Projects/GEA/GEA (5).png'
+import GEA9 from '../assets/Projects/GEA/GEA (4).png'
+import GEA10 from '../assets/Projects/GEA/GEA (3).png'
+import GEA11 from '../assets/Projects/GEA/GEA (2).png'
+import GEA12 from '../assets/Projects/GEA/GEA (1).png'
 
 const useIsMobile = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -47,10 +58,10 @@ const PROJECTS = [
     description:
       "A comprehensive MERN stack application designed to solve student-related problems during the process of abroad studies. Features include university recommendations, cost estimation, a progress-tracking system, a chat system, and document guidance.",
     tech: ["MongoDB", "Express.js", "React", "Node.js"],
-    github: "https://github.com/Prazeen7/Global-Edu-Assist",
+    github: "https://global-edu-assist.vercel.app/",
     live: null,
     category: "fullstack",
-    images: [GEA],
+    images: [GEA1,GEA2,GEA3,GEA4,GEA5,GEA6,GEA7,GEA8,GEA9,GEA10,GEA11,GEA12],
   },
   {
     id: 2,
